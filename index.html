@@ -1,554 +1,94 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sim — Game Designer / Level Designer / Solo Dev</title>
+<title>Sim Graveline</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-
-  :root{
-    --bg-app: #1E1E20;
-    --bg-panel: #232326;
-    --bg-workspace: #1A1A1C;
-    --border: #38383D;
-    --border-soft: #2C2C30;
-    --text: #D8D8DA;
-    --text-dim: #85858C;
-    --text-faint: #58585E;
-
-    --accent-blue: #4FA6FF;
-    --accent-blue-dim: #1E4267;
-    --accent-orange: #FFA857;
-    --accent-orange-dim: #6B4A22;
-    --accent-green: #6FCF97;
-    --accent-green-dim: #2A4A38;
-
-    --gml-key: #4FA6FF;
-    --gml-str: #E0A96D;
-    --gml-com: #6A9955;
-    --gml-num: #B5CEA8;
-    --gml-fn: #DCDCAA;
-
-    --radius: 3px;
-    --mono: 'JetBrains Mono', ui-monospace, monospace;
-    --display: 'Space Grotesk', 'Inter', sans-serif;
-    --body: 'Inter', system-ui, sans-serif;
-
-    --h-title: 34px;
-    --h-menu: 30px;
-    --h-status: 28px;
-    --w-sidebar: 240px;
-  }
-
-  *{ box-sizing: border-box; margin:0; padding:0; }
-  html{ scroll-behavior: smooth; }
-  body{
-    background: var(--bg-app);
-    color: var(--text);
-    font-family: var(--body);
-    line-height: 1.55;
-  }
-  a{ color: inherit; text-decoration: none; }
-  ::selection{ background: var(--accent-blue); color: #101012; }
-  :focus-visible{ outline: 2px solid var(--accent-blue); outline-offset: 2px; }
-
-  /* ---------- title bar ---------- */
-  .titlebar{
-    position: fixed; top:0; left:0; right:0; z-index: 200;
-    height: var(--h-title);
-    background: var(--bg-panel);
-    border-bottom: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 12px;
-    font-family: var(--mono);
-    font-size: 0.74rem;
-    color: var(--text-dim);
-  }
-  .titlebar .name b{ color: var(--text); font-weight: 600; }
-  .winctrls{ display: flex; gap: 7px; }
-  .winctrls span{ width: 10px; height: 10px; border-radius: 50%; display:inline-block; }
-  .winctrls .c1{ background:#5c5c5f; }
-  .winctrls .c2{ background:#5c5c5f; }
-  .winctrls .c3{ background: var(--accent-green); }
-
-  /* ---------- menu bar ---------- */
-  .menubar{
-    position: fixed; top: var(--h-title); left:0; right:0; z-index: 200;
-    height: var(--h-menu);
-    background: var(--bg-app);
-    border-bottom: 1px solid var(--border-soft);
-    display: flex; align-items: center; gap: 22px;
-    padding: 0 16px;
-    font-family: var(--body);
-    font-size: 0.78rem;
-    color: var(--text-faint);
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-  .menubar span:hover{ color: var(--text-dim); }
-
-  /* ---------- sidebar / asset tree ---------- */
-  .asset-tree{
-    position: fixed;
-    top: calc(var(--h-title) + var(--h-menu));
-    bottom: var(--h-status);
-    left: 0;
-    width: var(--w-sidebar);
-    background: var(--bg-panel);
-    border-right: 1px solid var(--border);
-    overflow-y: auto;
-    z-index: 150;
-    padding: 8px 0 16px;
-  }
-  .tree-search{
-    margin: 6px 12px 14px;
-    padding: 7px 10px;
-    background: var(--bg-workspace);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    color: var(--text-faint);
-  }
-  .tree-folder{
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    color: var(--text-dim);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 10px 12px 6px;
-  }
-  .tree-item{
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    padding: 7px 12px 7px 22px;
-    font-family: var(--mono);
-    font-size: 0.82rem;
-    color: var(--text-dim);
-    border-left: 2px solid transparent;
-    cursor: pointer;
-  }
-  .tree-item:hover{ background: rgba(255,255,255,0.03); color: var(--text); }
-  .tree-item.active{
-    background: rgba(79,166,255,0.08);
-    border-left-color: var(--accent-blue);
-    color: var(--text);
-  }
-  .tree-ico{
-    width: 9px; height: 9px; border-radius: 2px; flex-shrink: 0;
-  }
-  .ico-room{ background: var(--accent-green); }
-  .ico-object{ background: var(--accent-blue); }
-  .ico-script{ background: var(--accent-orange); }
-
-  /* ---------- workspace column ---------- */
-  .workspace-col{
-    margin-left: var(--w-sidebar);
-    margin-top: calc(var(--h-title) + var(--h-menu));
-    margin-bottom: var(--h-status);
-  }
-
-  .tabstrip{
-    position: sticky;
-    top: calc(var(--h-title) + var(--h-menu));
-    z-index: 100;
-    display: flex;
-    background: var(--bg-panel);
-    border-bottom: 1px solid var(--border);
-    overflow-x: auto;
-  }
-  .tab{
-    font-family: var(--mono);
-    font-size: 0.76rem;
-    color: var(--text-dim);
-    padding: 10px 18px;
-    border-right: 1px solid var(--border-soft);
-    border-bottom: 2px solid transparent;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-  .tab:hover{ color: var(--text); }
-  .tab.active{
-    color: var(--text);
-    background: var(--bg-workspace);
-    border-bottom-color: var(--accent-blue);
-  }
-
-  main.workspace{ background: var(--bg-workspace); }
-
-  section{
-    padding: 72px 40px;
-    max-width: 980px;
-    margin: 0 auto;
-  }
-
-  .room-tag{
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    color: var(--text-faint);
-    margin-bottom: 28px;
-  }
-  .room-tag b{ color: var(--accent-green); }
-
-  /* ---------- hero (rm_intro) ---------- */
-  #hero{
-    background-image:
-      linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
-    background-size: 38px 38px;
-    min-height: calc(100vh - var(--h-title) - var(--h-menu) - var(--h-status));
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .hero-tag{
-    display: inline-block;
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    color: var(--accent-green);
-    border: 1px solid var(--accent-green-dim);
-    padding: 5px 10px;
-    border-radius: var(--radius);
-    margin-bottom: 22px;
-    width: fit-content;
-  }
-  h1{
-    font-family: var(--display);
-    font-weight: 700;
-    font-size: clamp(2rem, 5.5vw, 3.6rem);
-    line-height: 1.08;
-    letter-spacing: -0.01em;
-    max-width: 15ch;
-  }
-  h1 .hl{ color: var(--accent-blue); }
-  .hero-sub{
-    margin-top: 22px;
-    max-width: 54ch;
-    color: var(--text-dim);
-    font-size: 1.02rem;
-  }
-  .hero-tags{ display:flex; flex-wrap:wrap; gap:10px; margin-top: 30px; }
-  .chip{
-    font-family: var(--mono);
-    font-size: 0.74rem;
-    padding: 6px 12px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    color: var(--text-dim);
-    background: var(--bg-panel);
-  }
-  .hero-cta{ margin-top: 38px; display:flex; gap: 14px; flex-wrap: wrap; }
-  .btn{
-    font-family: var(--mono);
-    font-size: 0.82rem;
-    padding: 11px 20px;
-    border-radius: var(--radius);
-    display: inline-block;
-    transition: transform 0.12s ease, border-color 0.12s ease;
-  }
-  .btn-primary{ background: var(--accent-blue); color: #10131A; font-weight: 600; }
-  .btn-primary:hover{ transform: translateY(-1px); }
-  .btn-ghost{ border: 1px solid var(--border); color: var(--text); }
-  .btn-ghost:hover{ border-color: var(--text-dim); }
-
-  /* ---------- travaux (rm_travaux) — instances placed in room ---------- */
-  .room-grid{
-    background-image:
-      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-    background-size: 32px 32px;
-    padding: 32px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-  }
-  .instances{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-  }
-  .instance-card{
-    background: var(--bg-panel);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 20px;
-  }
-  .instance-name{
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    color: var(--text-faint);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 14px;
-  }
-  .instance-card h3{
-    font-family: var(--display);
-    font-size: 1.1rem;
-    margin-bottom: 8px;
-  }
-  .instance-card .role{
-    font-family: var(--mono);
-    font-size: 0.68rem;
-    color: var(--accent-green);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    display:block;
-    margin-bottom: 10px;
-  }
-  .instance-card p{ color: var(--text-dim); font-size: 0.9rem; }
-
-  /* ---------- obj_sim — object editor ---------- */
-  .object-editor{
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-  }
-  .event{ border-bottom: 1px solid var(--border); }
-  .event:last-child{ border-bottom: none; }
-  .event-head{
-    display: flex; align-items: center; gap: 10px;
-    padding: 12px 18px;
-    background: var(--bg-panel);
-    font-family: var(--mono);
-    font-size: 0.78rem;
-    color: var(--accent-blue);
-  }
-  .event-head .dot{ width: 7px; height: 7px; border-radius: 50%; background: var(--accent-blue); }
-  .event-body{ padding: 20px 22px; }
-  .event-body .comment{
-    font-family: var(--mono);
-    font-size: 0.76rem;
-    color: var(--gml-com);
-    margin-bottom: 12px;
-    display: block;
-  }
-  .event-body p{ color: var(--text-dim); margin-bottom: 12px; }
-  .event-body p:last-child{ margin-bottom: 0; }
-  .event-body p strong{ color: var(--text); font-weight: 500; }
-
-  .locals{
-    display: flex;
-    gap: 14px;
-    margin-top: 22px;
-    flex-wrap: wrap;
-  }
-  .local-var{
-    font-family: var(--mono);
-    font-size: 0.76rem;
-    background: var(--bg-panel);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 10px 14px;
-  }
-  .local-var .k{ color: var(--text-faint); }
-  .local-var .v{ color: var(--gml-num); }
-
-  /* ---------- scr_competences — code editor ---------- */
-  .code-editor{
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    background: var(--bg-workspace);
-    overflow: hidden;
-  }
-  .code-titlebar{
-    padding: 10px 16px;
-    font-family: var(--mono);
-    font-size: 0.74rem;
-    color: var(--text-faint);
-    background: var(--bg-panel);
-    border-bottom: 1px solid var(--border);
-  }
-  .code-body{
-    display: grid;
-    grid-template-columns: 44px 1fr;
-    font-family: var(--mono);
-    font-size: 0.86rem;
-    line-height: 1.9;
-    padding: 14px 0;
-    overflow-x: auto;
-  }
-  .code-lines{
-    text-align: right;
-    color: var(--text-faint);
-    user-select: none;
-    padding-right: 14px;
-  }
-  .code-lines div{ padding-right: 4px; }
-  .code-content{ padding-right: 20px; white-space: pre; }
-  .gml-com{ color: var(--gml-com); }
-  .gml-key{ color: var(--gml-key); }
-  .gml-str{ color: var(--gml-str); }
-  .gml-num{ color: var(--gml-num); }
-  .gml-fn{ color: var(--gml-fn); }
-  .gml-txt{ color: var(--text); }
-
-  /* ---------- contact (rm_contact) ---------- */
-  .contact-box{
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 46px;
-    text-align: center;
-    background: var(--bg-panel);
-  }
-  .contact-box h2{
-    font-family: var(--display);
-    font-weight: 700;
-    font-size: 1.75rem;
-    max-width: 20ch;
-    margin: 0 auto 14px;
-  }
-  .contact-box p{ color: var(--text-dim); max-width: 46ch; margin: 0 auto 30px; }
-  .contact-links{ display:flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-
-  .section-label{
-    font-family: var(--mono);
-    font-size: 0.78rem;
-    color: var(--text-faint);
-    margin-bottom: 22px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .section-label .tree-ico{ width: 8px; height: 8px; }
-
-  /* ---------- status bar ---------- */
-  .statusbar{
-    position: fixed; bottom:0; left:0; right:0; z-index: 200;
-    height: var(--h-status);
-    background: var(--bg-panel);
-    border-top: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 16px;
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    color: var(--text-faint);
-  }
-  .statusbar .ok{ color: var(--accent-green); }
-
-  @media (max-width: 860px){
-    :root{ --w-sidebar: 0px; }
-    .asset-tree{ display: none; }
-    .workspace-col{ margin-left: 0; }
-    section{ padding: 52px 20px; }
-    .menubar{ font-size: 0.7rem; gap: 14px; }
-  }
-
-  @media (prefers-reduced-motion: reduce){
-    html{ scroll-behavior: auto; }
-    .btn-primary:hover{ transform: none; }
-  }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <div class="titlebar">
-    <div class="name">Portfolio.yyp - <b>GameMaker</b></div>
+    <div class="name">Portfolio.yyp - <b>GameCrafter</b></div>
     <div class="winctrls"><span class="c1"></span><span class="c2"></span><span class="c3"></span></div>
   </div>
 
   <div class="menubar">
-    <span>Fichier</span><span>Édition</span><span>Build</span><span>Room</span>
-    <span>Objet</span><span>Script</span><span>Outils</span><span>Affichage</span><span>Aide</span>
+    <span>File</span><span>Edit</span><span>Build</span><span>Room</span>
+    <span>Object</span><span>Script</span><span>Tools</span><span>View</span><span>Help</span>
   </div>
 
   <aside class="asset-tree">
-    <div class="tree-search">🔍 Rechercher un asset...</div>
+    <div class="tree-search">🔍 Search assets...</div>
 
-    <div class="tree-folder">📁 Rooms</div>
-    <a class="tree-item" data-target="hero"><span class="tree-ico ico-room"></span>rm_intro</a>
-    <a class="tree-item" data-target="travaux"><span class="tree-ico ico-room"></span>rm_travaux</a>
-    <a class="tree-item" data-target="contact"><span class="tree-ico ico-room"></span>rm_contact</a>
+    <div class="tree-folder"><span class="tree-folder-ico"></span>Objects</div>
+    <a class="tree-item" data-target="apropos"><span class="tree-ico"></span>obj_sim</a>
 
-    <div class="tree-folder">📁 Objects</div>
-    <a class="tree-item" data-target="apropos"><span class="tree-ico ico-object"></span>obj_sim</a>
+    <div class="tree-folder"><span class="tree-folder-ico"></span>Rooms</div>
+    <a class="tree-item" data-target="solo_proj"><span class="tree-ico"></span>rm_solo_proj</a>
+    <a class="tree-item" data-target="indie_proj"><span class="tree-ico"></span>rm_indie_proj</a>
+    <a class="tree-item" data-target="lvl_design"><span class="tree-ico"></span>rm_lvl_design</a>
+    <a class="tree-item" data-target="game_design"><span class="tree-ico"></span>rm_game_design</a>
+    <a class="tree-item" data-target="lead_design"><span class="tree-ico"></span>rm_lead_design</a>
+    <a class="tree-item" data-target="teaching"><span class="tree-ico"></span>rm_teaching</a>
+    <a class="tree-item" data-target="design_consult"><span class="tree-ico"></span>rm_design_consult</a>
+    <a class="tree-item" data-target="qa_lead"><span class="tree-ico"></span>rm_qa_lead</a>
+    <a class="tree-item" data-target="dev_qa"><span class="tree-ico"></span>rm_dev_qa</a>
 
-    <div class="tree-folder">📁 Scripts</div>
-    <a class="tree-item" data-target="competences"><span class="tree-ico ico-script"></span>scr_competences</a>
+    <div class="tree-folder"><span class="tree-folder-ico"></span>Scripts</div>
+    <a class="tree-item" data-target="xp"><span class="tree-ico"></span>scr_xp</a>
+    <a class="tree-item" data-target="competences"><span class="tree-ico"></span>scr_skills</a>
+    <a class="tree-item" data-target="schools"><span class="tree-ico"></span>scr_schools</a>
+
+    <div class="tree-folder"><span class="tree-folder-ico"></span>Shaders</div>
+    <a class="tree-item" data-target="socials"><span class="tree-ico"></span>sh_socials</a>
+    <a class="tree-item" data-target="contacts"><span class="tree-ico"></span>sh_contacts</a>
   </aside>
 
   <div class="workspace-col">
     <div class="tabstrip">
-      <a class="tab" data-target="hero">rm_intro</a>
-      <a class="tab" data-target="travaux">rm_travaux</a>
-      <a class="tab" data-target="apropos">obj_sim</a>
-      <a class="tab" data-target="competences">scr_competences</a>
-      <a class="tab" data-target="contact">rm_contact</a>
+      <a class="tab active" data-target="apropos">obj_sim</a>
     </div>
 
     <main class="workspace">
 
-      <section id="hero">
-        <div class="hero-tag">● room active — rm_intro</div>
-        <h1>Je conçois des <span class="hl">systèmes</span>, pas juste des niveaux.</h1>
-        <p class="hero-sub">
-          Game designer et level designer depuis plus de 25 ans. Je construis des mécaniques d'IA ennemie
-          et des systèmes de jeu qui tiennent la route à l'échelle d'une équipe — et je les prototype
-          moi-même quand il le faut.
-        </p>
-        <div class="hero-tags">
-          <span class="chip">#EnemyAI</span>
-          <span class="chip">#SystemicDesign</span>
-          <span class="chip">#LevelDesign</span>
-          <span class="chip">#SoloDev</span>
-          <span class="chip">#Shipped</span>
-        </div>
-        <div class="hero-cta">
-          <a class="btn btn-primary" href="#travaux">Voir les travaux</a>
-          <a class="btn btn-ghost" href="#contact">Me contacter</a>
-        </div>
+      <section id="workspace-windows">
+        <div class="window-stack" id="windowStack"></div>
       </section>
 
-      <section id="travaux">
-        <div class="section-label"><span class="tree-ico ico-room"></span>rm_travaux — 3 instances chargées</div>
-        <div class="room-grid">
-          <div class="instances">
-
-            <div class="instance-card">
-              <div class="instance-name"><span class="tree-ico ico-object"></span>inst_ac_brotherhood</div>
-              <span class="role">Level / Systemic Design — Ubisoft</span>
-              <h3>Assassin's Creed: Brotherhood</h3>
-              <p>Conception de niveaux et de systèmes de jeu sur une production AAA à très grande échelle.</p>
-            </div>
-
-            <div class="instance-card">
-              <div class="instance-name"><span class="tree-ico ico-object"></span>inst_tmnt_shredders_revenge</div>
-              <span class="role">Game Design — Dotemu</span>
-              <h3>TMNT: Shredder's Revenge</h3>
-              <p>Contribution au design d'un beat 'em up salué pour son gameplay serré et son sens du rythme.</p>
-            </div>
-
-            <div class="instance-card">
-              <div class="instance-name"><span class="tree-ico ico-object"></span>inst_panzer_paladin</div>
-              <span class="role">Solo Dev — Indie</span>
-              <h3>Panzer Paladin</h3>
-              <p>Design et développement sur un projet indépendant, de la mécanique au shipping.</p>
-            </div>
-
-          </div>
+      <template data-card="apropos">
+       <div class="win-chrome">
+        <div class="win-titlebar">
+          <span class="win-title"><span class="win-caret">▸</span> Object: obj_sim</span>
         </div>
-      </section>
-
-      <section id="apropos">
-        <div class="section-label"><span class="tree-ico ico-object"></span>obj_sim — Object Editor</div>
         <div class="object-editor">
+
+          <div class="obj-identity">
+            <h1>I <span class="hl">design</span> systems, build <span class="hl">2D levels</span>, <span class="hl">teach</span> juniors and <span class="hl">manage</span> teams.</h1>
+            <p class="hero-sub">Game and level designer; ex-<strong>Ubisoft Montreal</strong> and ex-<strong>Tribute Games</strong>. I build game systems, enemy AI and levels that hold up at team scale — and I prototype them myself using Unity and GameMaker.</p>
+            <div class="hero-tags">
+              <span class="chip">#GameDesign</span>
+              <span class="chip">#2DLevelDesign</span>
+              <span class="chip">#EnemyAI</span>
+              <span class="chip">#SystemicDesign</span>
+              <span class="chip">#SoloDev</span>
+            </div>
+          </div>
 
           <div class="event">
             <div class="event-head"><span class="dot"></span>Create Event</div>
             <div class="event-body">
-              <span class="comment">/// initialisation — origine</span>
-              <p>
-                Designer généraliste : je vois l'ensemble d'un projet, ses effets domino,
-                et je sais structurer à partir de rien. Co-fondateur d'<strong>Isart Digital Montréal</strong>,
-                j'ai aussi enseigné le game design pendant plus de 7 ans — ce qui m'a forcé à clarifier
-                ma pensée autant qu'à la partager.
-              </p>
+              <span class="comment">/// initialization — origin</span>
+              <p>As a designer, I see the whole of a project, its domino effects, and I know how to structure something from nothing. As a lead, I strive to grasp the stakes of a project, balancing the company's goals with team motivation.</p>
+              <p>I'm a co-founder of <strong>Isart Digital Montreal</strong>, where I created the game design curriculum and taught design, prototyping, and game production — on top of managing the team of teachers, which forced me to understand my craft on a deeper level, as well as to clarify my thinking and share it.</p>
               <div class="locals">
-                <div class="local-var"><span class="k">years_experience</span> = <span class="v">25</span></div>
-                <div class="local-var"><span class="k">years_teaching</span> = <span class="v">8</span></div>
+                <div class="local-var"><span class="k">years_developing</span> = <span class="v">27</span></div>
+                <div class="local-var"><span class="k">years_designing</span> = <span class="v">21</span></div>
+                <div class="local-var"><span class="k">years_leading</span> = <span class="v">14</span></div>
+                <div class="local-var"><span class="k">years_teaching</span> = <span class="v">7</span></div>
               </div>
             </div>
           </div>
@@ -556,28 +96,27 @@
           <div class="event">
             <div class="event-head"><span class="dot"></span>Step Event</div>
             <div class="event-body">
-              <span class="comment">/// en continu — situation actuelle</span>
-              <p>
-                Aujourd'hui je cherche un rôle <strong>remote</strong> en design de jeu, avec un focus
-                sur l'IA ennemie et le design systémique, dans des studios à taille humaine qui ont déjà livré.
-              </p>
+              <span class="comment">/// ongoing — current status</span>
+              <p>I'm looking for a <strong>remote</strong> or <strong>hybrid</strong> game design role, focused on <strong>mobile development</strong>, at human-scale projects with studios that have a proven track record of shipping games.</p>
             </div>
           </div>
 
         </div>
-      </section>
+       </div>
+      </template>
 
-      <section id="competences">
-        <div class="section-label"><span class="tree-ico ico-script"></span>scr_competences.gml — Script Editor</div>
+      <template data-card="competences">
+       <div class="win-chrome">
+        <div class="section-label"><span class="tree-ico ico-script"></span>scr_skills.gml — Script Editor</div>
         <div class="code-editor">
-          <div class="code-titlebar">scr_competences.gml</div>
+          <div class="code-titlebar">scr_skills.gml</div>
           <div class="code-body">
             <div class="code-lines">
               <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div>
               <div>6</div><div>7</div><div>8</div><div>9</div><div>10</div>
               <div>11</div><div>12</div><div>13</div><div>14</div>
             </div>
-            <div class="code-content"><span class="gml-com">/// @description Compétences de Sim</span>
+            <div class="code-content"><span class="gml-com">/// @description Sim's skills</span>
 <span class="gml-key">var</span> enemy_ai_design    = <span class="gml-key">true</span>;
 <span class="gml-key">var</span> systemic_design    = <span class="gml-key">true</span>;
 <span class="gml-key">var</span> level_design       = <span class="gml-key">true</span>;
@@ -587,71 +126,73 @@
 
 <span class="gml-key">var</span> focus = [<span class="gml-str">"Enemy AI"</span>, <span class="gml-str">"Systemic Design"</span>, <span class="gml-str">"Level Design"</span>];
 
-<span class="gml-com">// disponibilité</span>
+<span class="gml-com">// availability</span>
 <span class="gml-key">var</span> remote_available  = <span class="gml-key">true</span>;
 
 <span class="gml-key">if</span> (remote_available) {
-    <span class="gml-fn">show_message</span>(<span class="gml-str">"Disponible pour un poste remote."</span>);
+    <span class="gml-fn">show_message</span>(<span class="gml-str">"Available for remote work."</span>);
 }</div>
           </div>
         </div>
-      </section>
+       </div>
+      </template>
 
-      <section id="contact">
-        <div class="section-label"><span class="tree-ico ico-room"></span>rm_contact</div>
-        <div class="contact-box">
-          <h2>Discutons de votre prochain projet.</h2>
-          <p>Ouvert aux rôles remote en game design / level design, ou à des collaborations ponctuelles.</p>
-          <div class="contact-links">
-            <a class="btn btn-primary" href="mailto:ton.email@example.com">Écrire un email</a>
-            <a class="btn btn-ghost" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+      <template data-card="lvl_design">
+        <div class="room-proto">
+          <svg class="proto-connectors"></svg>
+          <div class="win-chrome proto-main">
+            <div class="win-titlebar">
+              <span class="win-title"><span class="win-caret">▸</span> Room: rm_lvl_design</span>
+              <span class="win-close" data-close-window>×</span>
+            </div>
+            <div class="proto-thumbs">
+              <div class="proto-thumb" data-proj="tmnt">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-tmnt.jpg')"></div>
+                <div class="thumb-title">TMNT: Shredder's Revenge</div>
+              </div>
+              <div class="proto-thumb" data-proj="steel_assault">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-steel-assault-cover1.jpg')"></div>
+                <div class="thumb-title">Steel Assault</div>
+              </div>
+              <div class="proto-thumb" data-proj="panzer_paladin">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-panzer.jpg')"></div>
+                <div class="thumb-title">Panzer Paladin</div>
+              </div>
+            </div>
+          </div>
+          <div class="proto-subwindows"></div>
+        </div>
+      </template>
+
+      <template id="specTemplate">
+        <div class="win-chrome proto-subwindow">
+          <div class="win-titlebar">
+            <span class="win-title"><span class="win-caret">▸</span> <span class="spec-title-text"></span></span>
+            <span class="win-close">×</span>
+          </div>
+          <div class="spec-body">
+            <div class="spec-platforms"></div>
+            <div class="spec-row"><span>release_date</span><span class="spec-date"></span></div>
+            <div class="spec-row spec-publisher-row" hidden><span>publisher</span><a class="spec-publisher" target="_blank" rel="noopener"></a></div>
+            <div class="spec-row"><span>developer</span><a class="spec-developer" target="_blank" rel="noopener"></a></div>
+            <div class="spec-trailer-embed"><iframe src="" title="Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+            <div class="spec-role">
+              <span class="role"></span>
+              <p class="spec-desc"></p>
+            </div>
           </div>
         </div>
-      </section>
+      </template>
 
     </main>
   </div>
 
   <div class="statusbar">
-    <span>&gt; Compilation... <span class="ok">Terminé. 0 erreur, 0 avertissement.</span></span>
+    <span>&gt; Compiling... <span class="ok">Done. 0 errors, 0 warnings.</span></span>
     <span id="statusRight">MAGASIN_GÉNÉRAL © 2026</span>
   </div>
 
-  <script>
-    var sections = document.querySelectorAll('main.workspace > section');
-    var treeItems = document.querySelectorAll('.tree-item');
-    var tabs = document.querySelectorAll('.tab');
-    var statusRight = document.getElementById('statusRight');
-
-    var statusMap = {
-      hero: 'rm_intro : room chargée',
-      travaux: 'rm_travaux : 3 instances',
-      apropos: 'obj_sim : 2 events',
-      competences: 'scr_competences.gml : 14 lignes',
-      contact: 'rm_contact : prêt'
-    };
-
-    function setActive(id){
-      treeItems.forEach(function(el){
-        el.classList.toggle('active', el.dataset.target === id);
-      });
-      tabs.forEach(function(el){
-        el.classList.toggle('active', el.dataset.target === id);
-      });
-      if (statusRight && statusMap[id]) statusRight.textContent = statusMap[id];
-    }
-
-    if ('IntersectionObserver' in window) {
-      var observer = new IntersectionObserver(function(entries){
-        entries.forEach(function(entry){
-          if (entry.isIntersecting) setActive(entry.target.id);
-        });
-      }, { rootMargin: '-45% 0px -45% 0px' });
-      sections.forEach(function(s){ observer.observe(s); });
-    }
-
-    setActive('hero');
-  </script>
+  <script src="script.js"></script>
 
 </body>
 </html>
