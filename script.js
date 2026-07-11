@@ -36,7 +36,20 @@
 
     function scrollToSection(target){
       var el = document.getElementById('window-' + target) || document.getElementById(target);
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if (!el) return;
+
+      var rootStyle = getComputedStyle(document.documentElement);
+      var headerH = parseFloat(rootStyle.getPropertyValue('--h-title')) + parseFloat(rootStyle.getPropertyValue('--h-menu'));
+      var footerH = parseFloat(rootStyle.getPropertyValue('--h-status'));
+      var available = window.innerHeight - headerH - footerH;
+
+      var rect = el.getBoundingClientRect();
+      var elTopDoc = rect.top + window.scrollY;
+      var targetScroll = rect.height <= available
+        ? elTopDoc - headerH - (available - rect.height) / 2
+        : elTopDoc - headerH;
+
+      window.scrollTo({ top: Math.max(0, targetScroll), behavior: 'smooth' });
     }
 
     function activateTab(target, scroll){
@@ -155,7 +168,7 @@
         night_lights: {
           title: 'Night Lights',
           platforms: [
-            { name: 'Steam' }, { name: 'PlayStation' }, { name: 'Xbox' }
+            { name: 'Steam', url: 'https://store.steampowered.com/app/590850/Night_Lights/' }, { name: 'PlayStation' }, { name: 'Xbox' }
           ],
           date: 'June 7, 2019',
           trailer: 'https://www.youtube.com/watch?v=VQDGcSVX9wM',
@@ -538,18 +551,34 @@
       }
     }
 
-    function closeWindow(target){
-      var win = document.getElementById('window-' + target);
-      if (win) win.remove();
+    function scrollToWindowTop(win){
+      var rootStyle = getComputedStyle(document.documentElement);
+      var headerH = parseFloat(rootStyle.getPropertyValue('--h-title')) + parseFloat(rootStyle.getPropertyValue('--h-menu'));
+      var rect = win.getBoundingClientRect();
+      var targetScroll = rect.top + window.scrollY - headerH;
+      window.scrollTo({ top: Math.max(0, targetScroll), behavior: 'smooth' });
     }
 
     function closeTab(target){
       var tab = tabstrip.querySelector('.tab[data-target="' + target + '"]');
       if (!tab) return;
-      var wasActive = tab.classList.contains('active');
       tab.remove();
-      closeWindow(target);
-      if (wasActive) activateTab('apropos');
+
+      var win = document.getElementById('window-' + target);
+      var prevWin = win ? win.previousElementSibling : null;
+      var prevId = prevWin ? prevWin.id.replace('window-', '') : null;
+
+      if (prevId) {
+        setActiveClasses(prevId);
+        scrollToWindowTop(prevWin);
+      } else {
+        setActiveClasses('apropos');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      setTimeout(function(){
+        if (win) win.remove();
+      }, 450);
     }
 
     function openTab(target, label){
