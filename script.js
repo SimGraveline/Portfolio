@@ -36,7 +36,7 @@
 
     function scrollToSection(target){
       var el = document.getElementById('window-' + target) || document.getElementById(target);
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
     function activateTab(target, scroll){
@@ -51,7 +51,19 @@
     }
 
     var ROOM_PROJECTS = {
-      lvl_design: {
+      level_design: {
+        mighty_cuphead: {
+          title: 'Mighty Cuphead Adventure',
+          platforms: [
+            { name: 'Steam' }, { name: 'SMS' }
+          ],
+          date: 'To be announced',
+          trailer: 'https://www.youtube.com/watch?v=q21jZaUOa4Q',
+          publisher: { name: 'Studio MDHR', url: 'https://studiomdhr.com/' },
+          developer: { name: 'Studio MDHR', url: 'https://studiomdhr.com/' },
+          role: 'Freelance Level Designer',
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        },
         tmnt: {
           title: "TMNT: Shredder's Revenge",
           platforms: [
@@ -89,6 +101,257 @@
           publisher: { name: 'Tribute Games', url: 'https://tributegames.com/' },
           developer: { name: 'Tribute Games', url: 'https://tributegames.com/' },
           role: 'Lead Level Designer',
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        },
+        shorts: {
+          title: 'Shorts',
+          platforms: [
+            { name: 'Nintendo DS' }
+          ],
+          date: 'August 18, 2009',
+          publisher: { name: 'Majesco Entertainment' },
+          developer: { name: 'Behaviour Interactive', url: 'https://www.bhvr.com/' },
+          role: 'Level Designer',
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        }
+      },
+      indie_dev: {
+        dice_royal: {
+          title: 'Dice Royal',
+          platforms: [
+            { name: 'iOS' }, { name: 'Android' }, { name: 'Netflix' },
+            { name: 'Itch.io', url: 'https://simgraveline.itch.io/dice-royal-mobile' },
+            { name: 'GameJolt', url: 'https://gamejolt.com/games/diceroyal/1077425' },
+            { name: 'GX.Games', url: 'https://gx.games/games/aa6fvi/dice-royal-mobile/' }
+          ],
+          date: 'To be announced',
+          publisher: { name: 'Grave Games' },
+          developer: { name: 'Grave Games' },
+          embed: {
+            src: 'https://itch.io/embed-upload/18217270?color=000137',
+            width: 384,
+            height: 852,
+            fallbackUrl: 'https://simgraveline.itch.io/dice-royal-mobile',
+            fallbackText: 'Play Dice Royal Mobile on itch.io'
+          },
+          role: 'Solo developer',
+          desc: 'Game Design, Programming, Art'
+        },
+        aftergrinder: {
+          title: 'Aftergrinder',
+          titleStyle: 'title-stylized',
+          platforms: [
+            { name: 'Steam', url: 'https://store.steampowered.com/app/618310/AFTERGRINDER/' }
+          ],
+          date: 'July 18, 2017',
+          trailer: 'https://www.youtube.com/watch?v=_h8KR2lp_4U',
+          publisher: { name: 'M4' },
+          developer: { name: 'Grave Danger Games' },
+          role: 'Creative Director',
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        }
+      },
+      game_design: {
+        night_lights: {
+          title: 'Night Lights',
+          platforms: [
+            { name: 'Steam' }, { name: 'PlayStation' }, { name: 'Xbox' }
+          ],
+          date: 'June 7, 2019',
+          trailer: 'https://www.youtube.com/watch?v=VQDGcSVX9wM',
+          publisher: { name: 'M4' },
+          developer: { name: 'Grave Danger Games' },
+          role: 'Game Design Consultant',
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        },
+        soulless: {
+          title: 'Soulless: Ray of Hope',
+          platforms: [
+            { name: 'Steam', url: 'https://store.steampowered.com/app/528300/Soulless_Ray_Of_Hope/' }
+          ],
+          date: 'October 18, 2016',
+          trailer: 'https://www.youtube.com/watch?v=G8BcjPX8kak',
+          publisher: { name: 'M4' },
+          developer: { name: 'Frisky Fatal Games' },
+          role: 'Game Design Consultant',
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        },
+        ac_brotherhood: {
+          title: "Assassin's Creed: Brotherhood",
+          platforms: [
+            { name: 'Steam', url: 'https://store.steampowered.com/agecheck/app/48190/' },
+            { name: 'PlayStation' }, { name: 'Xbox' }
+          ],
+          date: 'November 16, 2010',
+          trailer: 'https://www.youtube.com/watch?v=OjcYqcL0v0Q',
+          publisher: { name: 'Ubisoft', url: 'https://www.ubisoft.com/en-ca' },
+          developer: { name: 'Ubisoft Montreal', url: 'https://montreal.ubisoft.com/en/' },
+          role: 'Mission Game Designer',
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        },
+        thrillville: {
+          title: 'Thrillville: Off the Rails',
+          platforms: [
+            { name: 'Nintendo DS' }
+          ],
+          date: 'October 8, 2007',
+          publisher: { name: 'LucasArts' },
+          developer: { name: 'DC Studios' },
+          role: 'Mini-Game Designer',
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        },
+        snake_eyes: {
+          title: 'G.I. Joe: Snake Eyes',
+          platforms: [
+            { name: 'Cancelled' }
+          ],
+          date: 'Unreleased',
+          publisher: { name: 'Wizards of the Coast', url: 'https://company.wizards.com/' },
+          developer: { name: 'Atomic Arcade' },
+          role: 'Freelance Game Designer',
+          desc: 'Enemy AI design and prototyping in Unreal Engine, documentation of gameplay and narrative beats for the vertical slice.'
+        }
+      },
+      design_lead: {
+        rainbow_six: {
+          title: 'Rainbow Six Patriots',
+          platforms: [
+            { name: 'Cancelled' }
+          ],
+          date: 'Unreleased',
+          trailer: 'https://www.youtube.com/watch?v=kLhALiOnvs8',
+          publisher: { name: 'Ubisoft', url: 'https://www.ubisoft.com/en-ca' },
+          developer: { name: 'Ubisoft Montreal', url: 'https://montreal.ubisoft.com/en/' },
+          role: 'Lead Game Designer, Enemy AI',
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        },
+        james_noir: {
+          title: 'James Noir 2',
+          platforms: [
+            { name: 'Nintendo Wii-U' }
+          ],
+          date: 'Unreleased',
+          publisher: { name: 'Ubisoft', url: 'https://www.ubisoft.com/en-ca' },
+          developer: { name: 'Ubisoft Montreal', url: 'https://montreal.ubisoft.com/en/' },
+          role: 'Lead Game Designer, Puzzle Designer',
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        },
+        petz_sports: {
+          title: 'Petz Sports: Dog Playground',
+          platforms: [
+            { name: 'Nintendo Wii' }
+          ],
+          date: 'November 4, 2008',
+          trailer: 'https://www.youtube.com/watch?v=7pHO2Mnov4s',
+          publisher: { name: 'Ubisoft', url: 'https://www.ubisoft.com/en-ca' },
+          developer: { name: 'Ubisoft Montreal', url: 'https://montreal.ubisoft.com/en/' },
+          role: 'Lead Game Designer',
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        },
+        weight_loss_coach: {
+          title: 'My Weight Loss Coach',
+          platforms: [
+            { name: 'Nintendo DS' }, { name: 'iOS' }
+          ],
+          date: 'June 24, 2008',
+          publisher: { name: 'Ubisoft', url: 'https://www.ubisoft.com/en-ca' },
+          developer: { name: 'Ubisoft Montreal', url: 'https://montreal.ubisoft.com/en/' },
+          role: 'Lead Game Designer',
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        },
+        code_lyoko: {
+          title: 'Code Lyoko',
+          platforms: [
+            { name: 'Nintendo DS' }
+          ],
+          date: 'May 15, 2007',
+          trailer: 'https://www.youtube.com/watch?v=NrPg8Exn2pQ',
+          publisher: { name: 'The Game Factory' },
+          developer: { name: 'DC Studios' },
+          role: 'Lead Game Designer, Puzzle Designer',
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        },
+        hannah_montana: {
+          title: 'Hannah Montana',
+          platforms: [
+            { name: 'Nintendo DS' }
+          ],
+          date: 'October 9, 2006',
+          trailer: 'https://www.youtube.com/watch?v=oOGDuvOjFyY',
+          publisher: { name: "Disney's BVG" },
+          developer: { name: 'DC Studios' },
+          role: 'Lead Game Designer, Level Designer',
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        }
+      },
+      dev_qa: {
+        state_of_emergency: {
+          title: 'State of Emergency 2',
+          platforms: [
+            { name: 'PlayStation' }
+          ],
+          date: 'February 14, 2006',
+          trailer: 'https://www.youtube.com/watch?v=8rLXzu-LbfY',
+          publisher: { name: 'DC Studios' },
+          developer: { name: 'VIS Entertainment / DC Studios' },
+          role: 'Lead QA Tester',
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        },
+        whac_a_mole: {
+          title: 'Whac-A-Mole',
+          platforms: [
+            { name: 'Nintendo DS' }, { name: 'Nintendo GBA' }
+          ],
+          date: 'September 21, 2005',
+          publisher: { name: 'Activision Value' },
+          developer: { name: 'DC Studios' },
+          role: 'Lead QA Tester',
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        },
+        cinderella: {
+          title: "Disney's Cinderella: Magical Dreams",
+          platforms: [
+            { name: 'Nintendo GBA' }
+          ],
+          date: 'September 20, 2005',
+          publisher: { name: "Disney's BVG" },
+          developer: { name: 'DC Studios' },
+          role: 'Lead QA Tester, Production Assistant',
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        },
+        fear_factor: {
+          title: 'Fear Factor Unleashed',
+          platforms: [
+            { name: 'Nintendo GBA' }
+          ],
+          date: 'November 17, 2004',
+          publisher: { name: 'HIP Interactive' },
+          developer: { name: 'DC Studios' },
+          role: 'Lead QA Tester, Production Assistant',
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        },
+        winx_club: {
+          title: 'Winx Club',
+          platforms: [
+            { name: 'PC' }, { name: 'PlayStation' }, { name: 'Xbox' }, { name: 'Nintendo GBA' }
+          ],
+          date: 'March 17, 2006',
+          trailer: 'https://www.youtube.com/watch?v=Xhh4QsG5jzw',
+          publisher: { name: 'Konami', url: 'https://www.konami.com/games/jp/ja/' },
+          developer: { name: 'DC Studios' },
+          role: 'Lead QA Tester',
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        },
+        rayman2: {
+          title: 'Rayman 2: The Great Escape',
+          platforms: [
+            { name: 'Nintendo 64' }, { name: 'PlayStation' }, { name: 'Dreamcast' }, { name: 'PC' }, { name: 'Nintendo DS' }
+          ],
+          date: 'October 29, 1999',
+          trailer: 'https://www.youtube.com/watch?v=kCdO5KBbEuA',
+          publisher: { name: 'Ubisoft', url: 'https://www.ubisoft.com/en-ca' },
+          developer: { name: 'Ubisoft Montpellier', url: 'https://www.ubisoft.com/en-us/studio/montpellier' },
+          role: 'QA Tester',
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
         }
       }
@@ -161,7 +424,9 @@
         var node = specTpl.content.cloneNode(true);
         var specWin = node.querySelector('.proto-subwindow');
         specWin.id = domId;
-        node.querySelector('.spec-title-text').textContent = 'Room: ' + data.title;
+        var titleEl = node.querySelector('.spec-title-text');
+        titleEl.textContent = data.title;
+        if (data.titleStyle) titleEl.classList.add(data.titleStyle);
 
         var platformsEl = node.querySelector('.spec-platforms');
         data.platforms.forEach(function(p){
@@ -173,18 +438,41 @@
         });
 
         node.querySelector('.spec-date').textContent = data.date;
-        node.querySelector('.spec-trailer-embed iframe').src = youtubeEmbedUrl(data.trailer);
+
+        if (data.trailer) {
+          var embed = node.querySelector('.spec-trailer-embed');
+          embed.hidden = false;
+          embed.querySelector('iframe').src = youtubeEmbedUrl(data.trailer);
+        } else if (data.embed) {
+          var embed = node.querySelector('.spec-trailer-embed');
+          embed.hidden = false;
+          embed.style.paddingTop = (data.embed.height / data.embed.width * 100) + '%';
+          var iframe = embed.querySelector('iframe');
+          iframe.src = data.embed.src;
+          iframe.removeAttribute('allow');
+          iframe.removeAttribute('referrerpolicy');
+          specWin.style.width = (data.embed.width + 32) + 'px';
+        }
+
+        function fillCredit(container, credit){
+          if (!credit) return;
+          if (credit.url) {
+            var a = document.createElement('a');
+            a.href = credit.url;
+            a.target = '_blank';
+            a.rel = 'noopener';
+            a.textContent = credit.name;
+            container.appendChild(a);
+          } else {
+            container.textContent = credit.name;
+          }
+        }
 
         if (data.publisher) {
-          var pubRow = node.querySelector('.spec-publisher-row');
-          pubRow.hidden = false;
-          var pubLink = node.querySelector('.spec-publisher');
-          pubLink.textContent = data.publisher.name;
-          pubLink.href = data.publisher.url;
+          node.querySelector('.spec-publisher-row').hidden = false;
+          fillCredit(node.querySelector('.spec-publisher'), data.publisher);
         }
-        var devLink = node.querySelector('.spec-developer');
-        devLink.textContent = data.developer.name;
-        devLink.href = data.developer.url;
+        fillCredit(node.querySelector('.spec-developer'), data.developer);
 
         node.querySelector('.role').textContent = data.role;
         node.querySelector('.spec-desc').textContent = data.desc;
@@ -194,6 +482,7 @@
         openOrder.push(id);
         proto.querySelector('.proto-thumb[data-proj="' + id + '"]').classList.add('is-open');
         layout();
+        document.getElementById(domId).scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
 
       function closeSpec(id){

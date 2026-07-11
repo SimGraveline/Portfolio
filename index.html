@@ -12,7 +12,7 @@
 <body>
 
   <div class="titlebar">
-    <div class="name">Portfolio.yyp - <b>GameCrafter</b></div>
+    <div class="name">Portfolio.yyp - <b>GraveGames</b></div>
     <div class="winctrls"><span class="c1"></span><span class="c2"></span><span class="c3"></span></div>
   </div>
 
@@ -28,24 +28,22 @@
     <a class="tree-item" data-target="apropos"><span class="tree-ico"></span>obj_sim</a>
 
     <div class="tree-folder"><span class="tree-folder-ico"></span>Rooms</div>
-    <a class="tree-item" data-target="solo_proj"><span class="tree-ico"></span>rm_solo_proj</a>
-    <a class="tree-item" data-target="indie_proj"><span class="tree-ico"></span>rm_indie_proj</a>
-    <a class="tree-item" data-target="lvl_design"><span class="tree-ico"></span>rm_lvl_design</a>
+    <a class="tree-item" data-target="indie_dev"><span class="tree-ico"></span>rm_indie_dev</a>
+    <a class="tree-item" data-target="design_lead"><span class="tree-ico"></span>rm_design_lead</a>
     <a class="tree-item" data-target="game_design"><span class="tree-ico"></span>rm_game_design</a>
-    <a class="tree-item" data-target="lead_design"><span class="tree-ico"></span>rm_lead_design</a>
-    <a class="tree-item" data-target="teaching"><span class="tree-ico"></span>rm_teaching</a>
-    <a class="tree-item" data-target="design_consult"><span class="tree-ico"></span>rm_design_consult</a>
-    <a class="tree-item" data-target="qa_lead"><span class="tree-ico"></span>rm_qa_lead</a>
+    <a class="tree-item" data-target="level_design"><span class="tree-ico"></span>rm_level_design</a>
     <a class="tree-item" data-target="dev_qa"><span class="tree-ico"></span>rm_dev_qa</a>
 
     <div class="tree-folder"><span class="tree-folder-ico"></span>Scripts</div>
     <a class="tree-item" data-target="xp"><span class="tree-ico"></span>scr_xp</a>
+    <a class="tree-item" data-target="teaching"><span class="tree-ico"></span>scr_teaching</a>
     <a class="tree-item" data-target="competences"><span class="tree-ico"></span>scr_skills</a>
-    <a class="tree-item" data-target="schools"><span class="tree-ico"></span>scr_schools</a>
+    <a class="tree-item" data-target="education"><span class="tree-ico"></span>scr_education</a>
 
     <div class="tree-folder"><span class="tree-folder-ico"></span>Shaders</div>
+    <a class="tree-item" data-target="contact"><span class="tree-ico"></span>sh_contact</a>
     <a class="tree-item" data-target="socials"><span class="tree-ico"></span>sh_socials</a>
-    <a class="tree-item" data-target="contacts"><span class="tree-ico"></span>sh_contacts</a>
+    <a class="tree-item" data-target="resume"><span class="tree-ico"></span>sh_resume</a>
   </aside>
 
   <div class="workspace-col">
@@ -67,7 +65,7 @@
         <div class="object-editor">
 
           <div class="obj-identity">
-            <h1>I <span class="hl">design</span> systems, build <span class="hl">2D levels</span>, <span class="hl">teach</span> juniors and <span class="hl">manage</span> teams.</h1>
+            <h1>Sim Graveline - I <span class="hl">design</span> systems, build <span class="hl">2D levels</span>, <span class="hl">teach</span> juniors and <span class="hl">manage</span> teams.</h1>
             <p class="hero-sub">Game and level designer; ex-<strong>Ubisoft Montreal</strong> and ex-<strong>Tribute Games</strong>. I build game systems, enemy AI and levels that hold up at team scale — and I prototype them myself using Unity and GameMaker.</p>
             <div class="hero-tags">
               <span class="chip">#GameDesign</span>
@@ -89,6 +87,7 @@
                 <div class="local-var"><span class="k">years_designing</span> = <span class="v">21</span></div>
                 <div class="local-var"><span class="k">years_leading</span> = <span class="v">14</span></div>
                 <div class="local-var"><span class="k">years_teaching</span> = <span class="v">7</span></div>
+                <div class="local-var"><span class="k">games_released</span> = <span class="v">21</span></div>
               </div>
             </div>
           </div>
@@ -137,15 +136,19 @@
        </div>
       </template>
 
-      <template data-card="lvl_design">
+      <template data-card="level_design">
         <div class="room-proto">
           <svg class="proto-connectors"></svg>
           <div class="win-chrome proto-main">
             <div class="win-titlebar">
-              <span class="win-title"><span class="win-caret">▸</span> Room: rm_lvl_design</span>
+              <span class="win-title"><span class="win-caret">▸</span> Room: rm_level_design</span>
               <span class="win-close" data-close-window>×</span>
             </div>
             <div class="proto-thumbs">
+              <div class="proto-thumb" data-proj="mighty_cuphead">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-cuphead.jpg')"></div>
+                <div class="thumb-title">Mighty Cuphead Adventure</div>
+              </div>
               <div class="proto-thumb" data-proj="tmnt">
                 <div class="thumb-art" style="background-image:url('img/sim-graveline-tmnt.jpg')"></div>
                 <div class="thumb-title">TMNT: Shredder's Revenge</div>
@@ -158,24 +161,220 @@
                 <div class="thumb-art" style="background-image:url('img/sim-graveline-panzer.jpg')"></div>
                 <div class="thumb-title">Panzer Paladin</div>
               </div>
+              <div class="proto-thumb" data-proj="shorts">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-shorts.jpg')"></div>
+                <div class="thumb-title">Shorts</div>
+              </div>
             </div>
           </div>
           <div class="proto-subwindows"></div>
         </div>
       </template>
 
+      <template data-card="indie_dev">
+        <div class="room-proto">
+          <svg class="proto-connectors"></svg>
+          <div class="win-chrome proto-main">
+            <div class="win-titlebar">
+              <span class="win-title"><span class="win-caret">▸</span> Room: rm_indie_dev</span>
+              <span class="win-close" data-close-window>×</span>
+            </div>
+            <div class="proto-thumbs">
+              <div class="proto-thumb" data-proj="dice_royal">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-diceroyal.jpg')"></div>
+                <div class="thumb-title">Dice Royal</div>
+              </div>
+              <div class="proto-thumb" data-proj="aftergrinder">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-aftergrinder.jpg')"></div>
+                <div class="thumb-title title-stylized">Aftergrinder</div>
+              </div>
+            </div>
+          </div>
+          <div class="proto-subwindows"></div>
+        </div>
+      </template>
+
+      <template data-card="design_lead">
+        <div class="room-proto">
+          <svg class="proto-connectors"></svg>
+          <div class="win-chrome proto-main">
+            <div class="win-titlebar">
+              <span class="win-title"><span class="win-caret">▸</span> Room: rm_design_lead</span>
+              <span class="win-close" data-close-window>×</span>
+            </div>
+            <div class="proto-thumbs">
+              <div class="proto-thumb" data-proj="rainbow_six">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-rainbow.jpg')"></div>
+                <div class="thumb-title">Rainbow Six Patriots</div>
+              </div>
+              <div class="proto-thumb" data-proj="james_noir">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-james.jpg')"></div>
+                <div class="thumb-title">James Noir 2</div>
+              </div>
+              <div class="proto-thumb" data-proj="petz_sports">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-petz.jpg')"></div>
+                <div class="thumb-title">Petz Sports: Dog Playground</div>
+              </div>
+              <div class="proto-thumb" data-proj="weight_loss_coach">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-weight.jpg')"></div>
+                <div class="thumb-title">My Weight Loss Coach</div>
+              </div>
+              <div class="proto-thumb" data-proj="code_lyoko">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-codelyoko.jpg')"></div>
+                <div class="thumb-title">Code Lyoko</div>
+              </div>
+              <div class="proto-thumb" data-proj="hannah_montana">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-hannah.jpg')"></div>
+                <div class="thumb-title">Hannah Montana</div>
+              </div>
+            </div>
+          </div>
+          <div class="proto-subwindows"></div>
+        </div>
+      </template>
+
+      <template data-card="game_design">
+        <div class="room-proto">
+          <svg class="proto-connectors"></svg>
+          <div class="win-chrome proto-main">
+            <div class="win-titlebar">
+              <span class="win-title"><span class="win-caret">▸</span> Room: rm_game_design</span>
+              <span class="win-close" data-close-window>×</span>
+            </div>
+            <div class="proto-thumbs">
+              <div class="proto-thumb" data-proj="snake_eyes">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-snakeeyes.jpg')"></div>
+                <div class="thumb-title">G.I. Joe: Snake Eyes</div>
+              </div>
+              <div class="proto-thumb" data-proj="night_lights">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-night.jpg')"></div>
+                <div class="thumb-title">Night Lights</div>
+              </div>
+              <div class="proto-thumb" data-proj="soulless">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-soulless.jpg')"></div>
+                <div class="thumb-title">Soulless: Ray of Hope</div>
+              </div>
+              <div class="proto-thumb" data-proj="ac_brotherhood">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-assassin.jpg')"></div>
+                <div class="thumb-title">Assassin's Creed: Brotherhood</div>
+              </div>
+              <div class="proto-thumb" data-proj="thrillville">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-thrillville.jpg')"></div>
+                <div class="thumb-title">Thrillville: Off the Rails</div>
+              </div>
+            </div>
+          </div>
+          <div class="proto-subwindows"></div>
+        </div>
+      </template>
+
+      <template data-card="dev_qa">
+        <div class="room-proto">
+          <svg class="proto-connectors"></svg>
+          <div class="win-chrome proto-main">
+            <div class="win-titlebar">
+              <span class="win-title"><span class="win-caret">▸</span> Room: rm_dev_qa</span>
+              <span class="win-close" data-close-window>×</span>
+            </div>
+            <div class="proto-thumbs">
+              <div class="proto-thumb" data-proj="state_of_emergency">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-state.jpg')"></div>
+                <div class="thumb-title">State of Emergency 2</div>
+              </div>
+              <div class="proto-thumb" data-proj="whac_a_mole">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-whac.jpg')"></div>
+                <div class="thumb-title">Whac-A-Mole</div>
+              </div>
+              <div class="proto-thumb" data-proj="cinderella">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-cinderalla.jpg')"></div>
+                <div class="thumb-title">Disney's Cinderella: Magical Dreams</div>
+              </div>
+              <div class="proto-thumb" data-proj="fear_factor">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-fear.jpg')"></div>
+                <div class="thumb-title">Fear Factor Unleashed</div>
+              </div>
+              <div class="proto-thumb" data-proj="winx_club">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-winx.jpg')"></div>
+                <div class="thumb-title">Winx Club</div>
+              </div>
+              <div class="proto-thumb" data-proj="rayman2">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-rayman.jpg')"></div>
+                <div class="thumb-title">Rayman 2: The Great Escape</div>
+              </div>
+            </div>
+          </div>
+          <div class="proto-subwindows"></div>
+        </div>
+      </template>
+
+      <template data-card="socials">
+        <div class="win-chrome">
+          <div class="win-titlebar">
+            <span class="win-title"><span class="win-caret">▸</span> Shader: sh_socials</span>
+            <span class="win-close" data-close-window>×</span>
+          </div>
+          <div class="shader-window">
+            <div class="shader-preview"><div class="dot"></div></div>
+            <div class="shader-body">
+              <span class="gml-com">// social</span>
+              <div class="uniform"><span class="utype">uniform sampler2D</span><span class="uname">u_linkedin</span> = <a href="https://www.linkedin.com/in/simgrave/" target="_blank" rel="noopener">linkedin.com/in/simgrave</a></div>
+              <div class="uniform"><span class="utype">uniform sampler2D</span><span class="uname">u_github</span> = <a href="https://github.com/SimGraveline" target="_blank" rel="noopener">github.com/SimGraveline</a></div>
+              <div class="uniform"><span class="utype">uniform sampler2D</span><span class="uname">u_artstation</span> = <a href="https://www.artstation.com/simgraveline" target="_blank" rel="noopener">artstation.com/simgraveline</a></div>
+              <div class="uniform"><span class="utype">uniform sampler2D</span><span class="uname">u_youtube</span> = <a href="https://www.youtube.com/@simgraveline" target="_blank" rel="noopener">youtube.com/@simgraveline</a></div>
+
+              <span class="gml-com">// dev platforms</span>
+              <div class="uniform"><span class="utype">uniform sampler2D</span><span class="uname">u_itchio</span> = <a href="https://simgraveline.itch.io/" target="_blank" rel="noopener">simgraveline.itch.io</a></div>
+              <div class="uniform"><span class="utype">uniform sampler2D</span><span class="uname">u_gamejolt</span> = <a href="https://gamejolt.com/@SimGraveline/" target="_blank" rel="noopener">gamejolt.com/@SimGraveline</a></div>
+              <div class="uniform"><span class="utype">uniform sampler2D</span><span class="uname">u_gxgames</span> = <a href="https://gx.me/simgrave/" target="_blank" rel="noopener">gx.me/simgrave</a></div>
+            </div>
+          </div>
+        </div>
+      </template>
+
+      <template data-card="contact">
+        <div class="win-chrome">
+          <div class="win-titlebar">
+            <span class="win-title"><span class="win-caret">▸</span> Shader: sh_contact</span>
+            <span class="win-close" data-close-window>×</span>
+          </div>
+          <div class="shader-window">
+            <div class="shader-preview"><div class="dot"></div></div>
+            <div class="shader-body">
+              <span class="gml-com">// contact</span>
+              <div class="uniform"><span class="utype">uniform sampler2D</span><span class="uname">u_email</span> = <a href="mailto:sim.graveline@gmail.com">sim.graveline@gmail.com</a></div>
+            </div>
+          </div>
+        </div>
+      </template>
+
+      <template data-card="resume">
+        <div class="win-chrome resume-window">
+          <div class="win-titlebar">
+            <span class="win-title"><span class="win-caret">▸</span> Shader: sh_resume</span>
+            <span class="win-close" data-close-window>×</span>
+          </div>
+          <div class="resume-viewer">
+            <div class="resume-pages">
+              <img src="img/sim-graveline-resume-p1.jpg" alt="Resume page 1">
+              <img src="img/sim-graveline-resume-p2.jpg" alt="Resume page 2">
+            </div>
+            <a class="btn-download" href="files/Resume_-_SimonGraveline_G.pdf" download>⬇ Download PDF</a>
+          </div>
+        </div>
+      </template>
+
       <template id="specTemplate">
         <div class="win-chrome proto-subwindow">
           <div class="win-titlebar">
-            <span class="win-title"><span class="win-caret">▸</span> <span class="spec-title-text"></span></span>
+            <span class="win-title"><span class="win-caret">▸</span> Room: <span class="spec-title-text"></span></span>
             <span class="win-close">×</span>
           </div>
           <div class="spec-body">
             <div class="spec-platforms"></div>
             <div class="spec-row"><span>release_date</span><span class="spec-date"></span></div>
-            <div class="spec-row spec-publisher-row" hidden><span>publisher</span><a class="spec-publisher" target="_blank" rel="noopener"></a></div>
-            <div class="spec-row"><span>developer</span><a class="spec-developer" target="_blank" rel="noopener"></a></div>
-            <div class="spec-trailer-embed"><iframe src="" title="Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+            <div class="spec-row spec-publisher-row" hidden><span>publisher</span><span class="spec-publisher"></span></div>
+            <div class="spec-row"><span>developer</span><span class="spec-developer"></span></div>
+            <div class="spec-trailer-embed" hidden><iframe src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
             <div class="spec-role">
               <span class="role"></span>
               <p class="spec-desc"></p>
