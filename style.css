@@ -59,11 +59,19 @@
     color: var(--text-dim);
   }
   .titlebar .name b{ color: var(--text); font-weight: 600; }
-  .winctrls{ display: flex; gap: 7px; }
+  .winctrls{ display: flex; align-items: center; gap: 7px; }
   .winctrls span{ width: 10px; height: 10px; border-radius: 50%; display:inline-block; }
   .winctrls .c1{ background:#5c5c5f; }
   .winctrls .c2{ background:#5c5c5f; }
   .winctrls .c3{ background: var(--accent-green); }
+  .winctrls .flag-toggle{
+    width: auto; height: auto; border-radius: 0; background: none;
+    margin-right: 12px;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  .winctrls .flag-toggle svg{ display: block; }
 
   /* ---------- menu bar ---------- */
   .menubar{
@@ -283,6 +291,21 @@
   .title-stylized{ text-transform: uppercase; font-weight: 700; font-style: italic; }
 
   /* ---------- obj_sim — object editor ---------- */
+  .obj-gallery-proto{ position: relative; }
+  .proto-subwindow.obj-gallery-window{ width: 200px; }
+  .obj-gallery-window img{
+    display: block;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  /* ---------- scr_xp — per-job game gallery ---------- */
+  .xp-gallery-proto{ position: relative; }
+  .proto-subwindow.xpgal-window{ width: 420px; }
+  .xpgal-window .xp-list{ padding: 16px; }
+  .xpgal-window .xp-list li{ font-size: 0.82rem; white-space: nowrap; }
+  .xpgal-platforms{ color: var(--text-faint); }
   .object-editor{
     overflow: hidden;
   }
@@ -305,7 +328,7 @@
   }
   .obj-identity .hero-sub strong{ color: var(--text); font-weight: 600; }
   .obj-identity .hero-tags{ display:flex; flex-wrap:wrap; gap:10px; margin-top: 20px; }
-  .obj-identity .chip{
+  .chip{
     font-family: var(--mono);
     font-size: 0.72rem;
     padding: 6px 12px;
@@ -325,7 +348,23 @@
     color: var(--accent-blue);
   }
   .event-head .dot{ width: 7px; height: 7px; border-radius: 50%; background: var(--accent-blue); }
+  .event-head .xp-date{ margin-left: auto; color: var(--text-faint); font-size: 0.72rem; }
   .event-body{ padding: 20px 22px; }
+  .xp-list{ list-style: none; margin: 0; padding: 0; }
+  .xp-list li{
+    position: relative;
+    padding-left: 20px;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+  }
+  .xp-list li:last-child{ margin-bottom: 0; }
+  .xp-list li::before{
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent-green);
+  }
   .event-body .comment{
     font-family: var(--mono);
     font-size: 0.76rem;
@@ -353,6 +392,17 @@
   }
   .local-var .k{ color: var(--text-dim); }
   .local-var .v{ color: var(--text-dim); }
+
+  /* ---------- scr_skills — skills list ---------- */
+  .skills-body{ padding: 22px; }
+  .skills-body .gml-com{
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    margin: 22px 0 10px;
+  }
+  .skills-body .gml-com:first-child{ margin-top: 0; }
+  .skills-tags{ display: flex; flex-wrap: wrap; gap: 10px; }
 
   /* ---------- scr_competences — code editor ---------- */
   .code-editor{
@@ -456,7 +506,8 @@
     font-family: var(--mono); font-size: 0.66rem; color: var(--accent-green);
     text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 6px;
   }
-  .spec-role p{ color: var(--text); font-size: 0.84rem; }
+  .spec-role p{ color: var(--text-dim); font-size: 0.84rem; }
+  .spec-role p strong{ color: var(--text); font-weight: 600; }
 
   /* ---------- sh_socials — shader preview + uniforms ---------- */
   .shader-window{ display: grid; grid-template-columns: 180px 1fr; }

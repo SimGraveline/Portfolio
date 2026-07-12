@@ -13,7 +13,10 @@
 
   <div class="titlebar">
     <div class="name">Portfolio.yyp - <b>GraveGames</b></div>
-    <div class="winctrls"><span class="c1"></span><span class="c2"></span><span class="c3"></span></div>
+    <div class="winctrls">
+      <span class="flag-toggle" id="flagToggle" title="Toggle flag"></span>
+      <span class="c1"></span><span class="c2"></span><span class="c3"></span>
+    </div>
   </div>
 
   <div class="menubar">
@@ -58,7 +61,9 @@
       </section>
 
       <template data-card="apropos">
-       <div class="win-chrome">
+       <div class="obj-gallery-proto">
+        <svg class="proto-connectors"></svg>
+        <div class="win-chrome">
         <div class="win-titlebar">
           <span class="win-title"><span class="win-caret">▸</span> Object: obj_sim</span>
         </div>
@@ -66,7 +71,7 @@
 
           <div class="obj-identity">
             <h1>Sim Graveline - I <span class="hl">design</span> systems, build <span class="hl">2D levels</span>, <span class="hl">teach</span> juniors and <span class="hl">manage</span> teams.</h1>
-            <p class="hero-sub">Game and level designer; ex-<strong>Ubisoft Montreal</strong> and ex-<strong>Tribute Games</strong>. I build game systems, enemy AI and levels that hold up at team scale — and I prototype them myself using Unity and GameMaker.</p>
+            <p class="hero-sub">Game and level designer; ex-<strong>Ubisoft Montreal</strong> and ex-<strong>Tribute Games</strong>. I build game systems, enemy AI and levels that hold up at team scale — and I prototype them myself using Unity and GameMaker. Throughout my career, I got to work on pretty much every living room console and handheld system since the <strong>Nintendo 64</strong> and <strong>Nintendo Game Boy Advance</strong>, as well as <strong>VR</strong>, <strong>Mobile</strong> and <strong>PC</strong>.</p>
             <div class="hero-tags">
               <span class="chip">#GameDesign</span>
               <span class="chip">#2DLevelDesign</span>
@@ -81,7 +86,7 @@
             <div class="event-body">
               <span class="comment">/// initialization — origin</span>
               <p>As a designer, I see the whole of a project, its domino effects, and I know how to structure something from nothing. As a lead, I strive to grasp the stakes of a project, balancing the company's goals with team motivation.</p>
-              <p>I'm a co-founder of <strong>Isart Digital Montreal</strong>, where I created the game design curriculum and taught design, prototyping, and game production — on top of managing the team of teachers, which forced me to understand my craft on a deeper level, as well as to clarify my thinking and share it.</p>
+              <p>I co-founded <strong>Isart Digital Montreal</strong>, where I created the game design curriculum and taught design, prototyping, and game production — on top of managing the team of teachers, which forced me to understand my craft on a deeper level, as well as to clarify my thinking and share it.</p>
               <div class="locals">
                 <div class="local-var"><span class="k">years_developing</span> = <span class="v">27</span></div>
                 <div class="local-var"><span class="k">years_designing</span> = <span class="v">21</span></div>
@@ -101,37 +106,293 @@
           </div>
 
         </div>
+        </div>
+        <div class="proto-subwindows"></div>
+       </div>
+      </template>
+
+      <template data-card="xp">
+       <div class="xp-gallery-proto">
+        <svg class="proto-connectors"></svg>
+        <div class="win-chrome">
+        <div class="win-titlebar">
+          <span class="win-title"><span class="win-caret">▸</span> Script: scr_xp</span>
+          <span class="win-close" data-close-window>×</span>
+        </div>
+        <div class="object-editor">
+
+          <div class="event" data-job="grave_games">
+            <div class="event-head"><span class="dot"></span>Solo Developer<span class="xp-date">2026–Present</span></div>
+            <div class="event-body">
+              <span class="comment">/// Grave Games</span>
+              <p>I'm using Grave Games as a platform to develop my own mobile games. Currently working on <strong>Dice Royal</strong>, set to be published on iOS, Android and possibly Netflix.</p>
+            </div>
+          </div>
+
+          <div class="event" data-job="freelance">
+            <div class="event-head"><span class="dot"></span>Game &amp; Level Design Freelancer<span class="xp-date">2014–2024</span></div>
+            <div class="event-body">
+              <span class="comment">/// Studio MDHR, Atomic Arcade, Rovio Montreal, Eidos Montreal, Meridian 4, Behaviour Interactive</span>
+              <ul class="xp-list">
+                <li>Designed levels for an 8-bit platformer</li>
+                <li>Designed levels for an 2.5D platformer</li>
+                <li>Designed and prototyped enemies for an action game</li>
+                <li>Designed and documented systems for a battle royale-type game</li>
+                <li>Benchmarked reference and competing games for a triple-A action game</li>
+                <li>Consulted on video game design and pipeline</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="event">
+            <div class="event-head"><span class="dot"></span>Creative Director<span class="xp-date">2022</span></div>
+            <div class="event-body">
+              <span class="comment">/// Subliminal Entertainment (closed), Montreal</span>
+              <ul class="xp-list">
+                <li>Met with potential clients</li>
+                <li>Conceived VR and immersive experiences</li>
+                <li>Wrote project documentation</li>
+                <li>Designed UX / UI wireframes</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="event" data-job="tribute">
+            <div class="event-head"><span class="dot"></span>Lead Level Designer<span class="xp-date">2018–2021</span></div>
+            <div class="event-body">
+              <span class="comment">/// Tribute Games, Montreal</span>
+              <ul class="xp-list">
+                <li>Designed 2D levels for platformers and beat'em ups</li>
+                <li>Collaborated with project leads</li>
+                <li>Coordinated with creative and narrative team</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="event" data-job="grave_danger">
+            <div class="event-head"><span class="dot"></span>Co-Founder, Producer, Creative Director<span class="xp-date">2013–2017</span></div>
+            <div class="event-body">
+              <span class="comment">/// Grave Danger Games, Montreal</span>
+              <ul class="xp-list">
+                <li>Established the creative vision for the projects</li>
+                <li>Managed the team and project pipeline</li>
+                <li>Coordinated PR, localization, testing, events and social platforms</li>
+                <li>Additional game and level design, programming</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="event" data-job="ubisoft">
+            <div class="event-head"><span class="dot"></span>Lead Game Designer<span class="xp-date">2007–2013</span></div>
+            <div class="event-body">
+              <span class="comment">/// Ubisoft, Montreal</span>
+              <ul class="xp-list">
+                <li>Managed the game and level design team</li>
+                <li>Established document and approval pipelines</li>
+                <li>Collaborated with project leads</li>
+                <li>Designed game mechanics and systems</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="event" data-job="dc_studios">
+            <div class="event-head"><span class="dot"></span>Lead Game / Level Designer, Writer<span class="xp-date">2004–2007</span></div>
+            <div class="event-body">
+              <span class="comment">/// DC Studios, Montreal</span>
+              <ul class="xp-list">
+                <li>Managed the design and narrative team</li>
+                <li>Established game design company standards</li>
+                <li>Collaborated with project leads and clients</li>
+                <li>Designed game mechanics and systems</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+        </div>
+        <div class="proto-subwindows"></div>
+       </div>
+      </template>
+
+      <template data-card="teaching">
+       <div class="win-chrome">
+        <div class="win-titlebar">
+          <span class="win-title"><span class="win-caret">▸</span> Script: scr_teaching</span>
+          <span class="win-close" data-close-window>×</span>
+        </div>
+        <div class="object-editor">
+
+          <div class="event">
+            <div class="event-body">
+              <span class="comment">/// why I teach</span>
+              <p>Throughout my career as a designer, I've had the privilege of teaching my trade to aspiring game designers and coaching juniors, as well as introducing game development to elementary and high school kids through workshops given in schools and various organizations. Sharing my passion for game creation with younglings eager to learn is probably one of the most satisfying things I've had the opportunity to do. As an added bonus, teaching your trade really challenges what you take for granted, forcing you to think more deeply about all the subtleties of your craft.</p>
+            </div>
+          </div>
+
+          <div class="event">
+            <div class="event-head"><span class="dot"></span>Game Design Teacher, Business Relations<span class="xp-date">2024–2025</span></div>
+            <div class="event-body">
+              <span class="comment">/// Isart Digital, Montreal</span>
+              <ul class="xp-list">
+                <li>Taught Enemy AI design</li>
+                <li>Developed partnerships with studios</li>
+                <li>Organized roundtables and conferences</li>
+                <li>Taught career preparation</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="event">
+            <div class="event-head"><span class="dot"></span>Studies Director and Business Relations<span class="xp-date">2018–2019</span></div>
+            <div class="event-body">
+              <span class="comment">/// Studio XP, Montreal</span>
+              <ul class="xp-list">
+                <li>Worked on teaching material</li>
+                <li>Trained and managed the team of teachers</li>
+                <li>Gave Intro to Game Development workshops to kids ages 6 to 16</li>
+                <li>Met clients for B2B mandates</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="event">
+            <div class="event-head"><span class="dot"></span>Co-founder, Head of Design &amp; Teacher<span class="xp-date">2013–2018</span></div>
+            <div class="event-body">
+              <span class="comment">/// Isart Digital, Montreal</span>
+              <ul class="xp-list">
+                <li>Created and maintained the design program</li>
+                <li>Taught game design and prototyping</li>
+                <li>Hired and managed the teaching team</li>
+                <li>Helped the school grow from 8 → 175 students, 1 → 6 programs, to over 20 teachers</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
        </div>
       </template>
 
       <template data-card="competences">
        <div class="win-chrome">
-        <div class="section-label"><span class="tree-ico ico-script"></span>scr_skills.gml — Script Editor</div>
-        <div class="code-editor">
-          <div class="code-titlebar">scr_skills.gml</div>
-          <div class="code-body">
-            <div class="code-lines">
-              <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div>
-              <div>6</div><div>7</div><div>8</div><div>9</div><div>10</div>
-              <div>11</div><div>12</div><div>13</div><div>14</div>
-            </div>
-            <div class="code-content"><span class="gml-com">/// @description Sim's skills</span>
-<span class="gml-key">var</span> enemy_ai_design    = <span class="gml-key">true</span>;
-<span class="gml-key">var</span> systemic_design    = <span class="gml-key">true</span>;
-<span class="gml-key">var</span> level_design       = <span class="gml-key">true</span>;
-
-<span class="gml-key">var</span> years_experience   = <span class="gml-num">25</span>;
-<span class="gml-key">var</span> studio             = <span class="gml-str">"Magasin Général"</span>;
-
-<span class="gml-key">var</span> focus = [<span class="gml-str">"Enemy AI"</span>, <span class="gml-str">"Systemic Design"</span>, <span class="gml-str">"Level Design"</span>];
-
-<span class="gml-com">// availability</span>
-<span class="gml-key">var</span> remote_available  = <span class="gml-key">true</span>;
-
-<span class="gml-key">if</span> (remote_available) {
-    <span class="gml-fn">show_message</span>(<span class="gml-str">"Available for remote work."</span>);
-}</div>
+        <div class="win-titlebar">
+          <span class="win-title"><span class="win-caret">▸</span> Script: scr_skills</span>
+          <span class="win-close" data-close-window>×</span>
+        </div>
+        <div class="skills-body">
+          <span class="gml-com">// systems design</span>
+          <div class="skills-tags">
+            <span class="chip">Control Schemes</span>
+            <span class="chip">Difficulty Balancing</span>
+            <span class="chip">Enemy / NPC AI</span>
+            <span class="chip">Missions and Side Quests</span>
+            <span class="chip">Game Modes</span>
+            <span class="chip">Progressions</span>
+            <span class="chip">Rewards</span>
+            <span class="chip">AR, VR, Motion, Touch Platforms</span>
           </div>
+
+          <span class="gml-com">// genre design</span>
+          <div class="skills-tags">
+            <span class="chip">Action</span>
+            <span class="chip">Adventure</span>
+            <span class="chip">Arcade</span>
+            <span class="chip">Beat'em up</span>
+            <span class="chip">Casual</span>
+            <span class="chip">Horror</span>
+            <span class="chip">Metroidvania</span>
+            <span class="chip">Party</span>
+            <span class="chip">Platformer</span>
+            <span class="chip">Puzzle</span>
+            <span class="chip">Shmup</span>
+            <span class="chip">Social</span>
+            <span class="chip">Top-Down</span>
+            <span class="chip">Twin-Stick</span>
+          </div>
+
+          <span class="gml-com">// tools</span>
+          <div class="skills-tags">
+            <span class="chip">GameMaker</span>
+            <span class="chip">GML</span>
+            <span class="chip">Unity</span>
+            <span class="chip">Javascript</span>
+            <span class="chip">HTML</span>
+            <span class="chip">CSS</span>
+            <span class="chip">VS Code</span>
+            <span class="chip">LDTk</span>
+            <span class="chip">Tiled</span>
+            <span class="chip">Android Studio</span>
+            <span class="chip">JetBrains Rider</span>
+            <span class="chip">JetBrains IntelliJ</span>
+            <span class="chip">GitHub</span>
+            <span class="chip">Perforce</span>
+            <span class="chip">Figma</span>
+            <span class="chip">Canva</span>
+            <span class="chip">Miro</span>
+            <span class="chip">Trello</span>
+            <span class="chip">Notion</span>
+            <span class="chip">Confluence</span>
+            <span class="chip">Jira</span>
+            <span class="chip">MS Office</span>
+            <span class="chip">Google Suite</span>
+            <span class="chip">Aseprite</span>
+            <span class="chip">Claude.Ai / Claude Code</span>
+          </div>
+
+          <span class="gml-com">// soft skills</span>
+          <div class="skills-tags">
+            <span class="chip">Organization</span>
+            <span class="chip">Problem Solving</span>
+            <span class="chip">Communication</span>
+            <span class="chip">Quick Learning</span>
+            <span class="chip">Autonomy</span>
+            <span class="chip">Multitasking</span>
+          </div>
+
+          <span class="gml-com">// languages</span>
+          <div class="skills-tags">
+            <span class="chip">Native French — spoken and written</span>
+            <span class="chip">Professional English — spoken and written</span>
+          </div>
+        </div>
+       </div>
+      </template>
+
+      <template data-card="education">
+       <div class="win-chrome">
+        <div class="win-titlebar">
+          <span class="win-title"><span class="win-caret">▸</span> Script: scr_education</span>
+          <span class="win-close" data-close-window>×</span>
+        </div>
+        <div class="object-editor">
+
+          <div class="event">
+            <div class="event-head"><span class="dot"></span>AEC – Mobile App Development<span class="xp-date">2025-2026</span></div>
+            <div class="event-body">
+              <span class="comment">/// Ahuntsic College, Montreal</span>
+              <p>Learn the fundamentals of both native and multiplatform app and web development, using JavaScript, React, Node, Kotlin, Swift, SQL and NoSQL. Currently in progress, with a diploma expected in <strong>November 2026</strong>.</p>
+            </div>
+          </div>
+
+          <div class="event">
+            <div class="event-head"><span class="dot"></span>Creative Team Management<span class="xp-date">2010</span></div>
+            <div class="event-body">
+              <span class="comment">/// HEC, Montreal</span>
+              <p>Learn the ins and outs of managing teams in a creative environment.</p>
+            </div>
+          </div>
+
+          <div class="event">
+            <div class="event-head"><span class="dot"></span>AEC – Programming<span class="xp-date">1997-1999</span></div>
+            <div class="event-body">
+              <span class="comment">/// Demers Institute, Longueuil</span>
+              <p>Learn the basics of software and web development using C/C++, VB, Access and HTML.</p>
+              <ul class="xp-list">
+                <li>C/C++ Lab Assistant - Internship at Demers Institute</li>
+                <li>Web Integrator - Internship at AT&amp;T Canada</li>
+              </ul>
+            </div>
+          </div>
+
         </div>
        </div>
       </template>
@@ -301,6 +562,10 @@
                 <div class="thumb-art" style="background-image:url('img/sim-graveline-rayman.jpg')"></div>
                 <div class="thumb-title">Rayman 2: The Great Escape</div>
               </div>
+              <div class="proto-thumb" data-proj="gba_video">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-gba.jpg')"></div>
+                <div class="thumb-title">GBA Video Carts</div>
+              </div>
             </div>
           </div>
           <div class="proto-subwindows"></div>
@@ -369,7 +634,7 @@
       <template id="specTemplate">
         <div class="win-chrome proto-subwindow">
           <div class="win-titlebar">
-            <span class="win-title"><span class="win-caret">▸</span> Room: <span class="spec-title-text"></span></span>
+            <span class="win-title"><span class="win-caret">▸</span> <span class="spec-title-text"></span></span>
             <span class="win-close">×</span>
           </div>
           <div class="spec-body">
@@ -390,7 +655,7 @@
   </div>
 
   <div class="statusbar">
-    <span>&gt; Compiling... <span class="ok">Done. 0 errors, 0 warnings.</span></span>
+    <span>&gt; Compiling... <span class="ok">Done. 0 errors, 0 warnings.</span> // web site made using Claude.ai</span>
     <span id="statusRight">MAGASIN_GÉNÉRAL © 2026</span>
   </div>
 

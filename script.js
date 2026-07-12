@@ -2,12 +2,26 @@
     var windowStack = document.getElementById('windowStack');
     var treeItems = document.querySelectorAll('.tree-item');
     var statusRight = document.getElementById('statusRight');
+    var mainWorkspace = document.querySelector('main.workspace');
+
+    function updateWorkspaceWidth(){
+      var maxRight = 0;
+      document.querySelectorAll('.room-proto, .obj-gallery-proto, .xp-gallery-proto').forEach(function(proto){
+        var subwindows = proto.querySelector('.proto-subwindows');
+        if (!subwindows) return;
+        var rect = subwindows.getBoundingClientRect();
+        if (rect.right > maxRight) maxRight = rect.right;
+      });
+      var workspaceRect = mainWorkspace.getBoundingClientRect();
+      var needed = maxRight - workspaceRect.left;
+      mainWorkspace.style.minWidth = Math.max(needed, 0) + 'px';
+    }
 
     var statusMap = {
       hero: 'rm_intro: room loaded',
       travaux: 'rm_work: 3 instances',
       apropos: 'obj_sim: 2 events',
-      competences: 'scr_skills.gml: 14 lines',
+      competences: 'scr_skills.gml: ready',
       contact: 'rm_contact: ready'
     };
 
@@ -34,22 +48,24 @@
       });
     }
 
-    function scrollToSection(target){
-      var el = document.getElementById('window-' + target) || document.getElementById(target);
+    function scrollToElement(el){
       if (!el) return;
 
       var rootStyle = getComputedStyle(document.documentElement);
       var headerH = parseFloat(rootStyle.getPropertyValue('--h-title')) + parseFloat(rootStyle.getPropertyValue('--h-menu'));
-      var footerH = parseFloat(rootStyle.getPropertyValue('--h-status'));
-      var available = window.innerHeight - headerH - footerH;
+      var tabstripH = tabstrip ? tabstrip.getBoundingClientRect().height : 0;
+      var offset = headerH + tabstripH;
 
       var rect = el.getBoundingClientRect();
       var elTopDoc = rect.top + window.scrollY;
-      var targetScroll = rect.height <= available
-        ? elTopDoc - headerH - (available - rect.height) / 2
-        : elTopDoc - headerH;
+      var targetScroll = elTopDoc - offset;
 
       window.scrollTo({ top: Math.max(0, targetScroll), behavior: 'smooth' });
+    }
+
+    function scrollToSection(target){
+      var el = document.getElementById('window-' + target) || document.getElementById(target);
+      scrollToElement(el);
     }
 
     function activateTab(target, scroll){
@@ -75,7 +91,7 @@
           publisher: { name: 'Studio MDHR', url: 'https://studiomdhr.com/' },
           developer: { name: 'Studio MDHR', url: 'https://studiomdhr.com/' },
           role: 'Freelance Level Designer',
-          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+          desc: 'Using <strong>Tiled</strong> in <strong>Unity</strong>, I crafted levels inspired by themed tilesets and ingredients.'
         },
         tmnt: {
           title: "TMNT: Shredder's Revenge",
@@ -88,7 +104,7 @@
           publisher: { name: 'Dotemu', url: 'https://www.dotemu.com/' },
           developer: { name: 'Tribute Games', url: 'https://tributegames.com/' },
           role: 'Level Designer',
-          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+          desc: 'In tight collaboration with designers, level artists, and writers, I created levels that pay homage to both the original TV series and the first line of video games based on the franchise.'
         },
         steel_assault: {
           title: 'Steel Assault',
@@ -101,7 +117,7 @@
           publisher: { name: 'Tribute Games', url: 'https://tributegames.com/' },
           developer: { name: 'Zenovia Interactive', url: 'https://zenovia.io/' },
           role: 'Additional Level Designer',
-          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+          desc: 'I was in charge of polishing the existing level design by tightening the spawn rate, level sizes, and overall cohesiveness of the game, and also had the opportunity to create a level of my own using <strong>Tiled</strong>.'
         },
         panzer_paladin: {
           title: 'Panzer Paladin',
@@ -114,7 +130,7 @@
           publisher: { name: 'Tribute Games', url: 'https://tributegames.com/' },
           developer: { name: 'Tribute Games', url: 'https://tributegames.com/' },
           role: 'Lead Level Designer',
-          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+          desc: 'In tight collaboration with level artists and programmers, I created levels inspired by tilesets themed around world countries. I was also leading the production of the DLC, <strong>Challenge Core</strong>, producing an additional 11 levels where I was told "go all out, make them hard".'
         },
         shorts: {
           title: 'Shorts',
@@ -125,7 +141,7 @@
           publisher: { name: 'Majesco Entertainment' },
           developer: { name: 'Behaviour Interactive', url: 'https://www.bhvr.com/' },
           role: 'Level Designer',
-          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+          desc: "During a short stint (pun intended) at Behaviour Interactive (back then known as A2M), I created around half the levels of the game, using <strong>Autodesk Maya</strong>."
         }
       },
       indie_dev: {
@@ -141,14 +157,14 @@
           publisher: { name: 'Grave Games' },
           developer: { name: 'Grave Games' },
           embed: {
-            src: 'https://itch.io/embed-upload/18217270?color=000137',
+            src: 'https://itch.io/embed-upload/18304738?color=000137',
             width: 384,
             height: 852,
             fallbackUrl: 'https://simgraveline.itch.io/dice-royal-mobile',
             fallbackText: 'Play Dice Royal Mobile on itch.io'
           },
           role: 'Solo developer',
-          desc: 'Game Design, Programming, Art'
+          desc: "Made using <strong>GameMaker Studio</strong>, Dice Royal is an attempt at developing a mobile game with the intention of publishing it. <strong>This is a solo project where I handle the code and graphics</strong>, and use audio assets from existing libraries. It's been a long dream to have my own version of Tetris — now I do, and I'm happy with the results so far."
         },
         aftergrinder: {
           title: 'Aftergrinder',
@@ -161,7 +177,7 @@
           publisher: { name: 'M4' },
           developer: { name: 'Grave Danger Games' },
           role: 'Creative Director',
-          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+          desc: "Aftergrinder started as a 5-level student project from the prototyping class I was teaching. I was so captivated by the students' work that I proposed we develop it into a full-fledged game and publish it — which we did. I handled the <strong>creative direction</strong> and acted as <strong>producer</strong>, while helping them build levels. We ended up showcasing the game at many events, including one in Oklahoma. Aftergrinder was made using <strong>GameMaker Studio</strong>."
         }
       },
       game_design: {
@@ -175,7 +191,7 @@
           publisher: { name: 'M4' },
           developer: { name: 'Grave Danger Games' },
           role: 'Game Design Consultant',
-          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+          desc: 'On Night Lights, I was hired as a consultant to playtest the entire game, reporting walkthrough issues and providing insights on the quality and clarity of the objectives and puzzle flow across all the levels.'
         },
         soulless: {
           title: 'Soulless: Ray of Hope',
@@ -187,7 +203,7 @@
           publisher: { name: 'M4' },
           developer: { name: 'Frisky Fatal Games' },
           role: 'Game Design Consultant',
-          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+          desc: 'Another consulting gig. On this one, I simply played the game and provided an assessment of the game\'s overall qualities and state. That report was then used as a publishing agreement with the developer: "make these changes, we\'ll publish your game".'
         },
         ac_brotherhood: {
           title: "Assassin's Creed: Brotherhood",
@@ -200,7 +216,7 @@
           publisher: { name: 'Ubisoft', url: 'https://www.ubisoft.com/en-ca' },
           developer: { name: 'Ubisoft Montreal', url: 'https://montreal.ubisoft.com/en/' },
           role: 'Mission Game Designer',
-          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+          desc: 'My first AAA title was exciting. In pre-production, I was in charge of doing concept briefs for new weapons, missions, transports, and assassinations. When we moved to production, I was assigned to the mission team, where I designed narrative missions, side quests, systemic events, rewards, and extra modes.'
         },
         thrillville: {
           title: 'Thrillville: Off the Rails',
@@ -211,7 +227,7 @@
           publisher: { name: 'LucasArts' },
           developer: { name: 'DC Studios' },
           role: 'Mini-Game Designer',
-          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+          desc: 'With a second child and paternity leave on the way, I wasn\'t in a position to lead this project. I ended up designing all the mini-games and puzzles, which was a blast.'
         },
         snake_eyes: {
           title: 'G.I. Joe: Snake Eyes',
@@ -222,7 +238,7 @@
           publisher: { name: 'Wizards of the Coast', url: 'https://company.wizards.com/' },
           developer: { name: 'Atomic Arcade' },
           role: 'Freelance Game Designer',
-          desc: 'Enemy AI design and prototyping in Unreal Engine, documentation of gameplay and narrative beats for the vertical slice.'
+          desc: 'I was originally hired to work on the Enemy AI and combat situations, but also ended up prototyping other game mechanics in <strong>Unreal Engine</strong>. Most importantly, <strong>I was quickly put in charge of working with directors and producers to establish, document, and communicate the gameplay and narrative beats planned for the vertical slice</strong>.'
         }
       },
       design_lead: {
@@ -236,7 +252,7 @@
           publisher: { name: 'Ubisoft', url: 'https://www.ubisoft.com/en-ca' },
           developer: { name: 'Ubisoft Montreal', url: 'https://montreal.ubisoft.com/en/' },
           role: 'Lead Game Designer, Enemy AI',
-          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+          desc: "I started work on R6 Patriots as an <strong>enemy / teammate AI designer</strong>, but ended up being offered the <strong>lead</strong> role. I worked closely with directors, organizing the work of my <strong>seven-person team</strong>, while overseeing the development of the AI systems. Sadly, when the project was pivoted into Siege, I wasn't brought onto the new team, which already had a lead in place."
         },
         james_noir: {
           title: 'James Noir 2',
@@ -247,7 +263,7 @@
           publisher: { name: 'Ubisoft', url: 'https://www.ubisoft.com/en-ca' },
           developer: { name: 'Ubisoft Montreal', url: 'https://montreal.ubisoft.com/en/' },
           role: 'Lead Game Designer, Puzzle Designer',
-          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+          desc: 'This was planned as a sequel to <strong>Hollywood Crime</strong>, released on the Nintendo 3DS. For the first and only time in my career, we were able to complete the entire "conception package" before starting production — including design for all the <strong>game mechanics</strong>, all the <strong>puzzles</strong>, the <strong>UI</strong>, and all the narrative beats. Unfortunately, the project ended up being canned.'
         },
         petz_sports: {
           title: 'Petz Sports: Dog Playground',
@@ -259,7 +275,7 @@
           publisher: { name: 'Ubisoft', url: 'https://www.ubisoft.com/en-ca' },
           developer: { name: 'Ubisoft Montreal', url: 'https://montreal.ubisoft.com/en/' },
           role: 'Lead Game Designer',
-          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+          desc: 'On this project, <strong>I managed a team of three</strong>, and my first mandate was to trim the overscoped design in order to ship on time. <strong>I spent the first two weeks assessing the state of the project and made drastic cuts</strong>. <strong>We shipped on time</strong>.'
         },
         weight_loss_coach: {
           title: 'My Weight Loss Coach',
@@ -270,7 +286,7 @@
           publisher: { name: 'Ubisoft', url: 'https://www.ubisoft.com/en-ca' },
           developer: { name: 'Ubisoft Montreal', url: 'https://montreal.ubisoft.com/en/' },
           role: 'Lead Game Designer',
-          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+          desc: '"Bamboo" was the project\'s codename. <strong>With my team of two designers</strong>, we designed the entire <strong>game on paper, displayed on walls, all around our workspace</strong>. Most of it was done using Visio — all of this was a first for me, and it was a lot of fun. In the process, we met with health experts and did a lot of focus groups — both firsts as well, and just as fun.'
         },
         code_lyoko: {
           title: 'Code Lyoko',
@@ -282,7 +298,7 @@
           publisher: { name: 'The Game Factory' },
           developer: { name: 'DC Studios' },
           role: 'Lead Game Designer, Puzzle Designer',
-          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+          desc: 'The game was mismanaged and overscoped. I was mandated to re-scope it and propose a recovery plan to the clients. We did, and they approved. In production, I was responsible for managing the team, which included a level designer and a writer. The game was a mix of <strong>2D point and click</strong> and <strong>3D hack and slash</strong>, with some <strong>puzzles</strong> sprinkled in here and there. In the end, we were all happy with the result.'
         },
         hannah_montana: {
           title: 'Hannah Montana',
@@ -294,7 +310,7 @@
           publisher: { name: "Disney's BVG" },
           developer: { name: 'DC Studios' },
           role: 'Lead Game Designer, Level Designer',
-          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+          desc: '<strong>This was my first game as a designer</strong>. Before I started working on it, it was a Lizzie McGuire game for the Game Boy Advance, but Disney asked us to turn it into a Hannah Montana game for the Nintendo DS. That was my first assignment, and it was a fun exercise. The biggest "refactor" was turning it into a <strong>2D point and click</strong>. Really proud of my first game!!'
         }
       },
       dev_qa: {
@@ -308,7 +324,7 @@
           publisher: { name: 'DC Studios' },
           developer: { name: 'VIS Entertainment / DC Studios' },
           role: 'Lead QA Tester',
-          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+          desc: 'I managed a team of QA developers.'
         },
         whac_a_mole: {
           title: 'Whac-A-Mole',
@@ -319,7 +335,7 @@
           publisher: { name: 'Activision Value' },
           developer: { name: 'DC Studios' },
           role: 'Lead QA Tester',
-          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+          desc: 'I tested and reported bugs on the game while it was being developed.'
         },
         cinderella: {
           title: "Disney's Cinderella: Magical Dreams",
@@ -330,7 +346,7 @@
           publisher: { name: "Disney's BVG" },
           developer: { name: 'DC Studios' },
           role: 'Lead QA Tester, Production Assistant',
-          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+          desc: 'I tested and reported bugs on the game while it was being developed, as well as providing help on level design.'
         },
         fear_factor: {
           title: 'Fear Factor Unleashed',
@@ -341,7 +357,7 @@
           publisher: { name: 'HIP Interactive' },
           developer: { name: 'DC Studios' },
           role: 'Lead QA Tester, Production Assistant',
-          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+          desc: 'I tested and reported bugs on the game while it was being developed, as well as providing help on level design and producing video sequences from live action footage.'
         },
         winx_club: {
           title: 'Winx Club',
@@ -353,7 +369,7 @@
           publisher: { name: 'Konami', url: 'https://www.konami.com/games/jp/ja/' },
           developer: { name: 'DC Studios' },
           role: 'Lead QA Tester',
-          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+          desc: 'I tested and reported bugs on the game while it was being developed, as well as producing video sequences from the animation footage for the handheld version.'
         },
         rayman2: {
           title: 'Rayman 2: The Great Escape',
@@ -365,7 +381,18 @@
           publisher: { name: 'Ubisoft', url: 'https://www.ubisoft.com/en-ca' },
           developer: { name: 'Ubisoft Montpellier', url: 'https://www.ubisoft.com/en-us/studio/montpellier' },
           role: 'QA Tester',
-          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+          desc: 'I tested and reported bugs on the game while it was being developed.'
+        },
+        gba_video: {
+          title: 'GBA Video Carts',
+          platforms: [
+            { name: 'Nintendo GBA' }
+          ],
+          date: 'Various, 2004–2006',
+          publisher: { name: 'Majesco Entertainment' },
+          developer: { name: 'DC Studios' },
+          role: 'Video Sequencer, Menu Artist',
+          desc: "Using in-house tools, I was in charge of the entire pipeline of production for the <strong>GBA Video</strong> carts. In total, <strong>we shipped over 30 of them</strong>, where I compressed the video source, made menus from IP assets, and ensured the quality of the output."
         }
       }
     };
@@ -374,6 +401,201 @@
       var match = watchUrl.match(/[?&]v=([^&]+)/);
       var id = match ? match[1] : '';
       return 'https://www.youtube.com/embed/' + id + '?mute=1';
+    }
+
+    function initXpGallery(win){
+      var proto = win.querySelector('.xp-gallery-proto');
+      if (!proto) return;
+
+      var svg = proto.querySelector('.proto-connectors');
+      var subwindows = proto.querySelector('.proto-subwindows');
+      var mainEl = proto.querySelector(':scope > .win-chrome');
+
+      var JOBS = [
+        { id: 'grave_games', title: 'Grave Games', games: [
+          { title: 'Dice Royal', platforms: 'Mobile' }
+        ] },
+        { id: 'freelance', title: 'Freelancer', games: [
+          { title: 'Mighty Cuphead Adventure', platforms: 'PC, 8-Bit Consoles' },
+          { title: 'Night Lights', platforms: 'PC, Consoles' },
+          { title: 'Soulless: Ray of Hope', platforms: 'PC' },
+          { title: 'Shorts', platforms: 'Handheld' }
+        ] },
+        { id: 'tribute', title: 'Tribute Games', games: [
+          { title: "TMNT: Shredder's Revenge", platforms: 'PC, Consoles, Mobile' },
+          { title: 'Steel Assault', platforms: 'PC, Consoles' },
+          { title: 'Panzer Paladin', platforms: 'PC, Consoles' }
+        ] },
+        { id: 'grave_danger', title: 'Grave Danger Games', games: [
+          { title: 'AFTERGRINDER', platforms: 'PC' }
+        ] },
+        { id: 'ubisoft', title: 'Ubisoft', games: [
+          { title: "Assassin's Creed: Brotherhood", platforms: 'PC, Consoles' },
+          { title: 'Petz Sports: Dog Playground', platforms: 'Console' },
+          { title: 'My Weight Loss Coach', platforms: 'Handheld, Mobile' },
+          { title: 'Rayman 2: The Great Escape', platforms: 'PC, Console, Handheld' }
+        ] },
+        { id: 'dc_studios', title: 'DC Studios', games: [
+          { title: 'Thrillville: Off the Rails', platforms: 'Handheld' },
+          { title: 'State of Emergency 2', platforms: 'Consoles' },
+          { title: 'Code Lyoko', platforms: 'Handheld' },
+          { title: 'Hannah Montana', platforms: 'Handheld' },
+          { title: 'Whac-A-Mole', platforms: 'Handheld' },
+          { title: "Disney's Cinderella: Magical Dreams", platforms: 'Handheld' },
+          { title: 'Fear Factor Unleashed', platforms: 'Handheld' },
+          { title: 'Winx Club', platforms: 'PC, Consoles, Handheld' },
+          { title: '30+ GBA Video', platforms: 'Handheld' }
+        ] }
+      ];
+
+      var colWidth = 420;
+      var colGap = 30;
+      var rowGap = 20;
+
+      function layout(){
+        subwindows.style.left = (mainEl.offsetWidth + 40) + 'px';
+        subwindows.style.width = (colWidth * 2 + colGap) + 'px';
+
+        var protoRect = proto.getBoundingClientRect();
+        var colBottom = [-Infinity, -Infinity];
+
+        JOBS.forEach(function(j){
+          var w = document.getElementById('xpgal-' + j.id);
+          var anchor = mainEl.querySelector('.event[data-job="' + j.id + '"] .event-head');
+          var idealTop = anchor ? (anchor.getBoundingClientRect().top - protoRect.top) : colBottom[0] + rowGap;
+
+          var col = idealTop >= colBottom[0] ? 0 : 1;
+          var top = Math.max(idealTop, colBottom[col]);
+
+          w.style.left = col * (colWidth + colGap) + 'px';
+          w.style.top = top + 'px';
+          colBottom[col] = top + w.offsetHeight + rowGap;
+        });
+
+        var totalHeight = Math.max(colBottom[0], colBottom[1]) - rowGap;
+        proto.style.minHeight = Math.max(mainEl.offsetHeight, totalHeight) + 'px';
+        drawConnectors();
+        updateWorkspaceWidth();
+      }
+
+      function drawConnectors(){
+        svg.innerHTML = '';
+        var protoRect = proto.getBoundingClientRect();
+        JOBS.forEach(function(j){
+          var anchor = mainEl.querySelector('.event[data-job="' + j.id + '"] .event-head');
+          var w = document.getElementById('xpgal-' + j.id);
+          if (!anchor || !w) return;
+          var aRect = anchor.getBoundingClientRect();
+          var wRect = w.getBoundingClientRect();
+          var titlebar = w.querySelector('.win-titlebar');
+          var tbRect = titlebar.getBoundingClientRect();
+          var x1 = aRect.right - protoRect.left;
+          var y1 = aRect.top + aRect.height / 2 - protoRect.top;
+          var x2 = wRect.left - protoRect.left;
+          var y2 = tbRect.top + tbRect.height / 2 - protoRect.top;
+          var midX = (x1 + x2) / 2;
+          var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+          path.setAttribute('d', 'M ' + x1 + ' ' + y1 + ' C ' + midX + ' ' + y1 + ', ' + midX + ' ' + y2 + ', ' + x2 + ' ' + y2);
+          path.setAttribute('stroke', 'rgba(111,207,151,0.5)');
+          path.setAttribute('stroke-width', '1.5');
+          path.setAttribute('fill', 'none');
+          svg.appendChild(path);
+        });
+      }
+
+      JOBS.forEach(function(j){
+        var w = document.createElement('div');
+        w.className = 'win-chrome proto-subwindow xpgal-window';
+        w.id = 'xpgal-' + j.id;
+        var gamesHtml = j.games.map(function(g){
+          return '<li>' + g.title + ' <span class="xpgal-platforms">— ' + g.platforms + '</span></li>';
+        }).join('');
+        w.innerHTML =
+          '<div class="win-titlebar"><span class="win-title"><span class="win-caret">▸</span> ' + j.title + '</span></div>' +
+          '<ul class="xp-list">' + gamesHtml + '</ul>';
+        subwindows.appendChild(w);
+      });
+
+      layout();
+      window.addEventListener('resize', layout);
+    }
+
+    function initObjSimGallery(win){
+      var proto = win.querySelector('.obj-gallery-proto');
+      if (!proto) return;
+
+      var svg = proto.querySelector('.proto-connectors');
+      var subwindows = proto.querySelector('.proto-subwindows');
+      var mainEl = proto.querySelector(':scope > .win-chrome');
+
+      var GALLERY = [
+        { id: 'dice_royal', title: 'Dice Royal', img: 'img/sim-graveline-diceroyal_show.jpg', col: 0 },
+        { id: 'cuphead', title: 'Mighty Cuphead Adventure', img: 'img/sim-graveline-cuphead_show.jpg', col: 1 },
+        { id: 'tmnt', title: "TMNT: Shredder's Revenge", img: 'img/sim-graveline-tmnt_show.jpg', col: 0 },
+        { id: 'panzer', title: 'Panzer Paladin', img: 'img/sim-graveline-panzer_show.jpg', col: 1 },
+        { id: 'acb', title: "Assassin's Creed: Brotherhood", img: 'img/sim-graveline-assassin_show.jpg', col: 0 }
+      ];
+
+      var colWidth = 200;
+      var colGap = 30;
+      var rowGap = 20;
+
+      function layout(){
+        subwindows.style.left = (mainEl.offsetWidth + 40) + 'px';
+        subwindows.style.width = (colWidth * 2 + colGap) + 'px';
+
+        var firstColHeight = document.getElementById('gallery-' + GALLERY[0].id).offsetHeight;
+        var stagger = Math.round(firstColHeight / 2);
+        var colTop = [0, stagger];
+
+        GALLERY.forEach(function(g){
+          var w = document.getElementById('gallery-' + g.id);
+          w.style.left = g.col * (colWidth + colGap) + 'px';
+          w.style.top = colTop[g.col] + 'px';
+          colTop[g.col] += w.offsetHeight + rowGap;
+        });
+
+        var totalHeight = Math.max(colTop[0], colTop[1]) - rowGap;
+        proto.style.minHeight = Math.max(mainEl.offsetHeight, totalHeight) + 'px';
+        drawConnectors();
+        updateWorkspaceWidth();
+      }
+
+      function drawConnectors(){
+        svg.innerHTML = '';
+        var protoRect = proto.getBoundingClientRect();
+        var mRect = mainEl.getBoundingClientRect();
+        var x1 = mRect.right - protoRect.left;
+        var y1 = mRect.top + 30 - protoRect.top;
+        GALLERY.forEach(function(g){
+          var w = document.getElementById('gallery-' + g.id);
+          var wRect = w.getBoundingClientRect();
+          var titlebar = w.querySelector('.win-titlebar');
+          var tbRect = titlebar.getBoundingClientRect();
+          var x2 = wRect.left - protoRect.left;
+          var y2 = tbRect.top + tbRect.height / 2 - protoRect.top;
+          var midX = (x1 + x2) / 2;
+          var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+          path.setAttribute('d', 'M ' + x1 + ' ' + y1 + ' C ' + midX + ' ' + y1 + ', ' + midX + ' ' + y2 + ', ' + x2 + ' ' + y2);
+          path.setAttribute('stroke', 'rgba(111,207,151,0.5)');
+          path.setAttribute('stroke-width', '1.5');
+          path.setAttribute('fill', 'none');
+          svg.appendChild(path);
+        });
+      }
+
+      GALLERY.forEach(function(g){
+        var w = document.createElement('div');
+        w.className = 'win-chrome proto-subwindow obj-gallery-window';
+        w.id = 'gallery-' + g.id;
+        w.innerHTML =
+          '<div class="win-titlebar"><span class="win-title"><span class="win-caret">▸</span> ' + g.title + '</span></div>' +
+          '<img src="' + g.img + '" alt="' + g.title + '">';
+        subwindows.appendChild(w);
+      });
+
+      layout();
+      window.addEventListener('resize', layout);
     }
 
     function initRoomProto(win){
@@ -404,6 +626,7 @@
         var mainHeight = proto.querySelector('.proto-main').offsetHeight;
         proto.style.minHeight = Math.max(mainHeight, top - 20) + 'px';
         drawConnectors();
+        updateWorkspaceWidth();
       }
 
       function drawConnectors(){
@@ -488,22 +711,28 @@
         fillCredit(node.querySelector('.spec-developer'), data.developer);
 
         node.querySelector('.role').textContent = data.role;
-        node.querySelector('.spec-desc').textContent = data.desc;
+        node.querySelector('.spec-desc').innerHTML = data.desc;
         node.querySelector('.win-close').addEventListener('click', function(){ closeSpec(id); });
 
         subwindows.appendChild(node);
         openOrder.push(id);
         proto.querySelector('.proto-thumb[data-proj="' + id + '"]').classList.add('is-open');
         layout();
-        document.getElementById(domId).scrollIntoView({ behavior: 'smooth', block: 'center' });
+        scrollToElement(document.getElementById(domId));
       }
 
       function closeSpec(id){
         var w = document.getElementById('spec-' + roomKey + '-' + id);
-        if (w) w.remove();
-        openOrder = openOrder.filter(function(x){ return x !== id; });
-        proto.querySelector('.proto-thumb[data-proj="' + id + '"]').classList.remove('is-open');
-        layout();
+        var prevWin = w ? w.previousElementSibling : null;
+
+        scrollToElement(prevWin || proto.querySelector('.proto-main'));
+
+        setTimeout(function(){
+          if (w) w.remove();
+          openOrder = openOrder.filter(function(x){ return x !== id; });
+          proto.querySelector('.proto-thumb[data-proj="' + id + '"]').classList.remove('is-open');
+          layout();
+        }, 450);
       }
 
       proto.querySelectorAll('.proto-thumb').forEach(function(thumb){
@@ -544,19 +773,13 @@
 
       windowStack.appendChild(win);
       initRoomProto(win);
+      if (target === 'apropos') initObjSimGallery(win);
+      if (target === 'xp') initXpGallery(win);
 
       var closeWindowBtn = win.querySelector('[data-close-window]');
       if (closeWindowBtn) {
         closeWindowBtn.addEventListener('click', function(){ closeTab(target); });
       }
-    }
-
-    function scrollToWindowTop(win){
-      var rootStyle = getComputedStyle(document.documentElement);
-      var headerH = parseFloat(rootStyle.getPropertyValue('--h-title')) + parseFloat(rootStyle.getPropertyValue('--h-menu'));
-      var rect = win.getBoundingClientRect();
-      var targetScroll = rect.top + window.scrollY - headerH;
-      window.scrollTo({ top: Math.max(0, targetScroll), behavior: 'smooth' });
     }
 
     function closeTab(target){
@@ -570,14 +793,15 @@
 
       if (prevId) {
         setActiveClasses(prevId);
-        scrollToWindowTop(prevWin);
+        scrollToElement(prevWin);
       } else {
         setActiveClasses('apropos');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        scrollToElement(document.getElementById('window-apropos'));
       }
 
       setTimeout(function(){
         if (win) win.remove();
+        updateWorkspaceWidth();
       }, 450);
     }
 
@@ -620,3 +844,29 @@
 
     ensureWindow('apropos', 'obj_sim');
     setActiveClasses('apropos');
+
+    var flagToggle = document.getElementById('flagToggle');
+    var isQuebecFlag = false;
+    var CANADA_FLAG = '<svg viewBox="0 0 20 14" width="16" height="12" xmlns="http://www.w3.org/2000/svg">' +
+      '<rect width="20" height="14" fill="#fff"/>' +
+      '<rect width="5" height="14" fill="#FF0000"/>' +
+      '<rect x="15" width="5" height="14" fill="#FF0000"/>' +
+      '<path d="M10 3 L11 5.5 L13.5 5 L12 7 L14 8.5 L11.5 8.5 L11.5 11 L10 9.5 L8.5 11 L8.5 8.5 L6 8.5 L8 7 L6.5 5 L9 5.5 Z" fill="#FF0000"/>' +
+      '</svg>';
+    var QUEBEC_FLAG = '<svg viewBox="0 0 20 14" width="16" height="12" xmlns="http://www.w3.org/2000/svg">' +
+      '<rect width="20" height="14" fill="#003DA5"/>' +
+      '<rect x="8.5" width="3" height="14" fill="#fff"/>' +
+      '<rect y="5.5" width="20" height="3" fill="#fff"/>' +
+      '<path d="M4 2 L5 4 L4 6 L3 4 Z" fill="#fff"/>' +
+      '<path d="M16 2 L17 4 L16 6 L15 4 Z" fill="#fff"/>' +
+      '<path d="M4 8 L5 10 L4 12 L3 10 Z" fill="#fff"/>' +
+      '<path d="M16 8 L17 10 L16 12 L15 10 Z" fill="#fff"/>' +
+      '</svg>';
+
+    if (flagToggle) {
+      flagToggle.innerHTML = CANADA_FLAG;
+      flagToggle.addEventListener('click', function(){
+        isQuebecFlag = !isQuebecFlag;
+        flagToggle.innerHTML = isQuebecFlag ? QUEBEC_FLAG : CANADA_FLAG;
+      });
+    }
