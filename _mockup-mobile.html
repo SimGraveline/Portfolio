@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobile landing — mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* ---- mobile-only shell — not wired into the real site yet ---- */
+  body{ overflow-x: hidden; }
+
+  .m-titlebar{
+    position: fixed; top:0; left:0; right:0; z-index: 200;
+    height: var(--h-title);
+    background: var(--bg-panel);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 14px;
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    color: var(--text-dim);
+  }
+  .m-titlebar b{ color: var(--text); font-weight: 600; }
+  .m-titlebar .flag-toggle{ display: inline-flex; align-items: center; cursor: pointer; }
+  .m-titlebar .flag-toggle svg{ display: block; }
+
+  .m-canvas{
+    margin-top: var(--h-title);
+    padding: 20px 14px calc(var(--h-status) + 64px);
+    min-height: calc(100vh - var(--h-title));
+    background-color: var(--bg-workspace);
+    background-image:
+      linear-gradient(rgba(111,207,151,0.24) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(111,207,151,0.24) 1px, transparent 1px);
+    background-size: 38px 38px;
+  }
+
+  .m-window{ max-width: 480px; margin: 0 auto; }
+  .m-window .win-titlebar .win-title{
+    display: flex; align-items: center; gap: 9px;
+    font-family: var(--mono); font-size: 0.82rem; color: var(--text);
+  }
+  .m-window .win-titlebar .win-caret{ color: var(--text-dim); font-size: 0.65rem; }
+
+  .m-navbar{
+    position: fixed; left:0; right:0; bottom: var(--h-status); z-index: 200;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    background: var(--bg-panel);
+    border-top: 1px solid var(--border);
+  }
+  .m-navbtn{
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    padding: 9px 0 8px;
+    font-family: var(--mono); font-size: 0.62rem;
+    color: var(--text-dim);
+    cursor: pointer;
+    border-right: 1px solid var(--border-soft);
+  }
+  .m-navbtn:last-child{ border-right: none; }
+  .m-navbtn svg{ width: 18px; height: 18px; }
+  .m-navbtn.active{ color: var(--accent-blue); }
+  .m-navbtn.active svg{ stroke: var(--accent-blue); }
+</style>
+</head>
+<body>
+
+  <div class="m-titlebar">
+    <span>Portfolio.yyp - <b>GraveGames</b></span>
+    <span class="flag-toggle" id="flagToggle" title="Toggle flag"></span>
+  </div>
+
+  <main class="m-canvas">
+    <div class="win-chrome m-window">
+      <div class="win-titlebar">
+        <span class="win-title"><span class="win-caret">▸</span> Object: obj_sim</span>
+      </div>
+      <div class="object-editor">
+
+        <div class="obj-identity">
+          <h1>Sim Graveline - I <span class="hl">design</span> systems, build <span class="hl">2D levels</span>, <span class="hl">teach</span> juniors and <span class="hl">manage</span> teams.</h1>
+          <p class="hero-sub">Game and level designer; ex-<strong>Ubisoft Montreal</strong> and ex-<strong>Tribute Games</strong>. I build game systems, enemy AI and levels that hold up at team scale — and I prototype them myself using Unity and GameMaker. Throughout my career, I got to work on pretty much every living room console and handheld system since the <strong>Nintendo 64</strong> and <strong>Nintendo Game Boy Advance</strong>, as well as <strong>VR</strong>, <strong>Mobile</strong> and <strong>PC</strong>.</p>
+          <div class="hero-tags">
+            <span class="chip">#GameDesign</span>
+            <span class="chip">#2DLevelDesign</span>
+            <span class="chip">#EnemyAI</span>
+            <span class="chip">#SystemicDesign</span>
+            <span class="chip">#SoloDev</span>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="event-head"><span class="dot"></span>Create Event</div>
+          <div class="event-body">
+            <span class="comment">/// initialization — origin</span>
+            <p>As a designer, I see the whole of a project, its domino effects, and I know how to structure something from nothing. As a lead, I strive to grasp the stakes of a project, balancing the company's goals with team motivation.</p>
+            <p>I co-founded <strong>Isart Digital Montreal</strong>, where I created the game design curriculum and taught design, prototyping, and game production — on top of managing the team of teachers, which forced me to understand my craft on a deeper level, as well as to clarify my thinking and share it.</p>
+            <div class="locals">
+              <div class="local-var"><span class="k">years_developing</span> = <span class="v">27</span></div>
+              <div class="local-var"><span class="k">years_designing</span> = <span class="v">21</span></div>
+              <div class="local-var"><span class="k">years_leading</span> = <span class="v">14</span></div>
+              <div class="local-var"><span class="k">years_teaching</span> = <span class="v">7</span></div>
+              <div class="local-var"><span class="k">games_released</span> = <span class="v">21</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="event-head"><span class="dot"></span>Step Event</div>
+          <div class="event-body">
+            <span class="comment">/// ongoing — current status</span>
+            <p>I'm looking for a <strong>remote</strong> or <strong>hybrid</strong> game design role, focused on <strong>mobile development</strong>, at human-scale projects with studios that have a proven track record of shipping games.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <div class="statusbar">
+    <span>&gt; Compiling... <span class="ok">Done. 0 errors, 0 warnings.</span></span>
+  </div>
+
+  <nav class="m-navbar">
+    <div class="m-navbtn active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>
+      Home
+    </div>
+    <div class="m-navbtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V10M12 20V4M20 20v-7"/></svg>
+      XP
+    </div>
+    <div class="m-navbtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="1.5"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+      Portfolio
+    </div>
+    <div class="m-navbtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v16H4z"/><path d="M4 5l8 7 8-7"/></svg>
+      Contact
+    </div>
+  </nav>
+
+  <script>
+    var flagToggle = document.getElementById('flagToggle');
+    var isQuebecFlag = false;
+    var CANADA_FLAG = '<svg viewBox="0 0 20 14" width="16" height="12" xmlns="http://www.w3.org/2000/svg">' +
+      '<rect width="20" height="14" fill="#fff"/>' +
+      '<rect width="5" height="14" fill="#FF0000"/>' +
+      '<rect x="15" width="5" height="14" fill="#FF0000"/>' +
+      '<path d="M10 3 L11 5.5 L13.5 5 L12 7 L14 8.5 L11.5 8.5 L11.5 11 L10 9.5 L8.5 11 L8.5 8.5 L6 8.5 L8 7 L6.5 5 L9 5.5 Z" fill="#FF0000"/>' +
+      '</svg>';
+    var QUEBEC_FLAG = '<svg viewBox="0 0 20 14" width="16" height="12" xmlns="http://www.w3.org/2000/svg">' +
+      '<rect width="20" height="14" fill="#003DA5"/>' +
+      '<rect x="8.5" width="3" height="14" fill="#fff"/>' +
+      '<rect y="5.5" width="20" height="3" fill="#fff"/>' +
+      '<path d="M4 2 L5 4 L4 6 L3 4 Z" fill="#fff"/>' +
+      '<path d="M16 2 L17 4 L16 6 L15 4 Z" fill="#fff"/>' +
+      '<path d="M4 8 L5 10 L4 12 L3 10 Z" fill="#fff"/>' +
+      '<path d="M16 8 L17 10 L16 12 L15 10 Z" fill="#fff"/>' +
+      '</svg>';
+    if (flagToggle) {
+      flagToggle.innerHTML = CANADA_FLAG;
+      flagToggle.addEventListener('click', function(){
+        isQuebecFlag = !isQuebecFlag;
+        flagToggle.innerHTML = isQuebecFlag ? QUEBEC_FLAG : CANADA_FLAG;
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobile Contact — mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* ---- mobile-only shell — not wired into the real site yet ---- */
+  body{ overflow-x: hidden; }
+
+  .m-titlebar{
+    position: fixed; top:0; left:0; right:0; z-index: 200;
+    height: var(--h-title);
+    background: var(--bg-panel);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 14px;
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    color: var(--text-dim);
+  }
+  .m-titlebar b{ color: var(--text); font-weight: 600; }
+  .m-titlebar .flag-toggle{ display: inline-flex; align-items: center; cursor: pointer; }
+  .m-titlebar .flag-toggle svg{ display: block; }
+
+  .m-canvas{
+    margin-top: var(--h-title);
+    padding: 20px 14px calc(var(--h-status) + 64px);
+    min-height: calc(100vh - var(--h-title));
+    background-color: var(--bg-workspace);
+    background-image:
+      linear-gradient(rgba(111,207,151,0.24) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(111,207,151,0.24) 1px, transparent 1px);
+    background-size: 38px 38px;
+  }
+
+  .m-window{ max-width: 480px; margin: 0 auto; }
+  .m-window .win-titlebar .win-title{
+    display: flex; align-items: center; gap: 9px;
+    font-family: var(--mono); font-size: 0.82rem; color: var(--text);
+  }
+  .m-window .win-titlebar .win-caret{ color: var(--text-dim); font-size: 0.65rem; }
+
+  /* ---- contact body ---- */
+  .m-contact-body{ padding: 22px; }
+  .m-contact-section + .m-contact-section{ margin-top: 26px; }
+  .m-contact-label{
+    font-family: var(--mono); font-size: 0.72rem; color: var(--text-faint);
+    text-transform: uppercase; letter-spacing: 0.05em;
+    margin-bottom: 12px;
+  }
+  .m-email-link{
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.95rem;
+    color: var(--accent-blue);
+    word-break: break-all;
+  }
+  .m-social-list{ display: flex; flex-direction: column; gap: 8px; }
+  .m-social-row{
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-workspace);
+    color: var(--text-dim);
+    font-family: var(--mono);
+    font-size: 0.8rem;
+  }
+  .m-social-row:hover{ border-color: var(--accent-blue); color: var(--text); }
+  .m-social-badge{
+    flex-shrink: 0;
+    width: 28px; height: 28px;
+    border-radius: 5px;
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    font-weight: 600;
+    color: var(--accent-blue);
+  }
+  .m-download-btn{
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%;
+    padding: 13px;
+    margin-top: 4px;
+    background: var(--accent-blue-dim);
+    border: 1px solid var(--accent-blue);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .m-navbar{
+    position: fixed; left:0; right:0; bottom: var(--h-status); z-index: 200;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    background: var(--bg-panel);
+    border-top: 1px solid var(--border);
+  }
+  .m-navbtn{
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    padding: 9px 0 8px;
+    font-family: var(--mono); font-size: 0.62rem;
+    color: var(--text-dim);
+    cursor: pointer;
+    border-right: 1px solid var(--border-soft);
+  }
+  .m-navbtn:last-child{ border-right: none; }
+  .m-navbtn svg{ width: 18px; height: 18px; }
+  .m-navbtn.active{ color: var(--accent-blue); }
+  .m-navbtn.active svg{ stroke: var(--accent-blue); }
+</style>
+</head>
+<body>
+
+  <div class="m-titlebar">
+    <span>Portfolio.yyp - <b>GraveGames</b></span>
+    <span class="flag-toggle" id="flagToggle" title="Toggle flag"></span>
+  </div>
+
+  <main class="m-canvas">
+    <div class="win-chrome m-window">
+      <div class="win-titlebar">
+        <span class="win-title"><span class="win-caret">▸</span> sh_contact</span>
+      </div>
+      <div class="m-contact-body">
+
+        <div class="m-contact-section">
+          <div class="m-contact-label">// email</div>
+          <a class="m-email-link" href="mailto:sim.graveline@gmail.com">sim.graveline@gmail.com</a>
+        </div>
+
+        <div class="m-contact-section">
+          <div class="m-contact-label">// socials</div>
+          <div class="m-social-list">
+            <a class="m-social-row" href="https://www.linkedin.com/in/simgrave/" target="_blank" rel="noopener">
+              <span class="m-social-badge">in</span> linkedin.com/in/simgrave
+            </a>
+            <a class="m-social-row" href="https://github.com/SimGraveline" target="_blank" rel="noopener">
+              <span class="m-social-badge">gh</span> github.com/SimGraveline
+            </a>
+            <a class="m-social-row" href="https://www.artstation.com/simgraveline" target="_blank" rel="noopener">
+              <span class="m-social-badge">as</span> artstation.com/simgraveline
+            </a>
+            <a class="m-social-row" href="https://www.youtube.com/@simgraveline" target="_blank" rel="noopener">
+              <span class="m-social-badge">yt</span> youtube.com/@simgraveline
+            </a>
+            <a class="m-social-row" href="https://simgraveline.itch.io/" target="_blank" rel="noopener">
+              <span class="m-social-badge">itch</span> simgraveline.itch.io
+            </a>
+            <a class="m-social-row" href="https://gamejolt.com/@SimGraveline/" target="_blank" rel="noopener">
+              <span class="m-social-badge">gj</span> gamejolt.com/@SimGraveline
+            </a>
+            <a class="m-social-row" href="https://gx.me/simgrave/" target="_blank" rel="noopener">
+              <span class="m-social-badge">gx</span> gx.me/simgrave
+            </a>
+          </div>
+        </div>
+
+        <div class="m-contact-section">
+          <a class="m-download-btn" href="files/Resume_-_SimonGraveline_G.pdf" download>⬇ Download Resume</a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <div class="statusbar">
+    <span>&gt; Compiling... <span class="ok">Done. 0 errors, 0 warnings.</span></span>
+  </div>
+
+  <nav class="m-navbar">
+    <div class="m-navbtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>
+      Home
+    </div>
+    <div class="m-navbtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V10M12 20V4M20 20v-7"/></svg>
+      XP
+    </div>
+    <div class="m-navbtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="1.5"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+      Portfolio
+    </div>
+    <div class="m-navbtn active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v16H4z"/><path d="M4 5l8 7 8-7"/></svg>
+      Contact
+    </div>
+  </nav>
+
+  <script>
+    var flagToggle = document.getElementById('flagToggle');
+    var isQuebecFlag = false;
+    var CANADA_FLAG = '<svg viewBox="0 0 20 14" width="16" height="12" xmlns="http://www.w3.org/2000/svg">' +
+      '<rect width="20" height="14" fill="#fff"/>' +
+      '<rect width="5" height="14" fill="#FF0000"/>' +
+      '<rect x="15" width="5" height="14" fill="#FF0000"/>' +
+      '<path d="M10 3 L11 5.5 L13.5 5 L12 7 L14 8.5 L11.5 8.5 L11.5 11 L10 9.5 L8.5 11 L8.5 8.5 L6 8.5 L8 7 L6.5 5 L9 5.5 Z" fill="#FF0000"/>' +
+      '</svg>';
+    var QUEBEC_FLAG = '<svg viewBox="0 0 20 14" width="16" height="12" xmlns="http://www.w3.org/2000/svg">' +
+      '<rect width="20" height="14" fill="#003DA5"/>' +
+      '<rect x="8.5" width="3" height="14" fill="#fff"/>' +
+      '<rect y="5.5" width="20" height="3" fill="#fff"/>' +
+      '<path d="M4 2 L5 4 L4 6 L3 4 Z" fill="#fff"/>' +
+      '<path d="M16 2 L17 4 L16 6 L15 4 Z" fill="#fff"/>' +
+      '<path d="M4 8 L5 10 L4 12 L3 10 Z" fill="#fff"/>' +
+      '<path d="M16 8 L17 10 L16 12 L15 10 Z" fill="#fff"/>' +
+      '</svg>';
+    if (flagToggle) {
+      flagToggle.innerHTML = CANADA_FLAG;
+      flagToggle.addEventListener('click', function(){
+        isQuebecFlag = !isQuebecFlag;
+        flagToggle.innerHTML = isQuebecFlag ? QUEBEC_FLAG : CANADA_FLAG;
+      });
+    }
+  </script>
+</body>
+</html>

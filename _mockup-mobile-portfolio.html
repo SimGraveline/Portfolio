@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobile Portfolio — mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* ---- mobile-only shell — not wired into the real site yet ---- */
+  body{ overflow-x: hidden; }
+
+  .m-titlebar{
+    position: fixed; top:0; left:0; right:0; z-index: 200;
+    height: var(--h-title);
+    background: var(--bg-panel);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 14px;
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    color: var(--text-dim);
+  }
+  .m-titlebar b{ color: var(--text); font-weight: 600; }
+  .m-titlebar .flag-toggle{ display: inline-flex; align-items: center; cursor: pointer; }
+  .m-titlebar .flag-toggle svg{ display: block; }
+
+  .m-canvas{
+    margin-top: var(--h-title);
+    padding: 20px 14px calc(var(--h-status) + 64px);
+    min-height: calc(100vh - var(--h-title));
+    background-color: var(--bg-workspace);
+    background-image:
+      linear-gradient(rgba(111,207,151,0.24) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(111,207,151,0.24) 1px, transparent 1px);
+    background-size: 38px 38px;
+  }
+
+  .m-window{ max-width: 480px; margin: 0 auto; }
+  .m-window + .m-window{ margin-top: 24px; }
+  .m-window .win-titlebar .win-title{
+    display: flex; align-items: center; gap: 9px;
+    font-family: var(--mono); font-size: 0.82rem; color: var(--text);
+  }
+  .m-window .win-titlebar .win-caret{ color: var(--text-dim); font-size: 0.65rem; }
+
+  /* image variant of the trailer embed box (Dice Royal) */
+  .spec-trailer-embed img{
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
+  }
+
+  .m-navbar{
+    position: fixed; left:0; right:0; bottom: var(--h-status); z-index: 200;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    background: var(--bg-panel);
+    border-top: 1px solid var(--border);
+  }
+  .m-navbtn{
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    padding: 9px 0 8px;
+    font-family: var(--mono); font-size: 0.62rem;
+    color: var(--text-dim);
+    cursor: pointer;
+    border-right: 1px solid var(--border-soft);
+  }
+  .m-navbtn:last-child{ border-right: none; }
+  .m-navbtn svg{ width: 18px; height: 18px; }
+  .m-navbtn.active{ color: var(--accent-blue); }
+  .m-navbtn.active svg{ stroke: var(--accent-blue); }
+</style>
+</head>
+<body>
+
+  <div class="m-titlebar">
+    <span>Portfolio.yyp - <b>GraveGames</b></span>
+    <span class="flag-toggle" id="flagToggle" title="Toggle flag"></span>
+  </div>
+
+  <main class="m-canvas">
+
+    <!-- Dice Royal — image instead of iframe -->
+    <div class="win-chrome m-window">
+      <div class="win-titlebar">
+        <span class="win-title"><span class="win-caret">▸</span> Dice Royal</span>
+      </div>
+      <div class="spec-body">
+        <div class="spec-platforms">
+          <span class="spec-platform">iOS</span>
+          <span class="spec-platform">Android</span>
+          <span class="spec-platform">Netflix</span>
+          <a class="spec-platform" href="https://simgraveline.itch.io/dice-royal-mobile" target="_blank" rel="noopener">Itch.io</a>
+          <a class="spec-platform" href="https://gamejolt.com/games/diceroyal/1077425" target="_blank" rel="noopener">GameJolt</a>
+          <a class="spec-platform" href="https://gx.games/games/aa6fvi/dice-royal-mobile/" target="_blank" rel="noopener">GX.Games</a>
+        </div>
+        <div class="spec-row"><span>release_date</span><span>To be announced</span></div>
+        <div class="spec-row"><span>publisher</span><span>Grave Games</span></div>
+        <div class="spec-row"><span>developer</span><span>Grave Games</span></div>
+        <div class="spec-trailer-embed">
+          <img src="img/sim-graveline-diceroyal_show.jpg" alt="Dice Royal">
+        </div>
+        <div class="spec-role">
+          <span class="role">Solo developer</span>
+          <p class="spec-desc">Made using <strong>GameMaker Studio</strong>, Dice Royal is an attempt at developing a mobile game with the intention of publishing it. <strong>This is a solo project where I handle the code and graphics</strong>, and use audio assets from existing libraries. It's been a long dream to have my own version of Tetris — now I do, and I'm happy with the results so far.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mighty Cuphead Adventure -->
+    <div class="win-chrome m-window">
+      <div class="win-titlebar">
+        <span class="win-title"><span class="win-caret">▸</span> Mighty Cuphead Adventure</span>
+      </div>
+      <div class="spec-body">
+        <div class="spec-platforms">
+          <span class="spec-platform">Steam</span>
+          <span class="spec-platform">SMS</span>
+        </div>
+        <div class="spec-row"><span>release_date</span><span>To be announced</span></div>
+        <div class="spec-row"><span>publisher</span><span><a href="https://studiomdhr.com/" target="_blank" rel="noopener">Studio MDHR</a></span></div>
+        <div class="spec-row"><span>developer</span><span><a href="https://studiomdhr.com/" target="_blank" rel="noopener">Studio MDHR</a></span></div>
+        <div class="spec-trailer-embed"><iframe src="https://www.youtube.com/embed/q21jZaUOa4Q?mute=1" title="YouTube video player" frameborder="0" allowfullscreen loading="lazy"></iframe></div>
+        <div class="spec-role">
+          <span class="role">Freelance Level Designer</span>
+          <p class="spec-desc">Using <strong>Tiled</strong> in <strong>Unity</strong>, I crafted levels inspired by themed tilesets and ingredients.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TMNT: Shredder's Revenge -->
+    <div class="win-chrome m-window">
+      <div class="win-titlebar">
+        <span class="win-title"><span class="win-caret">▸</span> TMNT: Shredder's Revenge</span>
+      </div>
+      <div class="spec-body">
+        <div class="spec-platforms">
+          <a class="spec-platform" href="https://store.steampowered.com/app/1361510/Teenage_Mutant_Ninja_Turtles_Shredders_Revenge/" target="_blank" rel="noopener">Steam</a>
+          <span class="spec-platform">Switch</span>
+          <span class="spec-platform">PlayStation</span>
+          <span class="spec-platform">Xbox</span>
+          <span class="spec-platform">iOS</span>
+          <span class="spec-platform">Android</span>
+        </div>
+        <div class="spec-row"><span>release_date</span><span>June 16, 2022</span></div>
+        <div class="spec-row"><span>publisher</span><span><a href="https://www.dotemu.com/" target="_blank" rel="noopener">Dotemu</a></span></div>
+        <div class="spec-row"><span>developer</span><span><a href="https://tributegames.com/" target="_blank" rel="noopener">Tribute Games</a></span></div>
+        <div class="spec-trailer-embed"><iframe src="https://www.youtube.com/embed/GemOAwU-9fo?mute=1" title="YouTube video player" frameborder="0" allowfullscreen loading="lazy"></iframe></div>
+        <div class="spec-role">
+          <span class="role">Level Designer</span>
+          <p class="spec-desc">In tight collaboration with designers, level artists, and writers, I created levels that pay homage to both the original TV series and the first line of video games based on the franchise.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panzer Paladin -->
+    <div class="win-chrome m-window">
+      <div class="win-titlebar">
+        <span class="win-title"><span class="win-caret">▸</span> Panzer Paladin</span>
+      </div>
+      <div class="spec-body">
+        <div class="spec-platforms">
+          <a class="spec-platform" href="https://store.steampowered.com/app/975510/Panzer_Paladin/" target="_blank" rel="noopener">Steam</a>
+          <span class="spec-platform">Switch</span>
+          <span class="spec-platform">PlayStation</span>
+          <span class="spec-platform">Xbox</span>
+          <span class="spec-platform">iOS</span>
+          <span class="spec-platform">Android</span>
+        </div>
+        <div class="spec-row"><span>release_date</span><span>July 21, 2020</span></div>
+        <div class="spec-row"><span>publisher</span><span><a href="https://tributegames.com/" target="_blank" rel="noopener">Tribute Games</a></span></div>
+        <div class="spec-row"><span>developer</span><span><a href="https://tributegames.com/" target="_blank" rel="noopener">Tribute Games</a></span></div>
+        <div class="spec-trailer-embed"><iframe src="https://www.youtube.com/embed/JJHX2gWWOYA?mute=1" title="YouTube video player" frameborder="0" allowfullscreen loading="lazy"></iframe></div>
+        <div class="spec-role">
+          <span class="role">Lead Level Designer</span>
+          <p class="spec-desc">In tight collaboration with level artists and programmers, I created levels inspired by tilesets themed around world countries. I was also leading the production of the DLC, <strong>Challenge Core</strong>, producing an additional 11 levels where I was told "go all out, make them hard".</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- AFTERGRINDER -->
+    <div class="win-chrome m-window">
+      <div class="win-titlebar">
+        <span class="win-title"><span class="win-caret">▸</span> <span class="title-stylized">Aftergrinder</span></span>
+      </div>
+      <div class="spec-body">
+        <div class="spec-platforms">
+          <a class="spec-platform" href="https://store.steampowered.com/app/618310/AFTERGRINDER/" target="_blank" rel="noopener">Steam</a>
+        </div>
+        <div class="spec-row"><span>release_date</span><span>July 18, 2017</span></div>
+        <div class="spec-row"><span>publisher</span><span>M4</span></div>
+        <div class="spec-row"><span>developer</span><span>Grave Danger Games</span></div>
+        <div class="spec-trailer-embed"><iframe src="https://www.youtube.com/embed/_h8KR2lp_4U?mute=1" title="YouTube video player" frameborder="0" allowfullscreen loading="lazy"></iframe></div>
+        <div class="spec-role">
+          <span class="role">Creative Director</span>
+          <p class="spec-desc">Aftergrinder started as a 5-level student project from the prototyping class I was teaching. I was so captivated by the students' work that I proposed we develop it into a full-fledged game and publish it — which we did. I handled the <strong>creative direction</strong> and acted as <strong>producer</strong>, while helping them build levels. We ended up showcasing the game at many events, including one in Oklahoma. Aftergrinder was made using <strong>GameMaker Studio</strong>.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Assassin's Creed: Brotherhood -->
+    <div class="win-chrome m-window">
+      <div class="win-titlebar">
+        <span class="win-title"><span class="win-caret">▸</span> Assassin's Creed: Brotherhood</span>
+      </div>
+      <div class="spec-body">
+        <div class="spec-platforms">
+          <a class="spec-platform" href="https://store.steampowered.com/agecheck/app/48190/" target="_blank" rel="noopener">Steam</a>
+          <span class="spec-platform">PlayStation</span>
+          <span class="spec-platform">Xbox</span>
+        </div>
+        <div class="spec-row"><span>release_date</span><span>November 16, 2010</span></div>
+        <div class="spec-row"><span>publisher</span><span><a href="https://www.ubisoft.com/en-ca" target="_blank" rel="noopener">Ubisoft</a></span></div>
+        <div class="spec-row"><span>developer</span><span><a href="https://montreal.ubisoft.com/en/" target="_blank" rel="noopener">Ubisoft Montreal</a></span></div>
+        <div class="spec-trailer-embed"><iframe src="https://www.youtube.com/embed/OjcYqcL0v0Q?mute=1" title="YouTube video player" frameborder="0" allowfullscreen loading="lazy"></iframe></div>
+        <div class="spec-role">
+          <span class="role">Mission Game Designer</span>
+          <p class="spec-desc">My first AAA title was exciting. In pre-production, I was in charge of doing concept briefs for new weapons, missions, transports, and assassinations. When we moved to production, I was assigned to the mission team, where I designed narrative missions, side quests, systemic events, rewards, and extra modes.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shorts -->
+    <div class="win-chrome m-window">
+      <div class="win-titlebar">
+        <span class="win-title"><span class="win-caret">▸</span> Shorts</span>
+      </div>
+      <div class="spec-body">
+        <div class="spec-platforms">
+          <span class="spec-platform">Nintendo DS</span>
+        </div>
+        <div class="spec-row"><span>release_date</span><span>August 18, 2009</span></div>
+        <div class="spec-row"><span>publisher</span><span>Majesco Entertainment</span></div>
+        <div class="spec-row"><span>developer</span><span><a href="https://www.bhvr.com/" target="_blank" rel="noopener">Behaviour Interactive</a></span></div>
+        <div class="spec-role">
+          <span class="role">Level Designer</span>
+          <p class="spec-desc">During a short stint (pun intended) at Behaviour Interactive (back then known as A2M), I created around half the levels of the game, using <strong>Autodesk Maya</strong>.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Petz Sports: Dog Playground -->
+    <div class="win-chrome m-window">
+      <div class="win-titlebar">
+        <span class="win-title"><span class="win-caret">▸</span> Petz Sports: Dog Playground</span>
+      </div>
+      <div class="spec-body">
+        <div class="spec-platforms">
+          <span class="spec-platform">Nintendo Wii</span>
+        </div>
+        <div class="spec-row"><span>release_date</span><span>November 4, 2008</span></div>
+        <div class="spec-row"><span>publisher</span><span><a href="https://www.ubisoft.com/en-ca" target="_blank" rel="noopener">Ubisoft</a></span></div>
+        <div class="spec-row"><span>developer</span><span><a href="https://montreal.ubisoft.com/en/" target="_blank" rel="noopener">Ubisoft Montreal</a></span></div>
+        <div class="spec-trailer-embed"><iframe src="https://www.youtube.com/embed/7pHO2Mnov4s?mute=1" title="YouTube video player" frameborder="0" allowfullscreen loading="lazy"></iframe></div>
+        <div class="spec-role">
+          <span class="role">Lead Game Designer</span>
+          <p class="spec-desc">On this project, <strong>I managed a team of three</strong>, and my first mandate was to trim the overscoped design in order to ship on time. <strong>I spent the first two weeks assessing the state of the project and made drastic cuts</strong>. <strong>We shipped on time</strong>.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- My Weight Loss Coach -->
+    <div class="win-chrome m-window">
+      <div class="win-titlebar">
+        <span class="win-title"><span class="win-caret">▸</span> My Weight Loss Coach</span>
+      </div>
+      <div class="spec-body">
+        <div class="spec-platforms">
+          <span class="spec-platform">Nintendo DS</span>
+          <span class="spec-platform">iOS</span>
+        </div>
+        <div class="spec-row"><span>release_date</span><span>June 24, 2008</span></div>
+        <div class="spec-row"><span>publisher</span><span><a href="https://www.ubisoft.com/en-ca" target="_blank" rel="noopener">Ubisoft</a></span></div>
+        <div class="spec-row"><span>developer</span><span><a href="https://montreal.ubisoft.com/en/" target="_blank" rel="noopener">Ubisoft Montreal</a></span></div>
+        <div class="spec-role">
+          <span class="role">Lead Game Designer</span>
+          <p class="spec-desc">"Bamboo" was the project's codename. <strong>With my team of two designers</strong>, we designed the entire <strong>game on paper, displayed on walls, all around our workspace</strong>. Most of it was done using Visio — all of this was a first for me, and it was a lot of fun. In the process, we met with health experts and did a lot of focus groups — both firsts as well, and just as fun.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Thrillville: Off the Rails -->
+    <div class="win-chrome m-window">
+      <div class="win-titlebar">
+        <span class="win-title"><span class="win-caret">▸</span> Thrillville: Off the Rails</span>
+      </div>
+      <div class="spec-body">
+        <div class="spec-platforms">
+          <span class="spec-platform">Nintendo DS</span>
+        </div>
+        <div class="spec-row"><span>release_date</span><span>October 8, 2007</span></div>
+        <div class="spec-row"><span>publisher</span><span>LucasArts</span></div>
+        <div class="spec-row"><span>developer</span><span>DC Studios</span></div>
+        <div class="spec-role">
+          <span class="role">Mini-Game Designer</span>
+          <p class="spec-desc">With a second child and paternity leave on the way, I wasn't in a position to lead this project. I ended up designing all the mini-games and puzzles, which was a blast.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Code Lyoko -->
+    <div class="win-chrome m-window">
+      <div class="win-titlebar">
+        <span class="win-title"><span class="win-caret">▸</span> Code Lyoko</span>
+      </div>
+      <div class="spec-body">
+        <div class="spec-platforms">
+          <span class="spec-platform">Nintendo DS</span>
+        </div>
+        <div class="spec-row"><span>release_date</span><span>May 15, 2007</span></div>
+        <div class="spec-row"><span>publisher</span><span>The Game Factory</span></div>
+        <div class="spec-row"><span>developer</span><span>DC Studios</span></div>
+        <div class="spec-trailer-embed"><iframe src="https://www.youtube.com/embed/NrPg8Exn2pQ?mute=1" title="YouTube video player" frameborder="0" allowfullscreen loading="lazy"></iframe></div>
+        <div class="spec-role">
+          <span class="role">Lead Game Designer, Puzzle Designer</span>
+          <p class="spec-desc">The game was mismanaged and overscoped. I was mandated to re-scope it and propose a recovery plan to the clients. We did, and they approved. In production, I was responsible for managing the team, which included a level designer and a writer. The game was a mix of <strong>2D point and click</strong> and <strong>3D hack and slash</strong>, with some <strong>puzzles</strong> sprinkled in here and there. In the end, we were all happy with the result.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hannah Montana -->
+    <div class="win-chrome m-window">
+      <div class="win-titlebar">
+        <span class="win-title"><span class="win-caret">▸</span> Hannah Montana</span>
+      </div>
+      <div class="spec-body">
+        <div class="spec-platforms">
+          <span class="spec-platform">Nintendo DS</span>
+        </div>
+        <div class="spec-row"><span>release_date</span><span>October 9, 2006</span></div>
+        <div class="spec-row"><span>publisher</span><span>Disney's BVG</span></div>
+        <div class="spec-row"><span>developer</span><span>DC Studios</span></div>
+        <div class="spec-trailer-embed"><iframe src="https://www.youtube.com/embed/oOGDuvOjFyY?mute=1" title="YouTube video player" frameborder="0" allowfullscreen loading="lazy"></iframe></div>
+        <div class="spec-role">
+          <span class="role">Lead Game Designer, Level Designer</span>
+          <p class="spec-desc"><strong>This was my first game as a designer</strong>. Before I started working on it, it was a Lizzie McGuire game for the Game Boy Advance, but Disney asked us to turn it into a Hannah Montana game for the Nintendo DS. That was my first assignment, and it was a fun exercise. The biggest "refactor" was turning it into a <strong>2D point and click</strong>. Really proud of my first game!!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Whac-A-Mole -->
+    <div class="win-chrome m-window">
+      <div class="win-titlebar">
+        <span class="win-title"><span class="win-caret">▸</span> Whac-A-Mole</span>
+      </div>
+      <div class="spec-body">
+        <div class="spec-platforms">
+          <span class="spec-platform">Nintendo DS</span>
+          <span class="spec-platform">Nintendo GBA</span>
+        </div>
+        <div class="spec-row"><span>release_date</span><span>September 21, 2005</span></div>
+        <div class="spec-row"><span>publisher</span><span>Activision Value</span></div>
+        <div class="spec-row"><span>developer</span><span>DC Studios</span></div>
+        <div class="spec-role">
+          <span class="role">Lead QA Tester</span>
+          <p class="spec-desc">I tested and reported bugs on the game while it was being developed.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Disney's Cinderella: Magical Dreams -->
+    <div class="win-chrome m-window">
+      <div class="win-titlebar">
+        <span class="win-title"><span class="win-caret">▸</span> Disney's Cinderella: Magical Dreams</span>
+      </div>
+      <div class="spec-body">
+        <div class="spec-platforms">
+          <span class="spec-platform">Nintendo GBA</span>
+        </div>
+        <div class="spec-row"><span>release_date</span><span>September 20, 2005</span></div>
+        <div class="spec-row"><span>publisher</span><span>Disney's BVG</span></div>
+        <div class="spec-row"><span>developer</span><span>DC Studios</span></div>
+        <div class="spec-role">
+          <span class="role">Lead QA Tester, Production Assistant</span>
+          <p class="spec-desc">I tested and reported bugs on the game while it was being developed, as well as providing help on level design.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fear Factor Unleashed -->
+    <div class="win-chrome m-window">
+      <div class="win-titlebar">
+        <span class="win-title"><span class="win-caret">▸</span> Fear Factor Unleashed</span>
+      </div>
+      <div class="spec-body">
+        <div class="spec-platforms">
+          <span class="spec-platform">Nintendo GBA</span>
+        </div>
+        <div class="spec-row"><span>release_date</span><span>November 17, 2004</span></div>
+        <div class="spec-row"><span>publisher</span><span>HIP Interactive</span></div>
+        <div class="spec-row"><span>developer</span><span>DC Studios</span></div>
+        <div class="spec-role">
+          <span class="role">Lead QA Tester, Production Assistant</span>
+          <p class="spec-desc">I tested and reported bugs on the game while it was being developed, as well as providing help on level design and producing video sequences from live action footage.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Winx Club -->
+    <div class="win-chrome m-window">
+      <div class="win-titlebar">
+        <span class="win-title"><span class="win-caret">▸</span> Winx Club</span>
+      </div>
+      <div class="spec-body">
+        <div class="spec-platforms">
+          <span class="spec-platform">PC</span>
+          <span class="spec-platform">PlayStation</span>
+          <span class="spec-platform">Xbox</span>
+          <span class="spec-platform">Nintendo GBA</span>
+        </div>
+        <div class="spec-row"><span>release_date</span><span>March 17, 2006</span></div>
+        <div class="spec-row"><span>publisher</span><span><a href="https://www.konami.com/games/jp/ja/" target="_blank" rel="noopener">Konami</a></span></div>
+        <div class="spec-row"><span>developer</span><span>DC Studios</span></div>
+        <div class="spec-trailer-embed"><iframe src="https://www.youtube.com/embed/Xhh4QsG5jzw?mute=1" title="YouTube video player" frameborder="0" allowfullscreen loading="lazy"></iframe></div>
+        <div class="spec-role">
+          <span class="role">Lead QA Tester</span>
+          <p class="spec-desc">I tested and reported bugs on the game while it was being developed, as well as producing video sequences from the animation footage for the handheld version.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rayman 2: The Great Escape -->
+    <div class="win-chrome m-window">
+      <div class="win-titlebar">
+        <span class="win-title"><span class="win-caret">▸</span> Rayman 2: The Great Escape</span>
+      </div>
+      <div class="spec-body">
+        <div class="spec-platforms">
+          <span class="spec-platform">Nintendo 64</span>
+          <span class="spec-platform">PlayStation</span>
+          <span class="spec-platform">Dreamcast</span>
+          <span class="spec-platform">PC</span>
+          <span class="spec-platform">Nintendo DS</span>
+        </div>
+        <div class="spec-row"><span>release_date</span><span>October 29, 1999</span></div>
+        <div class="spec-row"><span>publisher</span><span><a href="https://www.ubisoft.com/en-ca" target="_blank" rel="noopener">Ubisoft</a></span></div>
+        <div class="spec-row"><span>developer</span><span><a href="https://www.ubisoft.com/en-us/studio/montpellier" target="_blank" rel="noopener">Ubisoft Montpellier</a></span></div>
+        <div class="spec-trailer-embed"><iframe src="https://www.youtube.com/embed/kCdO5KBbEuA?mute=1" title="YouTube video player" frameborder="0" allowfullscreen loading="lazy"></iframe></div>
+        <div class="spec-role">
+          <span class="role">QA Tester</span>
+          <p class="spec-desc">I tested and reported bugs on the game while it was being developed.</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <div class="statusbar">
+    <span>&gt; Compiling... <span class="ok">Done. 0 errors, 0 warnings.</span></span>
+  </div>
+
+  <nav class="m-navbar">
+    <div class="m-navbtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>
+      Home
+    </div>
+    <div class="m-navbtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V10M12 20V4M20 20v-7"/></svg>
+      XP
+    </div>
+    <div class="m-navbtn active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="1.5"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+      Portfolio
+    </div>
+    <div class="m-navbtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v16H4z"/><path d="M4 5l8 7 8-7"/></svg>
+      Contact
+    </div>
+  </nav>
+
+  <script>
+    var flagToggle = document.getElementById('flagToggle');
+    var isQuebecFlag = false;
+    var CANADA_FLAG = '<svg viewBox="0 0 20 14" width="16" height="12" xmlns="http://www.w3.org/2000/svg">' +
+      '<rect width="20" height="14" fill="#fff"/>' +
+      '<rect width="5" height="14" fill="#FF0000"/>' +
+      '<rect x="15" width="5" height="14" fill="#FF0000"/>' +
+      '<path d="M10 3 L11 5.5 L13.5 5 L12 7 L14 8.5 L11.5 8.5 L11.5 11 L10 9.5 L8.5 11 L8.5 8.5 L6 8.5 L8 7 L6.5 5 L9 5.5 Z" fill="#FF0000"/>' +
+      '</svg>';
+    var QUEBEC_FLAG = '<svg viewBox="0 0 20 14" width="16" height="12" xmlns="http://www.w3.org/2000/svg">' +
+      '<rect width="20" height="14" fill="#003DA5"/>' +
+      '<rect x="8.5" width="3" height="14" fill="#fff"/>' +
+      '<rect y="5.5" width="20" height="3" fill="#fff"/>' +
+      '<path d="M4 2 L5 4 L4 6 L3 4 Z" fill="#fff"/>' +
+      '<path d="M16 2 L17 4 L16 6 L15 4 Z" fill="#fff"/>' +
+      '<path d="M4 8 L5 10 L4 12 L3 10 Z" fill="#fff"/>' +
+      '<path d="M16 8 L17 10 L16 12 L15 10 Z" fill="#fff"/>' +
+      '</svg>';
+    if (flagToggle) {
+      flagToggle.innerHTML = CANADA_FLAG;
+      flagToggle.addEventListener('click', function(){
+        isQuebecFlag = !isQuebecFlag;
+        flagToggle.innerHTML = isQuebecFlag ? QUEBEC_FLAG : CANADA_FLAG;
+      });
+    }
+  </script>
+</body>
+</html>

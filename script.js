@@ -870,3 +870,210 @@
         flagToggle.innerHTML = isQuebecFlag ? QUEBEC_FLAG : CANADA_FLAG;
       });
     }
+
+    /* ---------- mobile layout (<=460px) ---------- */
+
+    function extractCardBody(cardName){
+      var tpl = document.querySelector('template[data-card="' + cardName + '"]');
+      if (!tpl) return null;
+      var frag = tpl.content.cloneNode(true);
+      var titleEl = frag.querySelector('.win-title');
+      var body = frag.querySelector('.object-editor') || frag.querySelector('.skills-body');
+      if (!body) return null;
+      return { titleHTML: titleEl ? titleEl.innerHTML : '', body: body };
+    }
+
+    function buildMobileWindow(cardName){
+      var extracted = extractCardBody(cardName);
+      if (!extracted) return null;
+      var win = document.createElement('div');
+      win.className = 'win-chrome m-window';
+      win.innerHTML = '<div class="win-titlebar"><span class="win-title">' + extracted.titleHTML + '</span></div>';
+      win.appendChild(extracted.body);
+      return win;
+    }
+
+    function initMobileHome(){
+      var container = document.getElementById('m-page-home');
+      if (container.childElementCount) return;
+      var win = buildMobileWindow('apropos');
+      if (win) container.appendChild(win);
+    }
+
+    function initMobileXp(){
+      var container = document.getElementById('m-page-xp');
+      if (container.childElementCount) return;
+      ['xp', 'teaching', 'competences', 'education'].forEach(function(cardName){
+        var win = buildMobileWindow(cardName);
+        if (win) container.appendChild(win);
+      });
+    }
+
+    var MOBILE_PORTFOLIO = [
+      ['indie_dev', 'dice_royal'],
+      ['level_design', 'mighty_cuphead'],
+      ['level_design', 'tmnt'],
+      ['level_design', 'panzer_paladin'],
+      ['indie_dev', 'aftergrinder'],
+      ['game_design', 'ac_brotherhood'],
+      ['level_design', 'shorts'],
+      ['design_lead', 'petz_sports'],
+      ['design_lead', 'weight_loss_coach'],
+      ['game_design', 'thrillville'],
+      ['design_lead', 'code_lyoko'],
+      ['design_lead', 'hannah_montana'],
+      ['dev_qa', 'whac_a_mole'],
+      ['dev_qa', 'cinderella'],
+      ['dev_qa', 'fear_factor'],
+      ['dev_qa', 'winx_club'],
+      ['dev_qa', 'rayman2']
+    ];
+
+    function buildMobileSpecCard(room, id){
+      var data = ROOM_PROJECTS[room] && ROOM_PROJECTS[room][id];
+      var specTpl = document.getElementById('specTemplate');
+      if (!data || !specTpl) return null;
+
+      var node = specTpl.content.cloneNode(true);
+      var win = node.querySelector('.win-chrome');
+      win.classList.remove('proto-subwindow');
+      win.classList.add('m-window');
+
+      var titleEl = node.querySelector('.spec-title-text');
+      titleEl.textContent = data.title;
+      if (data.titleStyle) titleEl.classList.add(data.titleStyle);
+
+      var platformsEl = node.querySelector('.spec-platforms');
+      data.platforms.forEach(function(p){
+        var el = p.url ? document.createElement('a') : document.createElement('span');
+        el.className = 'spec-platform';
+        el.textContent = p.name;
+        if (p.url) { el.href = p.url; el.target = '_blank'; el.rel = 'noopener'; }
+        platformsEl.appendChild(el);
+      });
+
+      node.querySelector('.spec-date').textContent = data.date;
+
+      if (id === 'dice_royal') {
+        var imgEmbed = node.querySelector('.spec-trailer-embed');
+        imgEmbed.hidden = false;
+        imgEmbed.innerHTML = '<img src="img/sim-graveline-diceroyal_show.jpg" alt="Dice Royal">';
+      } else if (data.trailer) {
+        var trailerEmbed = node.querySelector('.spec-trailer-embed');
+        trailerEmbed.hidden = false;
+        trailerEmbed.querySelector('iframe').src = youtubeEmbedUrl(data.trailer);
+      }
+
+      function fillCredit(container, credit){
+        if (!credit) return;
+        if (credit.url) {
+          var a = document.createElement('a');
+          a.href = credit.url;
+          a.target = '_blank';
+          a.rel = 'noopener';
+          a.textContent = credit.name;
+          container.appendChild(a);
+        } else {
+          container.textContent = credit.name;
+        }
+      }
+
+      if (data.publisher) {
+        node.querySelector('.spec-publisher-row').hidden = false;
+        fillCredit(node.querySelector('.spec-publisher'), data.publisher);
+      }
+      fillCredit(node.querySelector('.spec-developer'), data.developer);
+
+      node.querySelector('.role').textContent = data.role;
+      node.querySelector('.spec-desc').innerHTML = data.desc;
+
+      var closeBtn = node.querySelector('.win-close');
+      if (closeBtn) closeBtn.remove();
+
+      return node;
+    }
+
+    function initMobilePortfolio(){
+      var container = document.getElementById('m-page-portfolio');
+      if (container.childElementCount) return;
+      MOBILE_PORTFOLIO.forEach(function(pair){
+        var node = buildMobileSpecCard(pair[0], pair[1]);
+        if (node) container.appendChild(node);
+      });
+    }
+
+    function initMobileContact(){
+      var container = document.getElementById('m-page-contact');
+      if (container.childElementCount) return;
+
+      var win = document.createElement('div');
+      win.className = 'win-chrome m-window';
+      win.innerHTML =
+        '<div class="win-titlebar"><span class="win-title"><span class="win-caret">▸</span> sh_contact</span></div>' +
+        '<div class="m-contact-body">' +
+          '<div class="m-contact-section"><div class="m-contact-label">// email</div><div class="m-contact-email"></div></div>' +
+          '<div class="m-contact-section"><div class="m-contact-label">// socials</div><div class="m-social-list"></div></div>' +
+          '<div class="m-contact-section"><a class="m-download-btn" href="files/Resume_-_SimonGraveline_G.pdf" download>⬇ Download Resume</a></div>' +
+        '</div>';
+
+      var contactTpl = document.querySelector('template[data-card="contact"]');
+      var emailLink = contactTpl ? contactTpl.content.querySelector('a[href^="mailto:"]') : null;
+      if (emailLink) {
+        var emailClone = emailLink.cloneNode(true);
+        emailClone.className = 'm-email-link';
+        win.querySelector('.m-contact-email').appendChild(emailClone);
+      }
+
+      var badgeMap = { linkedin: 'in', github: 'gh', artstation: 'as', youtube: 'yt', itchio: 'itch', gamejolt: 'gj', gxgames: 'gx' };
+      var socialsTpl = document.querySelector('template[data-card="socials"]');
+      var socialLinks = socialsTpl ? socialsTpl.content.querySelectorAll('.uniform a') : [];
+      var socialList = win.querySelector('.m-social-list');
+      socialLinks.forEach(function(a){
+        var uname = a.closest('.uniform').querySelector('.uname').textContent.trim();
+        var key = uname.replace('u_', '');
+        var row = document.createElement('a');
+        row.className = 'm-social-row';
+        row.href = a.href;
+        row.target = '_blank';
+        row.rel = 'noopener';
+        row.innerHTML = '<span class="m-social-badge">' + (badgeMap[key] || key.slice(0, 2)) + '</span> ' + a.textContent;
+        socialList.appendChild(row);
+      });
+
+      container.appendChild(win);
+    }
+
+    function showMobilePage(page){
+      document.querySelectorAll('.m-page').forEach(function(el){
+        el.classList.toggle('active', el.id === 'm-page-' + page);
+      });
+      document.querySelectorAll('.m-navbtn').forEach(function(btn){
+        btn.classList.toggle('active', btn.dataset.mpage === page);
+      });
+    }
+
+    var mobileInited = false;
+    function initMobile(){
+      if (mobileInited) return;
+      mobileInited = true;
+
+      initMobileHome();
+      initMobileXp();
+      initMobilePortfolio();
+      initMobileContact();
+      showMobilePage('home');
+
+      document.querySelectorAll('.m-navbtn').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          showMobilePage(btn.dataset.mpage);
+          document.getElementById('mPages').scrollTop = 0;
+          window.scrollTo(0, 0);
+        });
+      });
+    }
+
+    var mobileMql = window.matchMedia('(max-width: 460px)');
+    mobileMql.addEventListener('change', function(e){
+      if (e.matches) initMobile();
+    });
+    if (mobileMql.matches) initMobile();
