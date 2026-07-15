@@ -589,7 +589,7 @@
   }
   .statusbar .ok{ color: var(--accent-green); }
 
-  @media (max-width: 860px){
+  @media (max-width: 460px){
     :root{ --w-sidebar: 0px; }
     .asset-tree{ display: none; }
     .workspace-col{ margin-left: 0; }
@@ -709,5 +709,4 @@
 
   @media (prefers-reduced-motion: reduce){
     html{ scroll-behavior: auto; }
-    .btn-primary:hover{ transform: none; }
   }

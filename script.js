@@ -805,13 +805,17 @@
       }, 450);
     }
 
+    function stripTabPrefix(label){
+      return label.replace(/^(rm_|sh_|scr_|obj_)/, '');
+    }
+
     function openTab(target, label){
       var tab = tabstrip.querySelector('.tab[data-target="' + target + '"]');
       if (!tab) {
         tab = document.createElement('a');
         tab.className = 'tab';
         tab.dataset.target = target;
-        tab.textContent = label;
+        tab.textContent = stripTabPrefix(label);
 
         if (target !== 'apropos') {
           var close = document.createElement('span');
