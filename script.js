@@ -529,7 +529,7 @@
       var mainEl = proto.querySelector(':scope > .win-chrome');
 
       var GALLERY = [
-        { id: 'dice_royal', title: 'Dice Royal', img: 'img/sim-graveline-diceroyal_show.jpg', col: 0 },
+        { id: 'dice_royal', title: 'Dice Royal - Click to Play', img: 'img/sim-graveline-diceroyal_show.jpg', col: 0 },
         { id: 'cuphead', title: 'Mighty Cuphead Adventure', img: 'img/sim-graveline-cuphead_show.jpg', col: 1 },
         { id: 'tmnt', title: "TMNT: Shredder's Revenge", img: 'img/sim-graveline-tmnt_show.jpg', col: 0 },
         { id: 'panzer', title: 'Panzer Paladin', img: 'img/sim-graveline-panzer_show.jpg', col: 1 },
@@ -591,6 +591,10 @@
         w.innerHTML =
           '<div class="win-titlebar"><span class="win-title"><span class="win-caret">▸</span> ' + g.title + '</span></div>' +
           '<img src="' + g.img + '" alt="' + g.title + '">';
+        if (g.id === 'dice_royal') {
+          w.style.cursor = 'pointer';
+          w.addEventListener('click', function(){ window.open('https://simgraveline.itch.io/dice-roy', '_blank', 'noopener'); });
+        }
         subwindows.appendChild(w);
       });
 
