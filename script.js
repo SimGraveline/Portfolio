@@ -157,7 +157,7 @@
           publisher: { name: 'Grave Games' },
           developer: { name: 'Grave Games' },
           embed: {
-            src: 'https://itch.io/embed-upload/18304738?color=000137',
+            src: 'https://itch.io/embed-upload/18896588?color=000137',
             width: 384,
             height: 852,
             fallbackUrl: 'https://simgraveline.itch.io/dice-royal-mobile',
