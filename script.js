@@ -413,7 +413,7 @@
 
       var JOBS = [
         { id: 'grave_games', title: 'Grave Games', games: [
-          { title: 'Dice Royal', platforms: 'Mobile' }
+          { title: 'Dice Royal', platforms: 'Mobile, PC' }
         ] },
         { id: 'freelance', title: 'Freelancer', games: [
           { title: 'Mighty Cuphead Adventure', platforms: 'PC, 8-Bit Consoles' },
