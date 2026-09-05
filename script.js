@@ -142,11 +142,33 @@
           developer: { name: 'Behaviour Interactive', url: 'https://www.bhvr.com/' },
           role: 'Level Designer',
           desc: "During a short stint (pun intended) at Behaviour Interactive (back then known as A2M), I created around half the levels of the game, using <strong>Autodesk Maya</strong>."
+        },
+        cinderella: {
+          title: "Disney's Cinderella: Magical Dreams",
+          platforms: [
+            { name: 'Nintendo GBA' }
+          ],
+          date: 'September 20, 2005',
+          publisher: { name: "Disney's BVG" },
+          developer: { name: 'DC Studios' },
+          role: 'Level Designer, Tester',
+          desc: 'I tested and reported bugs on the game while it was being developed, as well as providing help on level design.'
+        },
+        fear_factor: {
+          title: 'Fear Factor Unleashed',
+          platforms: [
+            { name: 'Nintendo GBA' }
+          ],
+          date: 'November 17, 2004',
+          publisher: { name: 'HIP Interactive' },
+          developer: { name: 'DC Studios' },
+          role: 'Level Designer, Tester',
+          desc: 'I tested and reported bugs on the game while it was being developed, as well as providing help on level design and producing video sequences from live action footage.'
         }
       },
       indie_dev: {
         dice_royal: {
-          title: 'Dice Royal',
+          title: 'Dice Royal Mobile',
           platforms: [
             { name: 'iOS' }, { name: 'Android' }, { name: 'Netflix' },
             { name: 'Itch.io', url: 'https://simgraveline.itch.io/dice-royal-mobile' },
@@ -229,42 +251,6 @@
           role: 'Mini-Game Designer',
           desc: 'With a second child and paternity leave on the way, I wasn\'t in a position to lead this project. I ended up designing all the mini-games and puzzles, which was a blast.'
         },
-        snake_eyes: {
-          title: 'G.I. Joe: Snake Eyes',
-          platforms: [
-            { name: 'Cancelled' }
-          ],
-          date: 'Unreleased',
-          publisher: { name: 'Wizards of the Coast', url: 'https://company.wizards.com/' },
-          developer: { name: 'Atomic Arcade' },
-          role: 'Freelance Game Designer',
-          desc: 'I was originally hired to work on the Enemy AI and combat situations, but also ended up prototyping other game mechanics in <strong>Unreal Engine</strong>. Most importantly, <strong>I was quickly put in charge of working with directors and producers to establish, document, and communicate the gameplay and narrative beats planned for the vertical slice</strong>.'
-        }
-      },
-      design_lead: {
-        rainbow_six: {
-          title: 'Rainbow Six Patriots',
-          platforms: [
-            { name: 'Cancelled' }
-          ],
-          date: 'Unreleased',
-          trailer: 'https://www.youtube.com/watch?v=kLhALiOnvs8',
-          publisher: { name: 'Ubisoft', url: 'https://www.ubisoft.com/en-ca' },
-          developer: { name: 'Ubisoft Montreal', url: 'https://montreal.ubisoft.com/en/' },
-          role: 'Lead Game Designer, Enemy AI',
-          desc: "I started work on R6 Patriots as an <strong>enemy / teammate AI designer</strong>, but ended up being offered the <strong>lead</strong> role. I worked closely with directors, organizing the work of my <strong>seven-person team</strong>, while overseeing the development of the AI systems. Sadly, when the project was pivoted into Siege, I wasn't brought onto the new team, which already had a lead in place."
-        },
-        james_noir: {
-          title: 'James Noir 2',
-          platforms: [
-            { name: 'Nintendo Wii-U' }
-          ],
-          date: 'Unreleased',
-          publisher: { name: 'Ubisoft', url: 'https://www.ubisoft.com/en-ca' },
-          developer: { name: 'Ubisoft Montreal', url: 'https://montreal.ubisoft.com/en/' },
-          role: 'Lead Game Designer, Puzzle Designer',
-          desc: 'This was planned as a sequel to <strong>Hollywood Crime</strong>, released on the Nintendo 3DS. For the first and only time in my career, we were able to complete the entire "conception package" before starting production — including design for all the <strong>game mechanics</strong>, all the <strong>puzzles</strong>, the <strong>UI</strong>, and all the narrative beats. Unfortunately, the project ended up being canned.'
-        },
         petz_sports: {
           title: 'Petz Sports: Dog Playground',
           platforms: [
@@ -314,18 +300,6 @@
         }
       },
       dev_qa: {
-        state_of_emergency: {
-          title: 'State of Emergency 2',
-          platforms: [
-            { name: 'PlayStation' }
-          ],
-          date: 'February 14, 2006',
-          trailer: 'https://www.youtube.com/watch?v=8rLXzu-LbfY',
-          publisher: { name: 'DC Studios' },
-          developer: { name: 'VIS Entertainment / DC Studios' },
-          role: 'Lead QA Tester',
-          desc: 'I managed a team of QA developers.'
-        },
         whac_a_mole: {
           title: 'Whac-A-Mole',
           platforms: [
@@ -334,30 +308,8 @@
           date: 'September 21, 2005',
           publisher: { name: 'Activision Value' },
           developer: { name: 'DC Studios' },
-          role: 'Lead QA Tester',
+          role: 'Tester',
           desc: 'I tested and reported bugs on the game while it was being developed.'
-        },
-        cinderella: {
-          title: "Disney's Cinderella: Magical Dreams",
-          platforms: [
-            { name: 'Nintendo GBA' }
-          ],
-          date: 'September 20, 2005',
-          publisher: { name: "Disney's BVG" },
-          developer: { name: 'DC Studios' },
-          role: 'Lead QA Tester, Production Assistant',
-          desc: 'I tested and reported bugs on the game while it was being developed, as well as providing help on level design.'
-        },
-        fear_factor: {
-          title: 'Fear Factor Unleashed',
-          platforms: [
-            { name: 'Nintendo GBA' }
-          ],
-          date: 'November 17, 2004',
-          publisher: { name: 'HIP Interactive' },
-          developer: { name: 'DC Studios' },
-          role: 'Lead QA Tester, Production Assistant',
-          desc: 'I tested and reported bugs on the game while it was being developed, as well as providing help on level design and producing video sequences from live action footage.'
         },
         winx_club: {
           title: 'Winx Club',
@@ -368,7 +320,7 @@
           trailer: 'https://www.youtube.com/watch?v=Xhh4QsG5jzw',
           publisher: { name: 'Konami', url: 'https://www.konami.com/games/jp/ja/' },
           developer: { name: 'DC Studios' },
-          role: 'Lead QA Tester',
+          role: 'Tester',
           desc: 'I tested and reported bugs on the game while it was being developed, as well as producing video sequences from the animation footage for the handheld version.'
         },
         rayman2: {
@@ -380,20 +332,9 @@
           trailer: 'https://www.youtube.com/watch?v=kCdO5KBbEuA',
           publisher: { name: 'Ubisoft', url: 'https://www.ubisoft.com/en-ca' },
           developer: { name: 'Ubisoft Montpellier', url: 'https://www.ubisoft.com/en-us/studio/montpellier' },
-          role: 'QA Tester',
+          role: 'Tester',
           desc: 'I tested and reported bugs on the game while it was being developed.'
         },
-        gba_video: {
-          title: 'GBA Video Carts',
-          platforms: [
-            { name: 'Nintendo GBA' }
-          ],
-          date: 'Various, 2004–2006',
-          publisher: { name: 'Majesco Entertainment' },
-          developer: { name: 'DC Studios' },
-          role: 'Video Sequencer, Menu Artist',
-          desc: "Using in-house tools, I was in charge of the entire pipeline of production for the <strong>GBA Video</strong> carts. In total, <strong>we shipped over 30 of them</strong>, where I compressed the video source, made menus from IP assets, and ensured the quality of the output."
-        }
       }
     };
 
@@ -415,14 +356,11 @@
         { id: 'grave_games', title: 'Grave Games', games: [
           { title: 'Dice Royal', platforms: 'Mobile, PC' }
         ] },
-        { id: 'freelance', title: 'Freelancer', games: [
-          { title: 'Mighty Cuphead Adventure', platforms: 'PC, 8-Bit Consoles' },
-          { title: 'Night Lights', platforms: 'PC, Consoles' },
-          { title: 'Soulless: Ray of Hope', platforms: 'PC' },
-          { title: 'Shorts', platforms: 'Handheld' }
+        { id: 'freelance', title: 'Studio MDHR', games: [
+          { title: 'Mighty Cuphead Adventure', platforms: 'PC, 8-Bit Consoles' },          
         ] },
         { id: 'tribute', title: 'Tribute Games', games: [
-          { title: "TMNT: Shredder's Revenge", platforms: 'PC, Consoles, Mobile' },
+          { title: "TMNT: Shredder's Revenge", platforms: 'PC, Consoles, Mobile, Netflix' },
           { title: 'Steel Assault', platforms: 'PC, Consoles' },
           { title: 'Panzer Paladin', platforms: 'PC, Consoles' }
         ] },
@@ -432,19 +370,14 @@
         { id: 'ubisoft', title: 'Ubisoft', games: [
           { title: "Assassin's Creed: Brotherhood", platforms: 'PC, Consoles' },
           { title: 'Petz Sports: Dog Playground', platforms: 'Console' },
-          { title: 'My Weight Loss Coach', platforms: 'Handheld, Mobile' },
-          { title: 'Rayman 2: The Great Escape', platforms: 'PC, Console, Handheld' }
+          { title: 'My Weight Loss Coach', platforms: 'Handheld, iOS' },          
         ] },
         { id: 'dc_studios', title: 'DC Studios', games: [
-          { title: 'Thrillville: Off the Rails', platforms: 'Handheld' },
-          { title: 'State of Emergency 2', platforms: 'Consoles' },
+          { title: 'Thrillville: Off the Rails', platforms: 'Handheld' },          
           { title: 'Code Lyoko', platforms: 'Handheld' },
-          { title: 'Hannah Montana', platforms: 'Handheld' },
-          { title: 'Whac-A-Mole', platforms: 'Handheld' },
+          { title: 'Hannah Montana', platforms: 'Handheld' },          
           { title: "Disney's Cinderella: Magical Dreams", platforms: 'Handheld' },
           { title: 'Fear Factor Unleashed', platforms: 'Handheld' },
-          { title: 'Winx Club', platforms: 'PC, Consoles, Handheld' },
-          { title: '30+ GBA Video', platforms: 'Handheld' }
         ] }
       ];
 
@@ -529,11 +462,11 @@
       var mainEl = proto.querySelector(':scope > .win-chrome');
 
       var GALLERY = [
-        { id: 'dice_royal', title: 'Dice Royal - Click to Play', img: 'img/sim-graveline-diceroyal_show.jpg', col: 0 },
+        { id: 'dice_royal', title: 'Dice Royal<br>click to play', img: 'img/sim-graveline-diceroyal_show.png', col: 0 },
         { id: 'cuphead', title: 'Mighty Cuphead Adventure', img: 'img/sim-graveline-cuphead_show.jpg', col: 1 },
         { id: 'tmnt', title: "TMNT: Shredder's Revenge", img: 'img/sim-graveline-tmnt_show.jpg', col: 0 },
-        { id: 'panzer', title: 'Panzer Paladin', img: 'img/sim-graveline-panzer_show.jpg', col: 1 },
-        { id: 'acb', title: "Assassin's Creed: Brotherhood", img: 'img/sim-graveline-assassin_show.jpg', col: 0 }
+        { id: 'steel', title: 'Steel Assault', img: 'img/sim-graveline-steelassault_show.png', col: 1 },
+        { id: 'panzer', title: 'Panzer Paladin', img: 'img/sim-graveline-panzer_show.jpg', col: 0 },
       ];
 
       var colWidth = 200;
@@ -921,19 +854,22 @@
       ['indie_dev', 'dice_royal'],
       ['level_design', 'mighty_cuphead'],
       ['level_design', 'tmnt'],
+      ['level_design', 'steel_assault'],
       ['level_design', 'panzer_paladin'],
+      ['game_design', 'night_lights'],
       ['indie_dev', 'aftergrinder'],
+      ['game_design', 'soulless'],
       ['game_design', 'ac_brotherhood'],
       ['level_design', 'shorts'],
-      ['design_lead', 'petz_sports'],
-      ['design_lead', 'weight_loss_coach'],
+      ['game_design', 'petz_sports'],
+      ['game_design', 'weight_loss_coach'],
       ['game_design', 'thrillville'],
-      ['design_lead', 'code_lyoko'],
-      ['design_lead', 'hannah_montana'],
+      ['game_design', 'code_lyoko'],
+      ['game_design', 'hannah_montana'],
       ['dev_qa', 'whac_a_mole'],
-      ['dev_qa', 'cinderella'],
-      ['dev_qa', 'fear_factor'],
       ['dev_qa', 'winx_club'],
+      ['level_design', 'cinderella'],
+      ['level_design', 'fear_factor'],
       ['dev_qa', 'rayman2']
     ];
 
@@ -965,7 +901,7 @@
       if (id === 'dice_royal') {
         var imgEmbed = node.querySelector('.spec-trailer-embed');
         imgEmbed.hidden = false;
-        imgEmbed.innerHTML = '<img src="img/sim-graveline-diceroyal_show.jpg" alt="Dice Royal">';
+        imgEmbed.innerHTML = '<img src="img/sim-graveline-diceroyal_show.png" alt="Dice Royal">';
       } else if (data.trailer) {
         var trailerEmbed = node.querySelector('.spec-trailer-embed');
         trailerEmbed.hidden = false;
