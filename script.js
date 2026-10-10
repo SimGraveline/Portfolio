@@ -167,15 +167,40 @@
         }
       },
       indie_dev: {
+        dicebits: {
+          title: 'DICEBITS - GBA',
+          platforms: [
+            { name: 'GBA', url: 'https://simgraveline.itch.io/dicebits' },
+            { name: 'psswrd MAGNUM' }
+          ],
+          date: 'To be announced',
+          trailer: 'https://www.youtube.com/watch?v=O4KDZM_nR6I',
+          publisher: { name: 'To be determined' },
+          developer: { name: 'Grave Games' },
+          role: 'Solo developer',
+          desc: "<strong>DICEBITS</strong> is a fully completed, fully functional port of Dice Royal for the <strong>Game Boy Advance</strong>. It's currently looking for a publisher to be released physically."
+        },
+        dice_royal_desktop: {
+          title: 'Dice Royal Desktop',
+          platforms: [
+            { name: 'Itch', url: 'https://simgraveline.itch.io/dice-roy' },
+            { name: 'Steam' }
+          ],
+          date: 'Currently in development',
+          publisher: { name: 'Grave Games' },
+          developer: { name: 'Grave Games' },
+          role: 'Solo developer',
+          desc: 'Made using <strong>GameMaker Studio</strong>, Dice Royal Desktop is the PC version of my mobile game.'
+        },
         dice_royal: {
           title: 'Dice Royal Mobile',
           platforms: [
-            { name: 'iOS' }, { name: 'Android' }, { name: 'Netflix' },
+            { name: 'iOS' }, { name: 'Android' },
             { name: 'Itch.io', url: 'https://simgraveline.itch.io/dice-royal-mobile' },
             { name: 'GameJolt', url: 'https://gamejolt.com/games/diceroyal/1077425' },
             { name: 'GX.Games', url: 'https://gx.games/games/aa6fvi/dice-royal-mobile/' }
           ],
-          date: 'To be announced',
+          date: 'Currently in development',
           publisher: { name: 'Grave Games' },
           developer: { name: 'Grave Games' },
           embed: {
@@ -462,7 +487,7 @@
       var mainEl = proto.querySelector(':scope > .win-chrome');
 
       var GALLERY = [
-        { id: 'dice_royal', title: 'Dice Royal<br>click to play', img: 'img/sim-graveline-diceroyal_show.png', col: 0 },
+        { id: 'dicebits', title: 'DICEBITS - GBA<br>(click to play, password MAGNUM)', img: 'img/sim-graveline-dicebits.png', col: 0, url: 'https://simgraveline.itch.io/dicebits' },
         { id: 'cuphead', title: 'Mighty Cuphead Adventure', img: 'img/sim-graveline-cuphead_show.jpg', col: 1 },
         { id: 'tmnt', title: "TMNT: Shredder's Revenge", img: 'img/sim-graveline-tmnt_show.jpg', col: 0 },
         { id: 'steel', title: 'Steel Assault', img: 'img/sim-graveline-steelassault_show.png', col: 1 },
@@ -524,9 +549,9 @@
         w.innerHTML =
           '<div class="win-titlebar"><span class="win-title"><span class="win-caret">▸</span> ' + g.title + '</span></div>' +
           '<img src="' + g.img + '" alt="' + g.title + '">';
-        if (g.id === 'dice_royal') {
+        if (g.url) {
           w.style.cursor = 'pointer';
-          w.addEventListener('click', function(){ window.open('https://simgraveline.itch.io/dice-roy', '_blank', 'noopener'); });
+          w.addEventListener('click', function(){ window.open(g.url, '_blank', 'noopener'); });
         }
         subwindows.appendChild(w);
       });
