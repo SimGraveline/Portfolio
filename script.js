@@ -170,8 +170,7 @@
         dicebits: {
           title: 'DICEBITS - GBA',
           platforms: [
-            { name: 'GBA', url: 'https://simgraveline.itch.io/dicebits' },
-            { name: 'psswrd MAGNUM' }
+            { name: 'GBA', url: 'https://simgraveline.itch.io/dicebits' },            
           ],
           date: 'To be announced',
           trailer: 'https://www.youtube.com/watch?v=O4KDZM_nR6I',
