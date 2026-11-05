@@ -487,7 +487,7 @@
       var mainEl = proto.querySelector(':scope > .win-chrome');
 
       var GALLERY = [
-        { id: 'dicebits', title: 'DICEBITS - GBA<br>(click to play, password MAGNUM)', img: 'img/sim-graveline-dicebits.png', col: 0, url: 'https://simgraveline.itch.io/dicebits' },
+        { id: 'dicebits', title: 'DICEBITS - GBA<br>(click to play)', img: 'img/sim-graveline-dicebits.png', col: 0, url: 'https://simgraveline.itch.io/dicebits' },
         { id: 'cuphead', title: 'Mighty Cuphead Adventure', img: 'img/sim-graveline-cuphead_show.jpg', col: 1 },
         { id: 'tmnt', title: "TMNT: Shredder's Revenge", img: 'img/sim-graveline-tmnt_show.jpg', col: 0 },
         { id: 'steel', title: 'Steel Assault', img: 'img/sim-graveline-steelassault_show.png', col: 1 },
