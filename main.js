@@ -84,7 +84,7 @@
     {"title": "Code Lyoko", "year": "2007", "platforms": "DS", "engine": "In-House Engine", "role": "Lead Game Designer, Level Designer", "company": "DC Studios / Game Factory", "img": "codelyoko.jpg"},
     {"title": "Hannah Montana", "year": "2006", "platforms": "DS", "engine": "In-House Engine", "role": "Lead Game Designer, Level Designer, Narrative Designer", "company": "DC Studios / Disney-BVG", "img": "hannah.jpg"},
     {"title": "State of Emergency 2", "year": "2006", "platforms": "PS2", "engine": "In-House Engine", "role": "Tester (uncredited)", "company": "DC Studios, SouthPeak Interactive", "img": "state.jpg"},
-    {"title": "Winx Club", "year": "2006 (PC, PS2), 2005(GBA)", "platforms": "PC, PS2, GBA", "engine": "In-House Engine", "role": "Lead Tester, Video Sequencer", "company": "DC Studios, Konami", "img": "winx.jpg"},
+    {"title": "Winx Club", "year": "2006 (PC-PS2), 2005(GBA)", "platforms": "PC, PS2, GBA", "engine": "In-House Engine", "role": "Lead Tester, Video Sequencer", "company": "DC Studios, Konami", "img": "winx.jpg"},
     {"title": "Whac-A-Mole", "year": "2005", "platforms": "DS, GBA", "engine": "In-House Engine", "role": "Lead Tester", "company": "DC Studios, Activision", "img": "whac.jpg"},
     {"title": "Rayman 2: the Great Escape", "year": "2005 (DS), 1999 (PC-N64)", "platforms": "PC, N64, DS", "engine": "In-House Engine", "role": "Tester", "company": "DC Studios / Ubisoft Montreal", "img": "rayman.jpg"},
     {"title": "Disney Cinderella's Magical Dreams", "year": "2005", "platforms": "GBA", "engine": "In-House Engine", "role": "Level Designer, Tester, Production Assistant", "company": "DC Studios, Disney-BVG", "img": "cinderalla.jpg"},
