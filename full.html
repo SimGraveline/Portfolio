@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simon Graveline</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="titlebar">
+    <div class="name">Portfolio.yyp - <b>GraveGames</b></div>
+    <div class="winctrls">
+      <span class="c1"></span><span class="c2"></span><span class="c3"></span>
+      <a class="site-switch" href="index.html" title="Go to the light version of the site">Light site</a>
+    </div>
+  </div>
+
+  <div class="menubar">
+    <span>File</span><span>Edit</span><span>Build</span><span>Room</span>
+    <span>Object</span><span>Script</span><span>Tools</span><span>View</span><span>Help</span>
+  </div>
+
+  <aside class="asset-tree">
+    <div class="tree-search">🔍 Search assets...</div>
+
+    <div class="tree-folder"><span class="tree-folder-ico"></span>Objects</div>
+    <a class="tree-item" data-target="apropos"><span class="tree-ico"></span>obj_sim</a>
+
+    <div class="tree-folder"><span class="tree-folder-ico"></span>Rooms</div>
+    <a class="tree-item" data-target="indie_dev"><span class="tree-ico"></span>rm_indie_dev</a>
+    <a class="tree-item" data-target="game_design"><span class="tree-ico"></span>rm_game_design</a>
+    <a class="tree-item" data-target="level_design"><span class="tree-ico"></span>rm_level_design</a>
+    <a class="tree-item" data-target="dev_qa"><span class="tree-ico"></span>rm_dev_qa</a>
+
+    <div class="tree-folder"><span class="tree-folder-ico"></span>Scripts</div>
+    <a class="tree-item" data-target="xp"><span class="tree-ico"></span>scr_xp</a>
+    <a class="tree-item" data-target="teaching"><span class="tree-ico"></span>scr_teaching</a>
+    <a class="tree-item" data-target="competences"><span class="tree-ico"></span>scr_skills</a>
+    <a class="tree-item" data-target="education"><span class="tree-ico"></span>scr_education</a>
+
+    <div class="tree-folder"><span class="tree-folder-ico"></span>Shaders</div>
+    <a class="tree-item" data-target="contact"><span class="tree-ico"></span>sh_contact</a>
+    <a class="tree-item" data-target="socials"><span class="tree-ico"></span>sh_socials</a>
+    <a class="tree-item" data-target="resume"><span class="tree-ico"></span>sh_resume</a>
+  </aside>
+
+  <div class="workspace-col">
+    <div class="tabstrip">
+      <a class="tab active" data-target="apropos">sim</a>
+    </div>
+
+    <main class="workspace">
+
+      <section id="workspace-windows">
+        <div class="window-stack" id="windowStack"></div>
+      </section>
+
+      <section class="m-pages" id="mPages">
+        <div class="m-page" id="m-page-home"></div>
+        <div class="m-page" id="m-page-xp"></div>
+        <div class="m-page" id="m-page-portfolio"></div>
+        <div class="m-page" id="m-page-contact"></div>
+      </section>
+
+      <template data-card="apropos">
+       <div class="obj-gallery-proto">
+        <svg class="proto-connectors"></svg>
+        <div class="win-chrome">
+        <div class="win-titlebar">
+          <span class="win-title"><span class="win-caret">▸</span> Object: obj_sim</span>
+        </div>
+        <div class="object-editor">
+
+          <div class="obj-identity">
+            <h1>Simon Graveline - I <span class="hl">design</span> robust gameplay systems and build engaging <span class="hl">2D levels</span>.</h1>
+            <p class="hero-sub">Game and level designer; ex-<strong>Ubisoft Montreal</strong> and ex-<strong>Tribute Games</strong>. I conceive game systems, enemy AI and levels that hold up at team scale — and I prototype them myself using Unity and GameMaker. Throughout my career, I got to work on many different systems including the <strong>Nintendo 64</strong>, <strong>GBA</strong>, <strong>DS</strong>, <strong>Wii</strong> and <strong>Switch</strong> as well as <strong>Mobile</strong> and <strong>Steam</strong>.</p>
+            <div class="hero-tags">
+              <span class="chip">#GameDesign</span>
+              <span class="chip">#2DLevelDesign</span>
+              <span class="chip">#MobileGames</span>
+			        <span class="chip">#CasualGames</span>
+			        <span class="chip">#ArcadeGames</span>
+              <span class="chip">#SoloDev</span>
+            </div>
+          </div>
+
+          <div class="event">
+            <div class="event-head"><span class="dot"></span>Create Event</div>
+            <div class="event-body">
+              <span class="comment">/// initialization — origin</span>
+              <p>As a designer, I see the whole of a project, its domino effects, and I know how to structure something from nothing. As a lead, I excel at grasping the stakes of a project, balancing the company's goals with team motivation.</p>
+              <p>I co-founded <strong>Isart Digital Montreal</strong>, where I created the game design curriculum and taught design, prototyping, and game production — on top of managing the team of teachers, which forced me to understand my craft on a deeper level, as well as to clarify my thinking and share it.</p>
+              <div class="locals">
+                <div class="local-var"><span class="k">years_developing</span> = <span class="v">27</span></div>
+                <div class="local-var"><span class="k">years_designing</span> = <span class="v">21</span></div>
+                <div class="local-var"><span class="k">games_released</span> = <span class="v">21</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="event">
+            <div class="event-head"><span class="dot"></span>Step Event</div>
+            <div class="event-body">
+              <span class="comment">/// ongoing — current status</span>
+              <p>I'm looking for a <strong>remote</strong> or <strong>hybrid</strong> game design role, focused on <strong>mobile or indie development</strong>, at human-scale projects with studios that have a proven track record of shipping games.</p>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div class="proto-subwindows"></div>
+       </div>
+      </template>
+
+      <template data-card="xp">
+       <div class="xp-gallery-proto">
+        <svg class="proto-connectors"></svg>
+        <div class="win-chrome">
+        <div class="win-titlebar">
+          <span class="win-title"><span class="win-caret">▸</span> Script: scr_xp</span>
+          <span class="win-close" data-close-window>×</span>
+        </div>
+        <div class="object-editor">
+
+          <div class="event" data-job="grave_games">
+            <div class="event-head"><span class="dot"></span>Solo Developer<span class="xp-date">2026–Present</span></div>
+            <div class="event-body">
+              <span class="comment">/// Grave Games</span>
+              <p>I'm using Grave Games as a platform to develop my own mobile games. Currently working on <strong>Dice Royal</strong>, set to be published on iOS, Android and possibly Netflix.</p>
+            </div>
+          </div>
+
+          <div class="event" data-job="freelance">
+            <div class="event-head"><span class="dot"></span>Level Design Freelance<span class="xp-date">2024</span></div>
+            <div class="event-body">
+              <span class="comment">/// Studio MDHR</span>
+              <ul class="xp-list">
+                <li>Designed levels for an 8-bit platformer</li>
+                <li>Designed and prototyped enemies and traps</li>                
+              </ul>
+            </div>
+          </div>
+
+          <div class="event" data-job="tribute">
+            <div class="event-head"><span class="dot"></span>Level Designer<span class="xp-date">2018–2022</span></div>
+            <div class="event-body">
+              <span class="comment">/// Tribute Games, Montreal</span>
+              <ul class="xp-list">
+                <li>Designed 2D levels for platformers and beat'em ups</li>
+                <li>Collaborated with project leads</li>
+                <li>Coordinated with creative and narrative team</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="event" data-job="grave_danger">
+            <div class="event-head"><span class="dot"></span>Co-Founder, Game Designer<span class="xp-date">2013–2018</span></div>
+            <div class="event-body">
+              <span class="comment">/// Grave Danger Games, Montreal</span>
+              <ul class="xp-list">
+                <li>Established the creative vision for the projects</li>
+                <li>Managed the team and project pipeline</li>
+                <li>Coordinated PR, localization, testing, events and social platforms</li>
+                <li>Additional game and level design, art and programming</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="event" data-job="ubisoft">
+            <div class="event-head"><span class="dot"></span>Game Designer<span class="xp-date">2007–2013</span></div>
+            <div class="event-body">
+              <span class="comment">/// Ubisoft, Montreal</span>
+              <ul class="xp-list">
+                <li>Managed the game and level design team</li>
+                <li>Established document and approval pipelines</li>
+                <li>Collaborated with project leads</li>
+                <li>Designed game mechanics and systems</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="event" data-job="dc_studios">
+            <div class="event-head"><span class="dot"></span>Game / Level Designer<span class="xp-date">2004–2007</span></div>
+            <div class="event-body">
+              <span class="comment">/// DC Studios, Montreal</span>
+              <ul class="xp-list">
+                <li>Managed the design and narrative team</li>
+                <li>Established game design company standards</li>
+                <li>Collaborated with project leads and clients</li>
+                <li>Designed game mechanics and systems</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+        </div>
+        <div class="proto-subwindows"></div>
+       </div>
+      </template>
+
+      <template data-card="teaching">
+       <div class="win-chrome">
+        <div class="win-titlebar">
+          <span class="win-title"><span class="win-caret">▸</span> Script: scr_teaching</span>
+          <span class="win-close" data-close-window>×</span>
+        </div>
+        <div class="object-editor">
+
+          <div class="event">
+            <div class="event-body">
+              <span class="comment">/// why I teach</span>
+              <p>Throughout my career as a designer, I've had the privilege of teaching my trade to aspiring game designers and coaching juniors, as well as introducing game development to elementary and high school kids through workshops given in schools and various organizations. Sharing my passion for game creation with younglings eager to learn is probably one of the most rewarding things I've had the opportunity to do. As an added bonus, teaching your trade really challenges what you take for granted, forcing you to think more deeply about all the subtleties of your craft.</p>
+            </div>
+          </div>
+
+          <div class="event">
+            <div class="event-head"><span class="dot"></span>Co-founder, Head of Design &amp; Teacher<span class="xp-date">2013–2018</span></div>
+            <div class="event-body">
+              <span class="comment">/// Isart Digital, Montreal</span>
+              <ul class="xp-list">
+                <li>Created and maintained the design program</li>
+                <li>Taught Game Design Systems, Enemy AI design and Prototyping</li>                
+                <li>Hired and managed the teaching team</li>
+                <li>Helped the school grow from 8 → 175 students, 1 → 6 programs, to over 20 teachers</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+       </div>
+      </template>
+
+      <template data-card="competences">
+       <div class="win-chrome">
+        <div class="win-titlebar">
+          <span class="win-title"><span class="win-caret">▸</span> Script: scr_skills</span>
+          <span class="win-close" data-close-window>×</span>
+        </div>
+        <div class="skills-body">
+          <span class="gml-com">// systems design</span>
+          <div class="skills-tags">
+            <span class="chip">Game Systems and Mechanics</span>
+            <span class="chip">Progression and Difficulty Balancing</span>
+            <span class="chip">Enemy and NPC AI</span>
+            <span class="chip">Missions, Side Quests and Systemic Events</span>
+            <span class="chip">Reward Loops, Flow and Feedback</span>
+            <span class="chip">Handheld and Mobile Platforms</span>
+          </div>
+
+          <span class="gml-com">// genre design</span>
+          <div class="skills-tags">
+            <span class="chip">Action</span>
+            <span class="chip">Arcade</span>
+            <span class="chip">Beat'em up</span>
+            <span class="chip">Casual</span>            
+            <span class="chip">Idle</span>
+            <span class="chip">Mobile</span>
+            <span class="chip">Platformer</span>
+            <span class="chip">Puzzle</span>
+            <span class="chip">Shmup</span>
+            <span class="chip">Social</span>            
+            <span class="chip">Twin-Stick</span>
+            <span class="chip">Tycoon</span>
+          </div>
+
+          <span class="gml-com">// tools</span>
+          <div class="skills-tags">
+            <span class="chip">GameMaker</span>            
+            <span class="chip">Unity</span>
+            <span class="chip">Javascript</span>
+            <span class="chip">HTML / CSS</span>
+            <span class="chip">LDTk / Tiled</span>
+            <span class="chip">Android Studio</span>
+            <span class="chip">JetBrains Rider / VS Code</span>            
+            <span class="chip">GitHub</span>
+            <span class="chip">Perforce</span>
+            <span class="chip">Figma / Canva / Miro</span>            
+            <span class="chip">Jira / Trello</span>
+            <span class="chip">Confluence / Notion</span>            
+            <span class="chip">MS Office / Google Suite</span>            
+            <span class="chip">Aseprite</span>
+            <span class="chip">Claude.Ai / Claude Code</span>
+          </div>
+
+          <span class="gml-com">// soft skills</span>
+          <div class="skills-tags">
+            <span class="chip">Organization</span>
+            <span class="chip">Problem Solving</span>
+            <span class="chip">Communication</span>
+            <span class="chip">Quick Learning</span>
+            <span class="chip">Autonomy</span>
+            <span class="chip">Multitasking</span>
+            <span class="chip">Leadership</span>
+          </div>
+
+          <span class="gml-com">// languages</span>
+          <div class="skills-tags">
+            <span class="chip">Native French — spoken and written</span>
+            <span class="chip">Professional English — spoken and written</span>
+          </div>
+        </div>
+       </div>
+      </template>
+
+      <template data-card="education">
+       <div class="win-chrome">
+        <div class="win-titlebar">
+          <span class="win-title"><span class="win-caret">▸</span> Script: scr_education</span>
+          <span class="win-close" data-close-window>×</span>
+        </div>
+        <div class="object-editor">
+
+          <div class="event">
+            <div class="event-head"><span class="dot"></span>AEC – Mobile Development<span class="xp-date">2025-2026</span></div>
+            <div class="event-body">
+              <span class="comment">/// Ahuntsic College, Montreal</span>
+              <p>Learn the fundamentals of both native and multiplatform app and web development, using JavaScript, React, Native, Vite, Expo, Node, Kotlin, SwiftUI, Xcode, SQL and NoSQL. Currently in progress, with a diploma expected in <strong>November 2026</strong>.</p>
+            </div>
+          </div>          
+
+          <div class="event">
+            <div class="event-head"><span class="dot"></span>AEC – Programming<span class="xp-date">1997-1999</span></div>
+            <div class="event-body">
+              <span class="comment">/// Demers Institute, Longueuil</span>
+              <p>Learn the basics of software and web development using C/C++, VB, Access and HTML.</p>
+              <ul class="xp-list">
+                <li>C/C++ Lab Assistant - Internship at Demers Institute</li>
+                <li>Web Integrator - Internship at AT&amp;T Canada</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+       </div>
+      </template>
+
+      <template data-card="level_design">
+        <div class="room-proto">
+          <svg class="proto-connectors"></svg>
+          <div class="win-chrome proto-main">
+            <div class="win-titlebar">
+              <span class="win-title"><span class="win-caret">▸</span> Room: rm_level_design</span>
+              <span class="win-close" data-close-window>×</span>
+            </div>
+            <div class="proto-thumbs">
+              <div class="proto-thumb" data-proj="mighty_cuphead">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-cuphead.jpg')"></div>
+                <div class="thumb-title">Mighty Cuphead Adventure</div>
+              </div>
+              <div class="proto-thumb" data-proj="tmnt">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-tmnt.jpg')"></div>
+                <div class="thumb-title">TMNT: Shredder's Revenge</div>
+              </div>
+              <div class="proto-thumb" data-proj="steel_assault">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-steel-assault-cover1.jpg')"></div>
+                <div class="thumb-title">Steel Assault</div>
+              </div>
+              <div class="proto-thumb" data-proj="panzer_paladin">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-panzer.jpg')"></div>
+                <div class="thumb-title">Panzer Paladin</div>
+              </div>
+              <div class="proto-thumb" data-proj="shorts">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-shorts.jpg')"></div>
+                <div class="thumb-title">Shorts</div>
+              </div>
+              <div class="proto-thumb" data-proj="cinderella">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-cinderalla.jpg')"></div>
+                <div class="thumb-title">Disney's Cinderella: Magical Dreams</div>
+              </div>
+              <div class="proto-thumb" data-proj="fear_factor">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-fear.jpg')"></div>
+                <div class="thumb-title">Fear Factor Unleashed</div>
+              </div>
+            </div>
+          </div>
+          <div class="proto-subwindows"></div>
+        </div>
+      </template>
+
+      <template data-card="indie_dev">
+        <div class="room-proto">
+          <svg class="proto-connectors"></svg>
+          <div class="win-chrome proto-main">
+            <div class="win-titlebar">
+              <span class="win-title"><span class="win-caret">▸</span> Room: rm_indie_dev</span>
+              <span class="win-close" data-close-window>×</span>
+            </div>
+            <div class="proto-thumbs">
+              <div class="proto-thumb" data-proj="dicebits">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-dicebits.png')"></div>
+                <div class="thumb-title">DICEBITS - GBA</div>
+              </div>
+              <div class="proto-thumb" data-proj="dice_royal_desktop">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-diceroyal_show.png')"></div>
+                <div class="thumb-title">Dice Royal Desktop</div>
+              </div>
+              <div class="proto-thumb" data-proj="dice_royal">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-diceroyal_show.png')"></div>
+                <div class="thumb-title">Dice Royal Mobile</div>
+              </div>
+              <div class="proto-thumb" data-proj="aftergrinder">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-aftergrinder.jpg')"></div>
+                <div class="thumb-title title-stylized">Aftergrinder</div>
+              </div>
+            </div>
+          </div>
+          <div class="proto-subwindows"></div>
+        </div>
+      </template>
+
+      <template data-card="game_design">
+        <div class="room-proto">
+          <svg class="proto-connectors"></svg>
+          <div class="win-chrome proto-main">
+            <div class="win-titlebar">
+              <span class="win-title"><span class="win-caret">▸</span> Room: rm_game_design</span>
+              <span class="win-close" data-close-window>×</span>
+            </div>
+            <div class="proto-thumbs">
+              <div class="proto-thumb" data-proj="night_lights">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-night.jpg')"></div>
+                <div class="thumb-title">Night Lights</div>
+              </div>
+              <div class="proto-thumb" data-proj="soulless">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-soulless.jpg')"></div>
+                <div class="thumb-title">Soulless: Ray of Hope</div>
+              </div>
+              <div class="proto-thumb" data-proj="ac_brotherhood">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-assassin.jpg')"></div>
+                <div class="thumb-title">Assassin's Creed: Brotherhood</div>
+              </div>
+              <div class="proto-thumb" data-proj="petz_sports">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-petz.jpg')"></div>
+                <div class="thumb-title">Petz Sports: Dog Playground</div>
+              </div>
+              <div class="proto-thumb" data-proj="weight_loss_coach">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-weight.jpg')"></div>
+                <div class="thumb-title">My Weight Loss Coach</div>
+              </div>
+              <div class="proto-thumb" data-proj="thrillville">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-thrillville.jpg')"></div>
+                <div class="thumb-title">Thrillville: Off the Rails</div>
+              </div>
+              <div class="proto-thumb" data-proj="code_lyoko">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-codelyoko.jpg')"></div>
+                <div class="thumb-title">Code Lyoko</div>
+              </div>
+              <div class="proto-thumb" data-proj="hannah_montana">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-hannah.jpg')"></div>
+                <div class="thumb-title">Hannah Montana</div>
+              </div>
+            </div>
+          </div>
+          <div class="proto-subwindows"></div>
+        </div>
+      </template>
+
+      <template data-card="dev_qa">
+        <div class="room-proto">
+          <svg class="proto-connectors"></svg>
+          <div class="win-chrome proto-main">
+            <div class="win-titlebar">
+              <span class="win-title"><span class="win-caret">▸</span> Room: rm_dev_qa</span>
+              <span class="win-close" data-close-window>×</span>
+            </div>
+            <div class="proto-thumbs">
+              <div class="proto-thumb" data-proj="whac_a_mole">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-whac.jpg')"></div>
+                <div class="thumb-title">Whac-A-Mole</div>
+              </div>
+              <div class="proto-thumb" data-proj="winx_club">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-winx.jpg')"></div>
+                <div class="thumb-title">Winx Club</div>
+              </div>
+              <div class="proto-thumb" data-proj="rayman2">
+                <div class="thumb-art" style="background-image:url('img/sim-graveline-rayman.jpg')"></div>
+                <div class="thumb-title">Rayman 2: The Great Escape</div>
+              </div>
+            </div>
+          </div>
+          <div class="proto-subwindows"></div>
+        </div>
+      </template>
+
+      <template data-card="socials">
+        <div class="win-chrome">
+          <div class="win-titlebar">
+            <span class="win-title"><span class="win-caret">▸</span> Shader: sh_socials</span>
+            <span class="win-close" data-close-window>×</span>
+          </div>
+          <div class="shader-window">
+            <div class="shader-preview"><div class="dot"></div></div>
+            <div class="shader-body">
+              <span class="gml-com">// social</span>
+              <div class="uniform"><span class="utype">uniform sampler2D</span><span class="uname">u_linkedin</span> = <a href="https://www.linkedin.com/in/simgrave/" target="_blank" rel="noopener">linkedin.com/in/simgrave</a></div>
+              <div class="uniform"><span class="utype">uniform sampler2D</span><span class="uname">u_github</span> = <a href="https://github.com/SimGraveline" target="_blank" rel="noopener">github.com/SimGraveline</a></div>              
+
+              <span class="gml-com">// dev platforms</span>
+              <div class="uniform"><span class="utype">uniform sampler2D</span><span class="uname">u_itchio</span> = <a href="https://simgraveline.itch.io/" target="_blank" rel="noopener">simgraveline.itch.io</a></div>              
+            </div>
+          </div>
+        </div>
+      </template>
+
+      <template data-card="contact">
+        <div class="win-chrome">
+          <div class="win-titlebar">
+            <span class="win-title"><span class="win-caret">▸</span> Shader: sh_contact</span>
+            <span class="win-close" data-close-window>×</span>
+          </div>
+          <div class="shader-window">
+            <div class="shader-preview"><div class="dot"></div></div>
+            <div class="shader-body">
+              <span class="gml-com">// contact</span>
+              <div class="uniform"><span class="utype">uniform sampler2D</span><span class="uname">u_email</span> = <a href="mailto:sim.graveline@gmail.com">sim.graveline@gmail.com</a></div>
+            </div>
+          </div>
+        </div>
+      </template>
+
+      <template data-card="resume">
+        <div class="win-chrome resume-window">
+          <div class="win-titlebar">
+            <span class="win-title"><span class="win-caret">▸</span> Shader: sh_resume</span>
+            <span class="win-close" data-close-window>×</span>
+          </div>
+          <div class="shader-window">
+            <div class="shader-preview"><div class="dot"></div></div>
+            <div class="resume-viewer">
+              <div class="resume-pages">
+                <img src="img/sim-graveline-resume-p1.jpg" alt="Resume page 1" width="340" height="440">
+                <img src="img/sim-graveline-resume-p2.jpg" alt="Resume page 2" width="340" height="440">
+              </div>
+              <a class="btn-download" href="files/Resume_-_SimonGraveline_G.pdf" download>⬇ Download PDF</a>
+            </div>
+          </div>
+        </div>
+      </template>
+
+      <template id="specTemplate">
+        <div class="win-chrome proto-subwindow">
+          <div class="win-titlebar">
+            <span class="win-title"><span class="win-caret">▸</span> <span class="spec-title-text"></span></span>
+            <span class="win-close">×</span>
+          </div>
+          <div class="spec-body">
+            <div class="spec-platforms"></div>
+            <div class="spec-row"><span>release_date</span><span class="spec-date"></span></div>
+            <div class="spec-row spec-publisher-row" hidden><span>publisher</span><span class="spec-publisher"></span></div>
+            <div class="spec-row"><span>developer</span><span class="spec-developer"></span></div>
+            <div class="spec-trailer-embed" hidden><iframe src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
+            <div class="spec-role">
+              <span class="role"></span>
+              <p class="spec-desc"></p>
+            </div>
+          </div>
+        </div>
+      </template>
+
+    </main>
+  </div>
+
+  <div class="statusbar">
+    <span>&gt; Compiling... <span class="ok">Done. 0 errors, 0 warnings.</span> <span class="status-credit">// web site made using Claude.ai</span></span>
+    <span id="statusRight">SIMON_GRAVELINE © 2026</span>
+  </div>
+
+  <nav class="m-navbar" id="mobileNavbar">
+    <div class="m-navbtn active" data-mpage="home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>
+      Home
+    </div>
+    <div class="m-navbtn" data-mpage="xp">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V10M12 20V4M20 20v-7"/></svg>
+      XP
+    </div>
+    <div class="m-navbtn" data-mpage="portfolio">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="1.5"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+      Portfolio
+    </div>
+    <div class="m-navbtn" data-mpage="contact">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v16H4z"/><path d="M4 5l8 7 8-7"/></svg>
+      Contact
+    </div>
+  </nav>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

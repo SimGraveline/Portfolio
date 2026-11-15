@@ -1,0 +1,77 @@
+/* DICEBITS page (builds on main.css) */
+body.db-page{ padding-top: 0; }
+
+.db-top{
+  position: sticky; top: 0; z-index: 50;
+  background: var(--bg-panel); border-bottom: 1px solid var(--border);
+  padding: 0 24px; height: 48px; display: flex; align-items: center;
+}
+.db-back{ font-family: var(--mono); font-size: 0.82rem; color: var(--text-dim); }
+.db-back:hover{ color: var(--text); }
+
+.db-main{ max-width: 960px; margin: 0 auto; padding: 0 24px 40px; }
+.db-main section{ padding: 48px 0 8px; }
+
+.db-hero{
+  display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap;
+  padding-top: 56px !important; text-align: left;
+}
+.db-cover{
+  width: 320px; height: 320px; border-radius: 14px; border: 1px solid var(--border);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.4); image-rendering: auto; flex-shrink: 0;
+}
+.db-hero-text{ max-width: 460px; }
+.db-hero h1{ font-family: var(--display); font-weight: 700; font-size: clamp(2.4rem, 7vw, 3.6rem); letter-spacing: -0.01em; line-height: 1.05; }
+.db-tagline{ font-family: var(--display); font-weight: 500; font-size: 1.2rem; color: var(--accent-blue); margin-top: 12px; }
+.db-chips{ display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.db-systems{ font-family: var(--mono); font-size: 0.8rem; color: var(--text-dim); margin-top: 16px; }
+
+.db-section h2{ font-family: var(--display); font-weight: 700; font-size: 1.6rem; text-align: center; }
+
+.db-video{
+  position: relative; width: 100%; padding-top: 56.25%;
+  background: var(--bg-workspace); border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+.db-video iframe{ position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+.db-story{
+  max-width: 680px; margin: 22px auto 0; padding: 24px 26px;
+  background: rgba(35,35,38,0.88); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+.db-story p{ color: var(--text-dim); font-size: 1rem; }
+.db-story p + p{ margin-top: 14px; }
+.db-story strong{ color: var(--text); font-weight: 600; }
+
+.db-links{ display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; max-width: 760px; margin: 28px auto 0; }
+.db-link{
+  display: flex; flex-direction: column; gap: 4px; padding: 16px 18px; text-align: center;
+  background: rgba(35,35,38,0.88); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  transition: transform 0.12s ease, border-color 0.12s ease;
+}
+.db-link:hover{ transform: translateY(-3px); border-color: var(--accent-blue); }
+.db-link span:first-child{ font-family: var(--display); font-weight: 700; font-size: 1.02rem; }
+.db-link span:last-child{ font-family: var(--mono); font-size: 0.74rem; color: var(--text-faint); }
+
+@media (max-width: 700px){
+  .db-top{ padding: 0 16px; }
+  .db-main{ padding: 0 14px 32px; }
+  .db-hero{ flex-direction: column; text-align: center; gap: 24px; }
+  .db-cover{ width: 240px; height: 240px; }
+  .db-chips{ justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce){ .db-link{ transition: none; } }
+
+/* trailer facade */
+.db-video-link{ position: absolute; inset: 0; display: block; }
+.db-video-link img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+.db-play{
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  width: 72px; height: 72px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; padding-left: 5px;
+  background: rgba(16,19,26,0.78); border: 2px solid var(--text); color: var(--text); font-size: 1.6rem;
+  transition: transform 0.12s ease, background 0.12s ease;
+}
+.db-video-link:hover .db-play{ transform: translate(-50%, -50%) scale(1.08); background: var(--accent-blue); border-color: var(--accent-blue); color: #10131A; }

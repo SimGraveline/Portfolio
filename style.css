@@ -710,3 +710,11 @@
   @media (prefers-reduced-motion: reduce){
     html{ scroll-behavior: auto; }
   }
+
+  /* link to the light version of the site */
+  .winctrls .site-switch{
+    font-family: var(--mono); font-size: 0.7rem; color: var(--text-dim);
+    border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 2px 8px; margin-left: 12px; line-height: 1.4;
+  }
+  .winctrls .site-switch:hover{ color: var(--text); border-color: var(--accent-blue); }

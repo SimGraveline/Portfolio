@@ -1,2 +1,6 @@
 _mockup.html
 .claude/settings.local.json
+
+# Excel working file and its lock file
+Porfolio.xlsx
+~$*
