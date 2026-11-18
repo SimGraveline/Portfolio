@@ -165,14 +165,14 @@
     {"t": "Strawberry Shortcake: Volume 1", "y": "2004", "i": "gbav-strawberry-shortcake-volume-1.jpg"},
     {"t": "Strawberry Shortcake: Volume 2", "y": "Unreleased"},
     {"t": "Super Robot Monkey Team Hyperforce Go!: Volume 1", "y": "2005", "i": "gbav-super-robot-monkey-team-hyperforce-go-volume-1.jpg"},
-    {"t": "Teenage Mutant Ninja Turtles: The Shredder Strikes", "y": "Unreleased"},
     {"t": "Teenage Mutant Ninja Turtles: Things Change", "y": "2004", "i": "gbav-teenage-mutant-ninja-turtles-things-change.jpg"},
+    {"t": "Teenage Mutant Ninja Turtles: The Shredder Strikes", "y": "Unreleased"},
     {"t": "The Adventures of Jimmy Neutron, Boy Genius: Volume 1", "y": "2004", "i": "gbav-the-adventures-of-jimmy-neutron-boy-genius-volume-1.jpg"},
     {"t": "The Fairly OddParents: Volume 1", "y": "2004", "i": "gbav-the-fairly-oddparents-volume-1.jpg"},
     {"t": "The Fairly OddParents: Volume 2", "y": "2004", "i": "gbav-the-fairly-oddparents-volume-2.jpg"},
     {"t": "The Proud Family: Volume 1", "y": "2005", "i": "gbav-the-proud-family-volume-1.jpg"},
-    {"t": "Yu-Gi-Oh!: Noah's Final Threat", "y": "Unreleased"},
-    {"t": "Yu-Gi-Oh!: Yugi vs. Joey", "y": "2004", "i": "gbav-yu-gi-oh-yugi-vs-joey.jpg"}
+    {"t": "Yu-Gi-Oh!: Yugi vs. Joey", "y": "2004", "i": "gbav-yu-gi-oh-yugi-vs-joey.jpg"},
+    {"t": "Yu-Gi-Oh!: Noah's Final Threat", "y": "Unreleased"}
   ];
   (function(){
     var meta = document.getElementById('gbaMeta');
@@ -327,4 +327,86 @@
       '<div class="co-logo"><img src="img/sim-graveline-social-' + s[3] + '" alt="' + s[0] + ' logo" loading="lazy"></div>' +
       '<h3>' + s[0] + '</h3><p class="co-years">' + s[1] + '</p></a>';
   }).join('');
+})();
+
+/* ---------- Show more / less ---------- */
+/* Items listed (in order) are the ones shown before "Show more". Source: the "default" column of the Excel. */
+(function(){
+  var DEFAULTS = {
+    publishedGrid: ['DICEBITS', 'Mighty Cuphead Adventure', "Teenage Mutant Ninja Turtles: Shredder's Revenge", 'Panzer Paladin', 'AFTERGRINDER', "Assassin's Creed: Brotherhood", 'Hannah Montana', 'Rayman 2: the Great Escape'],
+    cancelledGrid: ['G.I. Joe: Snake Eyes', 'Legacy of Kain "sequel"', 'Rainbow Six Patriots', 'James Noir 2'],
+    gbaGrid: ['Cartoon Network Collection: Volume 1', 'Dragon Ball GT: Volume 1', 'Nicktoons Collection: Volume 1', 'Sonic X: A Super Sonic Hero', 'SpongeBob SquarePants: Volume 1', 'Teenage Mutant Ninja Turtles: Things Change'],
+    studiosGrid: ['Grave Games', 'Atomic Arcade (Hasbro / Wizards of the Coast)', 'Tribute Games', 'Ubisoft Montreal'],
+    publishersGrid: ['Activision', 'Buena Vista Games (Disney)', 'Konami', 'LucasArts'],
+    platNintendo: ['Nintendo DS', 'Nintendo Game Boy Advance', 'Nintendo Switch', 'Nintendo Wii'],
+    platPc: ['Apple iOS', 'Google Android', 'Oculus', 'Valve Steam']
+  };
+  function label(el){
+    var h = el.querySelector('h3');
+    return h ? h.textContent : (el.getAttribute('title') || '');
+  }
+  Object.keys(DEFAULTS).forEach(function(id){
+    var grid = document.getElementById(id);
+    if (!grid) return;
+    var items = Array.prototype.slice.call(grid.children);
+    var rank = {};
+    DEFAULTS[id].forEach(function(t, i){ rank[t] = i + 1; });
+    var extra = items.length - DEFAULTS[id].length;
+    if (extra <= 0) return;
+    grid.classList.add('has-more');
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'more-btn';
+    var wrap = document.createElement('div');
+    wrap.className = 'more-wrap';
+    wrap.appendChild(btn);
+    grid.parentNode.insertBefore(wrap, grid.nextSibling);
+    function apply(open){
+      items.forEach(function(el){
+        var r = rank[label(el)];
+        el.hidden = !open && !r;
+        el.style.order = !open && r ? r : '';
+      });
+      btn.textContent = open ? 'Show less' : 'Show ' + extra + ' more';
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    var open = false;
+    apply(false);
+    btn.addEventListener('click', function(){
+      open = !open;
+      apply(open);
+      if (!open) grid.parentNode.scrollIntoView({ block: 'start' });
+    });
+  });
+})();
+
+/* ---------- About: show skills ---------- */
+(function(){
+  var block = document.getElementById('skillsBlock');
+  if (!block) return;
+  var btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'more-btn';
+  btn.setAttribute('aria-controls', 'skillsBlock');
+  var wrap = document.createElement('div');
+  wrap.className = 'more-wrap';
+  wrap.appendChild(btn);
+  block.parentNode.insertBefore(wrap, block);
+  function apply(open){
+    block.hidden = !open;
+    btn.textContent = open ? 'Show less' : 'Show more';
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  apply(false);
+  btn.addEventListener('click', function(){ apply(block.hidden); });
+})();
+
+/* ---------- Name = back to top ---------- */
+(function(){
+  var a = document.querySelector('.top-link');
+  if (!a) return;
+  a.addEventListener('click', function(e){
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 })();
