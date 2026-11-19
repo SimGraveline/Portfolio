@@ -211,7 +211,7 @@
   }
 
   render("studiosGrid", [
-    ["Grave Games", "2026", "Solo Developer", "grave-games.jpg", "https://www.linkedin.com/company/gravegames/"],
+    ["Grave Games", "2026", "Solo Developer", "grave-games", "https://www.linkedin.com/company/gravegames/"],
     ["Isart Digital Montreal", "2013-2018, 2024-2025", "Head of Game Design, Teacher", "isart.svg", "https://www.isart.com/montreal/"],
     ["Studio MDHR", "2024", "Level Designer - Freelance", "studio-mdhr", "https://studiomdhr.com/"],
     ["Atomic Arcade (Hasbro / Wizards of the Coast)", "2023-2024", "Game Designer (Enemy AI) - Freelance", "atomic-arcade.jpg"],
@@ -220,7 +220,7 @@
     ["Eidos Montreal", "2021-2022", "Game Designer (quests)", "eidos-montreal", "https://www.eidosmontreal.com/"],
     ["Tribute Games", "2018-2021", "Level Designer", "tribute-games", "https://tributegames.com/"],
     ["Studio XP", "2018", "Head of Study, Teacher", "studio-xp", "https://www.studioxp.online/en/"],
-    ["Grave Danger Games", "2013-2017", "Co-Founder", "grave-danger-games.jpg", "https://www.linkedin.com/company/grave-danger-games/"],
+    ["Grave Danger Games", "2013-2017", "Co-Founder", "grave-danger-games", "https://www.linkedin.com/company/grave-danger-games/"],
     ["Ubisoft Montreal", "1999, 2007-2009, 2010-2013", "Lead Game Designer", "ubisoft-montreal", "https://montreal.ubisoft.com/en/"],
     ["Behaviour Interactive (A2M)", "2009", "Level Designer", "behaviour", "https://www.bhvr.com/"],
     ["DC Studios", "2004-2007", "Lead Game Designer, Level Designer, Lead Tester", "dc-studios"]
