@@ -51,7 +51,18 @@ body.db-page{ padding-top: 0; }
   box-shadow: 0 10px 30px rgba(0,0,0,0.25);
   transition: transform 0.12s ease, border-color 0.12s ease;
 }
+.db-link{ position: relative; }
+.db-link::after{
+  content: '\2197';
+  position: absolute; top: 8px; right: 8px;
+  width: 24px; height: 24px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 0.8rem; line-height: 1;
+  background: rgba(16,19,26,0.82); border: 1px solid var(--border); color: var(--text);
+  pointer-events: none; transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+}
 .db-link:hover{ transform: translateY(-3px); border-color: var(--accent-blue); }
+.db-link:hover::after{ background: var(--accent-blue); border-color: var(--accent-blue); color: #10131A; }
 .db-link span:first-child{ font-family: var(--display); font-weight: 700; font-size: 1.02rem; }
 .db-link span:last-child{ font-family: var(--mono); font-size: 0.74rem; color: var(--text-faint); }
 
