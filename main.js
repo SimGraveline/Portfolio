@@ -258,7 +258,7 @@
     }).join('');
   }
   render('platNintendo', [['nes','Nintendo NES'],['gb','Nintendo Game Boy'],['gbc','Nintendo Game Boy Color'],['n64','Nintendo 64'],['gba','Nintendo Game Boy Advance'],['nds','Nintendo DS'],['wii','Nintendo Wii'],['wiiu','Nintendo Wii-U'],['switch','Nintendo Switch']]);
-  render('platSony', [['ps2','Sony PlayStation 2'],['ps3','Sony PlayStation 3'],['psp','Sony PlayStation Portable'],['ps4','Sony PlayStation 4']]);
+  render('platSony', [['ps2','Sony PlayStation 2'],['psp','Sony PlayStation Portable'],['ps3','Sony PlayStation 3'],['ps4','Sony PlayStation 4']]);
   render('platMicrosoft', [['x360','Microsoft Xbox 360'],['kinect','Microsoft Kinect'],['xone','Microsoft Xbox One']]);
   render('platSega', [['sms','Sega Master System'],['genesis','Sega Genesis'],['dreamcast','Sega Dreamcast']]);
   render('platPc', [['steam','Valve Steam'],['oculus','Oculus'],['ios','Apple iOS'],['android','Google Android'],['html5','Web Browser / HTML'],['pico8','Pico-8'],['pc','PC']]);
