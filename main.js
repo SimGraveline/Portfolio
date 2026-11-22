@@ -68,7 +68,7 @@
 (function(){
   var IMG = 'img/sim-graveline-';
   var GAMES = [
-    {"title": "DICEBITS", "year": "2026", "platforms": "GBA, GB, GBC, GEN, NES, PICO-8, HTML", "engine": "GameMaker, Homemade", "role": "Solo Developer", "company": "Grave Games", "img": "dicebits.png", "hover": "img/dicebits_gameplay_montage.gif", "link": "dicebits.html"},
+    {"title": "DICEBITS", "year": "2026", "platforms": "GBA, GB, GBC, GEN, NES, PICO-8, HTML", "engine": "GameMaker, Homemade", "role": "Solo Developer", "company": "Grave Games", "aka": "Dice Royal", "img": "dicebits.png", "hover": "img/dicebits_gameplay_montage.gif", "link": "dicebits.html"},
     {"title": "Mighty Cuphead Adventure", "year": "TBA", "platforms": "Steam, PS5, Xbox Series, SMS", "engine": "Unity, Tiled", "role": "Level Designer", "company": "Studio MDHR", "img": "cuphead.jpg", "link": "https://mightycuphead.com/"},
     {"title": "Teenage Mutant Ninja Turtles: Shredder's Revenge", "year": "2022", "platforms": "Steam, PS4, Xbox One, Switch, Mobile", "engine": "In-House Engine", "role": "Level Designer", "company": "Tribute Games", "img": "tmnt.jpg", "link": "https://store.steampowered.com/app/1361510/Teenage_Mutant_Ninja_Turtles_Shredders_Revenge/"},
     {"title": "Steel Assault", "year": "2021", "platforms": "Steam, PS4, Xbox One, Switch", "engine": "In-House Engine, Tiled", "role": "Level Designer (additional)", "company": "Tribute Games", "img": "steel-assault-cover1.jpg", "link": "https://store.steampowered.com/app/1280300/Steel_Assault/"},
@@ -110,7 +110,7 @@
       var attrs = g.link ? ' class="game-card has-link" href="' + esc(g.link) + '"' + (external ? ' target="_blank" rel="noopener"' : '') : ' class="game-card"';
       return '<' + tag + attrs + '>' + art +
         '<div class="g-info">' +
-          '<h3' + (g.italic ? ' class="g-italic"' : '') + '>' + esc(g.title) + '</h3>' +
+          '<h3' + (g.italic ? ' class="g-italic"' : '') + ' data-label="' + esc(g.title) + '">' + esc(g.title) + (g.aka ? '<br>(formerly ' + esc(g.aka) + ')' : '') + '</h3>' +
           (g.year ? '<p class="g-year">' + esc(g.year) + '</p>' : '') +
           '<p class="g-role">' + esc(g.role) + '</p>' +
           rowsFn(g) +
@@ -351,7 +351,7 @@
   };
   function label(el){
     var h = el.querySelector('h3');
-    return h ? h.textContent : (el.getAttribute('title') || '');
+    return h ? (h.getAttribute('data-label') || h.textContent) :(el.getAttribute('title') || '');
   }
   Object.keys(DEFAULTS).forEach(function(id){
     var grid = document.getElementById(id);
