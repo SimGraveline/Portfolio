@@ -25,6 +25,7 @@ body.db-page{ padding-top: 0; }
 .db-tagline{ font-family: var(--display); font-weight: 500; font-size: 1.2rem; color: var(--accent-blue); margin-top: 12px; }
 .db-chips{ display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
 .db-systems{ font-family: var(--mono); font-size: 0.8rem; color: var(--text-dim); margin-top: 16px; }
+.db-systems + .db-systems{ margin-top: 4px; }
 
 .db-section h2{ font-family: var(--display); font-weight: 700; font-size: 1.6rem; text-align: center; }
 

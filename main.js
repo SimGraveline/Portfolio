@@ -68,7 +68,7 @@
 (function(){
   var IMG = 'img/sim-graveline-';
   var GAMES = [
-    {"title": "DICEBITS", "year": "2026", "platforms": "GBA, GB, GBC, GEN, NES, PICO-8, HTML", "engine": "GameMaker, Homemade", "role": "Solo Developer", "company": "Grave Games", "img": "dicebits.png", "link": "dicebits.html"},
+    {"title": "DICEBITS", "year": "2026", "platforms": "GBA, GB, GBC, GEN, NES, PICO-8, HTML", "engine": "GameMaker, Homemade", "role": "Solo Developer", "company": "Grave Games", "img": "dicebits.png", "hover": "img/dicebits_gameplay_montage.gif", "link": "dicebits.html"},
     {"title": "Mighty Cuphead Adventure", "year": "TBA", "platforms": "Steam, PS5, Xbox Series, SMS", "engine": "Unity, Tiled", "role": "Level Designer", "company": "Studio MDHR", "img": "cuphead.jpg", "link": "https://mightycuphead.com/"},
     {"title": "Teenage Mutant Ninja Turtles: Shredder's Revenge", "year": "2022", "platforms": "Steam, PS4, Xbox One, Switch, Mobile", "engine": "In-House Engine", "role": "Level Designer", "company": "Tribute Games", "img": "tmnt.jpg", "link": "https://store.steampowered.com/app/1361510/Teenage_Mutant_Ninja_Turtles_Shredders_Revenge/"},
     {"title": "Steel Assault", "year": "2021", "platforms": "Steam, PS4, Xbox One, Switch", "engine": "In-House Engine, Tiled", "role": "Level Designer (additional)", "company": "Tribute Games", "img": "steel-assault-cover1.jpg", "link": "https://store.steampowered.com/app/1280300/Steel_Assault/"},
@@ -103,7 +103,7 @@
     if (!grid) return;
     grid.innerHTML = list.map(function(g){
       var art = g.img
-        ? '<div class="g-art' + (g.fit ? ' g-' + g.fit : '') + '" style="background-image:url(\'' + IMG + g.img + '\')"></div>'
+        ? '<div class="g-art' + (g.fit ? ' g-' + g.fit : '') + '" style="background-image:url(\'' + IMG + g.img + '\')"' + (g.hover ? ' data-hover="' + g.hover + '"' : '') + '></div>'
         : '<div class="g-art g-placeholder' + (g.fit === 'portrait' ? ' g-portrait' : '') + '"><span>Cover unavailable</span></div>';
       var tag = g.link ? 'a' : 'article';
       var external = g.link && /^https?:/.test(g.link);
@@ -120,6 +120,14 @@
 
   render('publishedGrid', GAMES, function(g){
     return row('Developer / Publisher', g.company) + row('Platform(s)', g.platforms) + row('Game Engine(s)', g.engine);
+  });
+
+  // Hover: swap the cover for an animated GIF
+  document.querySelectorAll('.g-art[data-hover]').forEach(function(art){
+    var still = art.style.backgroundImage;
+    var card = art.closest('.game-card') || art;
+    card.addEventListener('mouseenter', function(){ art.style.backgroundImage = 'url(\'' + art.dataset.hover + '\')'; art.style.backgroundSize = '100% auto'; art.style.backgroundRepeat = 'no-repeat'; art.style.backgroundColor = '#002060'; });
+    card.addEventListener('mouseleave', function(){ art.style.backgroundImage = still; art.style.backgroundSize = ''; art.style.backgroundRepeat = ''; art.style.backgroundColor = ''; });
   });
 
   /* ---------- Cancelled Games ---------- */
@@ -211,7 +219,7 @@
   }
 
   render("studiosGrid", [
-    ["Grave Games", "2026", "Solo Developer", "grave-games", "https://www.linkedin.com/company/gravegames/"],
+    ["Grave Games", "2026-present","Solo Developer", "grave-games", "https://www.linkedin.com/company/gravegames/"],
     ["Isart Digital Montreal", "2013-2018, 2024-2025", "Head of Game Design, Teacher", "isart.svg", "https://www.isart.com/montreal/"],
     ["Studio MDHR", "2024", "Level Designer - Freelance", "studio-mdhr", "https://studiomdhr.com/"],
     ["Atomic Arcade (Hasbro / Wizards of the Coast)", "2023-2024", "Game Designer (Enemy AI) - Freelance", "atomic-arcade.jpg"],
