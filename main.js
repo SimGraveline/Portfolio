@@ -203,12 +203,16 @@
   var LOGO = 'img/sim-graveline-logo-';
   function logoFile(f){ return /\.[a-z]+$/.test(f) ? f : f + '.png'; }
   function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
+  function stamps(list){
+    if (!list) return '';
+    return '<div class="stamps" aria-hidden="true">' + list.map(function(t, i){ return '<span class="stamp stamp-' + (i + 1) + '">' + esc(t) + '</span>'; }).join('') + '</div>';
+  }
   function render(id, list){
     var el = document.getElementById(id);
     if (!el) return;
     el.innerHTML = list.map(function(c){
       var logo = c[3]
-        ? '<div class="co-logo"><img src="' + LOGO + logoFile(c[3]) + '" alt="' + esc(c[0]) + ' logo" loading="lazy"></div>'
+        ? '<div class="co-logo' + (c[5] ? ' has-stamp' : '') + '"><img src="' + LOGO + logoFile(c[3]) + '" alt="' + esc(c[0]) + ' logo" loading="lazy">' + stamps(c[5]) + '</div>'
         : '<div class="co-logo co-nologo" aria-hidden="true"></div>';
       var tag = c[4] ? 'a' : 'article';
       var attrs = c[4] ? ' class="co-card has-link" href="' + esc(c[4]) + '" target="_blank" rel="noopener"' : ' class="co-card"';
@@ -220,14 +224,13 @@
 
   render("studiosGrid", [
     ["Grave Games", "2026-present","Solo Developer", "grave-games", "https://www.linkedin.com/company/gravegames/"],
-    ["Isart Digital Montreal", "2013-2018, 2024-2025", "Head of Game Design, Teacher", "isart.svg", "https://www.isart.com/montreal/"],
-    ["Studio MDHR", "2024", "Level Designer - Freelance", "studio-mdhr", "https://studiomdhr.com/"],
-    ["Atomic Arcade (Hasbro / Wizards of the Coast)", "2023-2024", "Game Designer (Enemy AI) - Freelance", "atomic-arcade.jpg"],
-    ["Rovio Montreal", "2022-2023", "Game Designer (systems)", "rovio"],
-    ["Subliminal Entertainment (Illogika)", "2022", "Creative Director", "illogika", "https://www.illogika.com/"],
-    ["Eidos Montreal", "2021-2022", "Game Designer (quests)", "eidos-montreal", "https://www.eidosmontreal.com/"],
+    ["Isart Digital Montreal", "2013-2018, 2024-2025", "Head of Game Design, Teacher", "isart.svg", "https://www.isart.com/montreal/", ["Staff cut"]],
+    ["Studio MDHR", "2024", "Level Designer - Freelance - Short Term Contract", "studio-mdhr", "https://studiomdhr.com/"],
+    ["Atomic Arcade (Hasbro / Wizards of the Coast)", "2023-2024", "Game Designer (Enemy AI) - Freelance - Short Term Contract", "atomic-arcade.jpg", null, ["Project cancelled", "Studio closed"]],
+    ["Rovio Montreal", "2022-2023", "Game Designer (systems)", "rovio", null, ["Project cancelled", "Studio closed"]],
+    ["Subliminal Entertainment (Illogika)", "2022", "Creative Director", "illogika", "https://www.illogika.com/", ["Department closed"]],
+    ["Eidos Montreal", "2021-2022", "Game Designer (quests)", "eidos-montreal", "https://www.eidosmontreal.com/", ["Project cancelled"]],
     ["Tribute Games", "2018-2021", "Level Designer", "tribute-games", "https://tributegames.com/"],
-    ["Studio XP", "2018", "Head of Study, Teacher", "studio-xp", "https://www.studioxp.online/en/"],
     ["Grave Danger Games", "2013-2017", "Co-Founder", "grave-danger-games", "https://www.linkedin.com/company/grave-danger-games/"],
     ["Ubisoft Montreal", "1999, 2007-2009, 2010-2013", "Lead Game Designer", "ubisoft-montreal", "https://montreal.ubisoft.com/en/"],
     ["Behaviour Interactive (A2M)", "2009", "Level Designer", "behaviour", "https://www.bhvr.com/"],

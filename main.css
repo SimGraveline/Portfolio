@@ -183,6 +183,18 @@ a.co-card{ color: inherit; text-decoration: none; }
   background: #F2F2F4; border-radius: 6px;
   display: flex; align-items: center; justify-content: center; padding: 14px;
 }
+.co-logo{ position: relative; overflow: hidden; }
+/* Red rubber stamps (closures, cancellations) */
+/* A strip is reserved under the logo so stamps never cover it */
+.co-logo.has-stamp{ padding-bottom: 36px; }
+.stamps{ position: absolute; left: 0; right: 0; bottom: 7px; display: flex; justify-content: center; gap: 8px; pointer-events: none; }
+.stamp{
+  font-family: Impact, 'Arial Narrow', sans-serif; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1.15;
+  color: #6e080e; border: 2px solid #6e080e; border-radius: 4px; padding: 2px 6px; white-space: nowrap;
+  filter: url(#stamp-rough); mix-blend-mode: multiply;
+  transform: rotate(-4deg);
+}
+.stamp-2{ transform: rotate(3deg); }
 .co-logo img{ max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
 .co-nologo{
   background: repeating-linear-gradient(45deg, var(--bg-workspace), var(--bg-workspace) 10px, var(--bg-panel) 10px, var(--bg-panel) 20px);
