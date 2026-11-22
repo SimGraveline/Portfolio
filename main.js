@@ -249,13 +249,6 @@
     ["Moon Scoop", "", "", "moon-scoop"],
     ["SouthPeak Interactive", "", "", "southpeak"]
   ]);
-
-  render("coOthersGrid", [
-    ["Archambault", "2002-2004", "Administrative Manager", "archambault"],
-    ["Metro Video", "2000-2002", "Clerk Manager", "metro-video.jpg"],
-    ["Pixcom Interactif", "2000", "Web Master, Integrator", "pixcom.jpg"],
-    ["AT&T Canada", "1999", "Web Integrator (internship)", "att"]
-  ]);
 })();
 
 /* ---------- Platforms ---------- */
